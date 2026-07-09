@@ -1,0 +1,5953 @@
+{
+  "players": [
+    {
+      "id": 1,
+      "name": "Elias Baird"
+    },
+    {
+      "id": 2,
+      "name": "Jonatan"
+    },
+    {
+      "id": 3,
+      "name": "Martin Elias"
+    },
+    {
+      "id": 4,
+      "name": "Håvard"
+    },
+    {
+      "id": 5,
+      "name": "Elias Lavik"
+    },
+    {
+      "id": 6,
+      "name": "Andreas"
+    },
+    {
+      "id": 7,
+      "name": "Magnus"
+    },
+    {
+      "id": 8,
+      "name": "Elin"
+    },
+    {
+      "id": 9,
+      "name": "Marthe"
+    },
+    {
+      "id": 10,
+      "name": "Testspiller"
+    }
+  ],
+  "sodas": [
+    {
+      "id": 1,
+      "name": "Hamar",
+      "color": "brown"
+    },
+    {
+      "id": 2,
+      "name": "Hansa",
+      "color": "red"
+    },
+    {
+      "id": 3,
+      "name": "Grans",
+      "color": "red"
+    },
+    {
+      "id": 4,
+      "name": "Lerum",
+      "color": "red"
+    },
+    {
+      "id": 5,
+      "name": "Ringnes rød",
+      "color": "red"
+    },
+    {
+      "id": 6,
+      "name": "Aas",
+      "color": "red"
+    },
+    {
+      "id": 7,
+      "name": "Kiwi",
+      "color": "red"
+    },
+    {
+      "id": 8,
+      "name": "Arendal",
+      "color": "brown"
+    },
+    {
+      "id": 9,
+      "name": "Sørlands",
+      "color": "brown"
+    },
+    {
+      "id": 10,
+      "name": "CB",
+      "color": "brown"
+    },
+    {
+      "id": 11,
+      "name": "Rema 1000",
+      "color": "red"
+    },
+    {
+      "id": 12,
+      "name": "Oskar Sylte rød",
+      "color": "red"
+    },
+    {
+      "id": 13,
+      "name": "Grans X",
+      "color": "red"
+    },
+    {
+      "id": 14,
+      "name": "Saftsuse",
+      "color": "red"
+    },
+    {
+      "id": 15,
+      "name": "Roma rød",
+      "color": "red"
+    },
+    {
+      "id": 16,
+      "name": "E. C. Dahls",
+      "color": "brown"
+    },
+    {
+      "id": 17,
+      "name": "Gammelbyens",
+      "color": "red"
+    },
+    {
+      "id": 18,
+      "name": "Trondheim",
+      "color": "red"
+    },
+    {
+      "id": 19,
+      "name": "Mack",
+      "color": "red"
+    },
+    {
+      "id": 20,
+      "name": "Coop brun",
+      "color": "brown"
+    },
+    {
+      "id": 21,
+      "name": "Coop rød",
+      "color": "red"
+    },
+    {
+      "id": 22,
+      "name": "Solo",
+      "color": "red"
+    },
+    {
+      "id": 23,
+      "name": "Berentsen brun",
+      "color": "brown"
+    },
+    {
+      "id": 24,
+      "name": "Berentsen rød",
+      "color": "red"
+    },
+    {
+      "id": 25,
+      "name": "7 Fjell",
+      "color": "red"
+    },
+    {
+      "id": 26,
+      "name": "Tante Hedvig",
+      "color": "brown"
+    },
+    {
+      "id": 27,
+      "name": "Oskar Sylte (Rudolf og Nissemor)",
+      "color": "pink"
+    },
+    {
+      "id": 28,
+      "name": "Roma brun",
+      "color": "brown"
+    },
+    {
+      "id": 29,
+      "name": "Bergen",
+      "color": "red"
+    },
+    {
+      "id": 30,
+      "name": "Rockin",
+      "color": "red"
+    },
+    {
+      "id": 31,
+      "name": "Oppegård",
+      "color": "red"
+    },
+    {
+      "id": 32,
+      "name": "Ringnes brun",
+      "color": "brown"
+    },
+    {
+      "id": 33,
+      "name": "Færder",
+      "color": "red"
+    },
+    {
+      "id": 34,
+      "name": "Oskar Sylte grønn U/S",
+      "color": "green"
+    },
+    {
+      "id": 36,
+      "name": "Røros",
+      "color": "brown"
+    },
+    {
+      "id": 37,
+      "name": "Fruktsmekk",
+      "color": "red"
+    },
+    {
+      "id": 38,
+      "name": "Rampebrus",
+      "color": "green"
+    },
+    {
+      "id": 39,
+      "name": "Trio",
+      "color": "orange"
+    }
+  ],
+  "competitions": [
+    {
+      "id": 1,
+      "name": "Julebrussmaking 2020",
+      "date": 1734342231470
+    },
+    {
+      "id": 2,
+      "name": "Julebrus 2021",
+      "date": 1734342231471
+    },
+    {
+      "id": 3,
+      "name": "Julebrus 2022",
+      "date": 1734342231472
+    },
+    {
+      "id": 4,
+      "name": "Julebrus 2023 (i 2024)",
+      "date": 1734342231472
+    },
+    {
+      "id": 5,
+      "name": "Julebrus 2024",
+      "date": "2024-12-18 09:31:30"
+    },
+    {
+      "id": 6,
+      "name": "Julebrus (kun rød og brun) 2024",
+      "date": "2024-12-18 14:58:14"
+    },
+    {
+      "id": 7,
+      "name": "Julebrus 2025 (i 2026)",
+      "date": "2026-01-11T12:20:40.277+00:00"
+    }
+  ],
+  "competitionSodas": [
+    {
+      "competitionId": 1,
+      "sodaId": 1
+    },
+    {
+      "competitionId": 1,
+      "sodaId": 2
+    },
+    {
+      "competitionId": 1,
+      "sodaId": 3
+    },
+    {
+      "competitionId": 1,
+      "sodaId": 4
+    },
+    {
+      "competitionId": 1,
+      "sodaId": 5
+    },
+    {
+      "competitionId": 1,
+      "sodaId": 6
+    },
+    {
+      "competitionId": 1,
+      "sodaId": 7
+    },
+    {
+      "competitionId": 1,
+      "sodaId": 8
+    },
+    {
+      "competitionId": 1,
+      "sodaId": 9
+    },
+    {
+      "competitionId": 1,
+      "sodaId": 10
+    },
+    {
+      "competitionId": 2,
+      "sodaId": 1
+    },
+    {
+      "competitionId": 2,
+      "sodaId": 2
+    },
+    {
+      "competitionId": 2,
+      "sodaId": 4
+    },
+    {
+      "competitionId": 2,
+      "sodaId": 5
+    },
+    {
+      "competitionId": 2,
+      "sodaId": 7
+    },
+    {
+      "competitionId": 2,
+      "sodaId": 8
+    },
+    {
+      "competitionId": 2,
+      "sodaId": 9
+    },
+    {
+      "competitionId": 2,
+      "sodaId": 10
+    },
+    {
+      "competitionId": 2,
+      "sodaId": 11
+    },
+    {
+      "competitionId": 2,
+      "sodaId": 12
+    },
+    {
+      "competitionId": 2,
+      "sodaId": 13
+    },
+    {
+      "competitionId": 2,
+      "sodaId": 14
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 1
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 2
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 3
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 4
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 5
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 6
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 7
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 10
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 12
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 14
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 15
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 16
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 18
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 19
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 20
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 21
+    },
+    {
+      "competitionId": 3,
+      "sodaId": 22
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 1
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 2
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 3
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 4
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 5
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 6
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 7
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 10
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 11
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 12
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 14
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 16
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 22
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 23
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 24
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 25
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 26
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 27
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 28
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 29
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 30
+    },
+    {
+      "competitionId": 4,
+      "sodaId": 31
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 1
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 2
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 3
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 4
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 5
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 6
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 7
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 10
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 12
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 15
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 16
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 17
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 19
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 20
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 22
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 25
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 26
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 28
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 33
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 34
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 36
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 37
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 38
+    },
+    {
+      "competitionId": 5,
+      "sodaId": 39
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 1
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 2
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 3
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 4
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 5
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 6
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 7
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 10
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 12
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 15
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 16
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 17
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 19
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 20
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 22
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 25
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 26
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 28
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 33
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 36
+    },
+    {
+      "competitionId": 6,
+      "sodaId": 37
+    },
+    {
+      "competitionId": 7,
+      "sodaId": 1
+    },
+    {
+      "competitionId": 7,
+      "sodaId": 2
+    },
+    {
+      "competitionId": 7,
+      "sodaId": 3
+    },
+    {
+      "competitionId": 7,
+      "sodaId": 4
+    },
+    {
+      "competitionId": 7,
+      "sodaId": 10
+    },
+    {
+      "competitionId": 7,
+      "sodaId": 12
+    },
+    {
+      "competitionId": 7,
+      "sodaId": 22
+    }
+  ],
+  "guesses": [
+    {
+      "id": 1,
+      "score": 7,
+      "playerId": 3,
+      "guessedSodaId": 1,
+      "actualSodaId": 1,
+      "competitionId": 1
+    },
+    {
+      "id": 2,
+      "score": 5,
+      "playerId": 3,
+      "guessedSodaId": 3,
+      "actualSodaId": 2,
+      "competitionId": 1
+    },
+    {
+      "id": 3,
+      "score": 6,
+      "playerId": 3,
+      "guessedSodaId": 8,
+      "actualSodaId": 3,
+      "competitionId": 1
+    },
+    {
+      "id": 4,
+      "score": 7,
+      "playerId": 3,
+      "guessedSodaId": 2,
+      "actualSodaId": 4,
+      "competitionId": 1
+    },
+    {
+      "id": 5,
+      "score": 2,
+      "playerId": 3,
+      "guessedSodaId": 9,
+      "actualSodaId": 5,
+      "competitionId": 1
+    },
+    {
+      "id": 6,
+      "score": 3,
+      "playerId": 3,
+      "guessedSodaId": 6,
+      "actualSodaId": 6,
+      "competitionId": 1
+    },
+    {
+      "id": 7,
+      "score": 5,
+      "playerId": 3,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 1
+    },
+    {
+      "id": 8,
+      "score": 9,
+      "playerId": 3,
+      "guessedSodaId": 5,
+      "actualSodaId": 8,
+      "competitionId": 1
+    },
+    {
+      "id": 9,
+      "score": 8,
+      "playerId": 3,
+      "guessedSodaId": 4,
+      "actualSodaId": 9,
+      "competitionId": 1
+    },
+    {
+      "id": 10,
+      "score": 3,
+      "playerId": 3,
+      "guessedSodaId": 10,
+      "actualSodaId": 10,
+      "competitionId": 1
+    },
+    {
+      "id": 11,
+      "score": 6,
+      "playerId": 2,
+      "guessedSodaId": 6,
+      "actualSodaId": 1,
+      "competitionId": 1
+    },
+    {
+      "id": 12,
+      "score": 5,
+      "playerId": 2,
+      "guessedSodaId": 3,
+      "actualSodaId": 2,
+      "competitionId": 1
+    },
+    {
+      "id": 13,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 4,
+      "actualSodaId": 3,
+      "competitionId": 1
+    },
+    {
+      "id": 14,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 2,
+      "actualSodaId": 4,
+      "competitionId": 1
+    },
+    {
+      "id": 15,
+      "score": 3,
+      "playerId": 2,
+      "guessedSodaId": 9,
+      "actualSodaId": 5,
+      "competitionId": 1
+    },
+    {
+      "id": 16,
+      "score": 2,
+      "playerId": 2,
+      "guessedSodaId": 8,
+      "actualSodaId": 6,
+      "competitionId": 1
+    },
+    {
+      "id": 17,
+      "score": 2,
+      "playerId": 2,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 1
+    },
+    {
+      "id": 18,
+      "score": 3,
+      "playerId": 2,
+      "guessedSodaId": 10,
+      "actualSodaId": 8,
+      "competitionId": 1
+    },
+    {
+      "id": 19,
+      "score": 5,
+      "playerId": 2,
+      "guessedSodaId": 1,
+      "actualSodaId": 9,
+      "competitionId": 1
+    },
+    {
+      "id": 20,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 5,
+      "actualSodaId": 10,
+      "competitionId": 1
+    },
+    {
+      "id": 21,
+      "score": 7,
+      "playerId": 4,
+      "guessedSodaId": 6,
+      "actualSodaId": 1,
+      "competitionId": 1
+    },
+    {
+      "id": 22,
+      "score": 7,
+      "playerId": 4,
+      "guessedSodaId": 4,
+      "actualSodaId": 2,
+      "competitionId": 1
+    },
+    {
+      "id": 23,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 7,
+      "actualSodaId": 3,
+      "competitionId": 1
+    },
+    {
+      "id": 24,
+      "score": 7,
+      "playerId": 4,
+      "guessedSodaId": 1,
+      "actualSodaId": 4,
+      "competitionId": 1
+    },
+    {
+      "id": 25,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 5,
+      "actualSodaId": 5,
+      "competitionId": 1
+    },
+    {
+      "id": 26,
+      "score": 7,
+      "playerId": 4,
+      "guessedSodaId": 2,
+      "actualSodaId": 6,
+      "competitionId": 1
+    },
+    {
+      "id": 27,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 9,
+      "actualSodaId": 7,
+      "competitionId": 1
+    },
+    {
+      "id": 28,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 10,
+      "actualSodaId": 8,
+      "competitionId": 1
+    },
+    {
+      "id": 29,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 3,
+      "actualSodaId": 9,
+      "competitionId": 1
+    },
+    {
+      "id": 30,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 8,
+      "actualSodaId": 10,
+      "competitionId": 1
+    },
+    {
+      "id": 31,
+      "score": 7,
+      "playerId": 1,
+      "guessedSodaId": 1,
+      "actualSodaId": 1,
+      "competitionId": 1
+    },
+    {
+      "id": 32,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 4,
+      "actualSodaId": 2,
+      "competitionId": 1
+    },
+    {
+      "id": 33,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 10,
+      "actualSodaId": 3,
+      "competitionId": 1
+    },
+    {
+      "id": 34,
+      "score": 7,
+      "playerId": 1,
+      "guessedSodaId": 9,
+      "actualSodaId": 4,
+      "competitionId": 1
+    },
+    {
+      "id": 35,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 6,
+      "actualSodaId": 5,
+      "competitionId": 1
+    },
+    {
+      "id": 36,
+      "score": 3,
+      "playerId": 1,
+      "guessedSodaId": 3,
+      "actualSodaId": 6,
+      "competitionId": 1
+    },
+    {
+      "id": 37,
+      "score": 4,
+      "playerId": 1,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 1
+    },
+    {
+      "id": 38,
+      "score": 4,
+      "playerId": 1,
+      "guessedSodaId": 2,
+      "actualSodaId": 8,
+      "competitionId": 1
+    },
+    {
+      "id": 39,
+      "score": 4,
+      "playerId": 1,
+      "guessedSodaId": 5,
+      "actualSodaId": 9,
+      "competitionId": 1
+    },
+    {
+      "id": 40,
+      "score": 3,
+      "playerId": 1,
+      "guessedSodaId": 8,
+      "actualSodaId": 10,
+      "competitionId": 1
+    },
+    {
+      "id": 41,
+      "score": 7,
+      "playerId": 5,
+      "guessedSodaId": 2,
+      "actualSodaId": 1,
+      "competitionId": 1
+    },
+    {
+      "id": 42,
+      "score": 7,
+      "playerId": 5,
+      "guessedSodaId": 3,
+      "actualSodaId": 2,
+      "competitionId": 1
+    },
+    {
+      "id": 43,
+      "score": 6,
+      "playerId": 5,
+      "guessedSodaId": 1,
+      "actualSodaId": 3,
+      "competitionId": 1
+    },
+    {
+      "id": 44,
+      "score": 6,
+      "playerId": 5,
+      "guessedSodaId": 9,
+      "actualSodaId": 4,
+      "competitionId": 1
+    },
+    {
+      "id": 45,
+      "score": 5,
+      "playerId": 5,
+      "guessedSodaId": 5,
+      "actualSodaId": 5,
+      "competitionId": 1
+    },
+    {
+      "id": 46,
+      "score": 6,
+      "playerId": 5,
+      "guessedSodaId": 6,
+      "actualSodaId": 6,
+      "competitionId": 1
+    },
+    {
+      "id": 47,
+      "score": 5,
+      "playerId": 5,
+      "guessedSodaId": 8,
+      "actualSodaId": 7,
+      "competitionId": 1
+    },
+    {
+      "id": 48,
+      "score": 8,
+      "playerId": 5,
+      "guessedSodaId": 10,
+      "actualSodaId": 8,
+      "competitionId": 1
+    },
+    {
+      "id": 49,
+      "score": 5,
+      "playerId": 5,
+      "guessedSodaId": 4,
+      "actualSodaId": 9,
+      "competitionId": 1
+    },
+    {
+      "id": 50,
+      "score": 4,
+      "playerId": 5,
+      "guessedSodaId": 7,
+      "actualSodaId": 10,
+      "competitionId": 1
+    },
+    {
+      "id": 51,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 2,
+      "actualSodaId": 1,
+      "competitionId": 1
+    },
+    {
+      "id": 52,
+      "score": 9,
+      "playerId": 6,
+      "guessedSodaId": 3,
+      "actualSodaId": 2,
+      "competitionId": 1
+    },
+    {
+      "id": 53,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 6,
+      "actualSodaId": 3,
+      "competitionId": 1
+    },
+    {
+      "id": 54,
+      "score": 9,
+      "playerId": 6,
+      "guessedSodaId": 4,
+      "actualSodaId": 4,
+      "competitionId": 1
+    },
+    {
+      "id": 55,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 10,
+      "actualSodaId": 5,
+      "competitionId": 1
+    },
+    {
+      "id": 56,
+      "score": 5,
+      "playerId": 6,
+      "guessedSodaId": 9,
+      "actualSodaId": 6,
+      "competitionId": 1
+    },
+    {
+      "id": 57,
+      "score": 5,
+      "playerId": 6,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 1
+    },
+    {
+      "id": 58,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 1,
+      "actualSodaId": 8,
+      "competitionId": 1
+    },
+    {
+      "id": 59,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 5,
+      "actualSodaId": 9,
+      "competitionId": 1
+    },
+    {
+      "id": 60,
+      "score": 5,
+      "playerId": 6,
+      "guessedSodaId": 8,
+      "actualSodaId": 10,
+      "competitionId": 1
+    },
+    {
+      "id": 61,
+      "score": 8,
+      "playerId": 7,
+      "guessedSodaId": 2,
+      "actualSodaId": 1,
+      "competitionId": 1
+    },
+    {
+      "id": 62,
+      "score": 4,
+      "playerId": 7,
+      "guessedSodaId": 7,
+      "actualSodaId": 2,
+      "competitionId": 1
+    },
+    {
+      "id": 63,
+      "score": 8,
+      "playerId": 7,
+      "guessedSodaId": 1,
+      "actualSodaId": 3,
+      "competitionId": 1
+    },
+    {
+      "id": 64,
+      "score": 7,
+      "playerId": 7,
+      "guessedSodaId": 4,
+      "actualSodaId": 4,
+      "competitionId": 1
+    },
+    {
+      "id": 65,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 9,
+      "actualSodaId": 5,
+      "competitionId": 1
+    },
+    {
+      "id": 66,
+      "score": 5,
+      "playerId": 7,
+      "guessedSodaId": 10,
+      "actualSodaId": 6,
+      "competitionId": 1
+    },
+    {
+      "id": 67,
+      "score": 4,
+      "playerId": 7,
+      "guessedSodaId": 6,
+      "actualSodaId": 7,
+      "competitionId": 1
+    },
+    {
+      "id": 68,
+      "score": 7,
+      "playerId": 7,
+      "guessedSodaId": 3,
+      "actualSodaId": 8,
+      "competitionId": 1
+    },
+    {
+      "id": 69,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 8,
+      "actualSodaId": 9,
+      "competitionId": 1
+    },
+    {
+      "id": 70,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 5,
+      "actualSodaId": 10,
+      "competitionId": 1
+    },
+    {
+      "id": 71,
+      "score": 6,
+      "playerId": 3,
+      "guessedSodaId": 12,
+      "actualSodaId": 1,
+      "competitionId": 2
+    },
+    {
+      "id": 72,
+      "score": 5,
+      "playerId": 3,
+      "guessedSodaId": 13,
+      "actualSodaId": 2,
+      "competitionId": 2
+    },
+    {
+      "id": 73,
+      "score": 10,
+      "playerId": 3,
+      "guessedSodaId": 7,
+      "actualSodaId": 4,
+      "competitionId": 2
+    },
+    {
+      "id": 74,
+      "score": 7,
+      "playerId": 3,
+      "guessedSodaId": 11,
+      "actualSodaId": 5,
+      "competitionId": 2
+    },
+    {
+      "id": 75,
+      "score": 2,
+      "playerId": 3,
+      "guessedSodaId": 9,
+      "actualSodaId": 7,
+      "competitionId": 2
+    },
+    {
+      "id": 76,
+      "score": 5,
+      "playerId": 3,
+      "guessedSodaId": 1,
+      "actualSodaId": 8,
+      "competitionId": 2
+    },
+    {
+      "id": 77,
+      "score": 2,
+      "playerId": 3,
+      "guessedSodaId": 8,
+      "actualSodaId": 9,
+      "competitionId": 2
+    },
+    {
+      "id": 78,
+      "score": 7,
+      "playerId": 3,
+      "guessedSodaId": 4,
+      "actualSodaId": 10,
+      "competitionId": 2
+    },
+    {
+      "id": 79,
+      "score": 6,
+      "playerId": 3,
+      "guessedSodaId": 10,
+      "actualSodaId": 11,
+      "competitionId": 2
+    },
+    {
+      "id": 80,
+      "score": 8,
+      "playerId": 3,
+      "guessedSodaId": 5,
+      "actualSodaId": 12,
+      "competitionId": 2
+    },
+    {
+      "id": 81,
+      "score": 6,
+      "playerId": 3,
+      "guessedSodaId": 2,
+      "actualSodaId": 13,
+      "competitionId": 2
+    },
+    {
+      "id": 82,
+      "score": 4,
+      "playerId": 3,
+      "guessedSodaId": 14,
+      "actualSodaId": 14,
+      "competitionId": 2
+    },
+    {
+      "id": 83,
+      "score": 4,
+      "playerId": 4,
+      "guessedSodaId": 14,
+      "actualSodaId": 1,
+      "competitionId": 2
+    },
+    {
+      "id": 84,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 12,
+      "actualSodaId": 2,
+      "competitionId": 2
+    },
+    {
+      "id": 85,
+      "score": 7,
+      "playerId": 4,
+      "guessedSodaId": 4,
+      "actualSodaId": 4,
+      "competitionId": 2
+    },
+    {
+      "id": 86,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 13,
+      "actualSodaId": 5,
+      "competitionId": 2
+    },
+    {
+      "id": 87,
+      "score": 4,
+      "playerId": 4,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 2
+    },
+    {
+      "id": 88,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 2,
+      "actualSodaId": 8,
+      "competitionId": 2
+    },
+    {
+      "id": 89,
+      "score": 4,
+      "playerId": 4,
+      "guessedSodaId": 10,
+      "actualSodaId": 9,
+      "competitionId": 2
+    },
+    {
+      "id": 90,
+      "score": 3,
+      "playerId": 4,
+      "guessedSodaId": 11,
+      "actualSodaId": 10,
+      "competitionId": 2
+    },
+    {
+      "id": 91,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 14,
+      "actualSodaId": 11,
+      "competitionId": 2
+    },
+    {
+      "id": 92,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 5,
+      "actualSodaId": 12,
+      "competitionId": 2
+    },
+    {
+      "id": 93,
+      "score": 4,
+      "playerId": 4,
+      "guessedSodaId": 8,
+      "actualSodaId": 13,
+      "competitionId": 2
+    },
+    {
+      "id": 94,
+      "score": 3,
+      "playerId": 4,
+      "guessedSodaId": 9,
+      "actualSodaId": 14,
+      "competitionId": 2
+    },
+    {
+      "id": 95,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 4,
+      "actualSodaId": 1,
+      "competitionId": 2
+    },
+    {
+      "id": 96,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 2,
+      "actualSodaId": 2,
+      "competitionId": 2
+    },
+    {
+      "id": 97,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 14,
+      "actualSodaId": 4,
+      "competitionId": 2
+    },
+    {
+      "id": 98,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 1,
+      "actualSodaId": 5,
+      "competitionId": 2
+    },
+    {
+      "id": 99,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 5,
+      "actualSodaId": 7,
+      "competitionId": 2
+    },
+    {
+      "id": 100,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 11,
+      "actualSodaId": 8,
+      "competitionId": 2
+    },
+    {
+      "id": 101,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 7,
+      "actualSodaId": 9,
+      "competitionId": 2
+    },
+    {
+      "id": 102,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 11,
+      "actualSodaId": 10,
+      "competitionId": 2
+    },
+    {
+      "id": 103,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 13,
+      "actualSodaId": 11,
+      "competitionId": 2
+    },
+    {
+      "id": 104,
+      "score": 4,
+      "playerId": 6,
+      "guessedSodaId": 10,
+      "actualSodaId": 12,
+      "competitionId": 2
+    },
+    {
+      "id": 105,
+      "score": 3,
+      "playerId": 6,
+      "guessedSodaId": 8,
+      "actualSodaId": 13,
+      "competitionId": 2
+    },
+    {
+      "id": 106,
+      "score": 2,
+      "playerId": 6,
+      "guessedSodaId": 9,
+      "actualSodaId": 14,
+      "competitionId": 2
+    },
+    {
+      "id": 107,
+      "score": 7,
+      "playerId": 2,
+      "guessedSodaId": 2,
+      "actualSodaId": 1,
+      "competitionId": 2
+    },
+    {
+      "id": 108,
+      "score": 5,
+      "playerId": 2,
+      "guessedSodaId": 5,
+      "actualSodaId": 2,
+      "competitionId": 2
+    },
+    {
+      "id": 109,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 4,
+      "actualSodaId": 4,
+      "competitionId": 2
+    },
+    {
+      "id": 110,
+      "score": 7,
+      "playerId": 2,
+      "guessedSodaId": 1,
+      "actualSodaId": 5,
+      "competitionId": 2
+    },
+    {
+      "id": 111,
+      "score": 2,
+      "playerId": 2,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 2
+    },
+    {
+      "id": 112,
+      "score": 1,
+      "playerId": 2,
+      "guessedSodaId": 9,
+      "actualSodaId": 8,
+      "competitionId": 2
+    },
+    {
+      "id": 113,
+      "score": 2,
+      "playerId": 2,
+      "guessedSodaId": 14,
+      "actualSodaId": 9,
+      "competitionId": 2
+    },
+    {
+      "id": 114,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 10,
+      "actualSodaId": 10,
+      "competitionId": 2
+    },
+    {
+      "id": 115,
+      "score": 6,
+      "playerId": 2,
+      "guessedSodaId": 12,
+      "actualSodaId": 11,
+      "competitionId": 2
+    },
+    {
+      "id": 116,
+      "score": 9,
+      "playerId": 2,
+      "guessedSodaId": 1,
+      "actualSodaId": 12,
+      "competitionId": 2
+    },
+    {
+      "id": 117,
+      "score": 2,
+      "playerId": 2,
+      "guessedSodaId": 11,
+      "actualSodaId": 13,
+      "competitionId": 2
+    },
+    {
+      "id": 118,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 13,
+      "actualSodaId": 14,
+      "competitionId": 2
+    },
+    {
+      "id": 119,
+      "score": 6,
+      "playerId": 5,
+      "guessedSodaId": 9,
+      "actualSodaId": 1,
+      "competitionId": 2
+    },
+    {
+      "id": 120,
+      "score": 9,
+      "playerId": 5,
+      "guessedSodaId": 2,
+      "actualSodaId": 2,
+      "competitionId": 2
+    },
+    {
+      "id": 121,
+      "score": 7,
+      "playerId": 5,
+      "guessedSodaId": 4,
+      "actualSodaId": 4,
+      "competitionId": 2
+    },
+    {
+      "id": 122,
+      "score": 4,
+      "playerId": 5,
+      "guessedSodaId": 10,
+      "actualSodaId": 5,
+      "competitionId": 2
+    },
+    {
+      "id": 123,
+      "score": 4,
+      "playerId": 5,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 2
+    },
+    {
+      "id": 124,
+      "score": 6,
+      "playerId": 5,
+      "guessedSodaId": 5,
+      "actualSodaId": 8,
+      "competitionId": 2
+    },
+    {
+      "id": 125,
+      "score": 2,
+      "playerId": 5,
+      "guessedSodaId": 13,
+      "actualSodaId": 9,
+      "competitionId": 2
+    },
+    {
+      "id": 126,
+      "score": 3,
+      "playerId": 5,
+      "guessedSodaId": 8,
+      "actualSodaId": 10,
+      "competitionId": 2
+    },
+    {
+      "id": 127,
+      "score": 2,
+      "playerId": 5,
+      "guessedSodaId": 11,
+      "actualSodaId": 11,
+      "competitionId": 2
+    },
+    {
+      "id": 128,
+      "score": 9,
+      "playerId": 5,
+      "guessedSodaId": 1,
+      "actualSodaId": 12,
+      "competitionId": 2
+    },
+    {
+      "id": 129,
+      "score": 5,
+      "playerId": 5,
+      "guessedSodaId": 12,
+      "actualSodaId": 13,
+      "competitionId": 2
+    },
+    {
+      "id": 130,
+      "score": 5,
+      "playerId": 5,
+      "guessedSodaId": 14,
+      "actualSodaId": 14,
+      "competitionId": 2
+    },
+    {
+      "id": 131,
+      "score": 8,
+      "playerId": 7,
+      "guessedSodaId": 2,
+      "actualSodaId": 1,
+      "competitionId": 2
+    },
+    {
+      "id": 132,
+      "score": 7,
+      "playerId": 7,
+      "guessedSodaId": 13,
+      "actualSodaId": 2,
+      "competitionId": 2
+    },
+    {
+      "id": 133,
+      "score": 5,
+      "playerId": 7,
+      "guessedSodaId": 12,
+      "actualSodaId": 4,
+      "competitionId": 2
+    },
+    {
+      "id": 134,
+      "score": 10,
+      "playerId": 7,
+      "guessedSodaId": 1,
+      "actualSodaId": 5,
+      "competitionId": 2
+    },
+    {
+      "id": 135,
+      "score": 4,
+      "playerId": 7,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 2
+    },
+    {
+      "id": 136,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 9,
+      "actualSodaId": 8,
+      "competitionId": 2
+    },
+    {
+      "id": 137,
+      "score": 5,
+      "playerId": 7,
+      "guessedSodaId": 8,
+      "actualSodaId": 9,
+      "competitionId": 2
+    },
+    {
+      "id": 138,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 10,
+      "actualSodaId": 10,
+      "competitionId": 2
+    },
+    {
+      "id": 139,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 11,
+      "actualSodaId": 11,
+      "competitionId": 2
+    },
+    {
+      "id": 140,
+      "score": 9,
+      "playerId": 7,
+      "guessedSodaId": 4,
+      "actualSodaId": 12,
+      "competitionId": 2
+    },
+    {
+      "id": 141,
+      "score": 7,
+      "playerId": 7,
+      "guessedSodaId": 14,
+      "actualSodaId": 13,
+      "competitionId": 2
+    },
+    {
+      "id": 142,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 5,
+      "actualSodaId": 14,
+      "competitionId": 2
+    },
+    {
+      "id": 143,
+      "score": 5,
+      "playerId": 3,
+      "guessedSodaId": 21,
+      "actualSodaId": 1,
+      "competitionId": 3
+    },
+    {
+      "id": 144,
+      "score": 8,
+      "playerId": 3,
+      "guessedSodaId": 2,
+      "actualSodaId": 2,
+      "competitionId": 3
+    },
+    {
+      "id": 145,
+      "score": 7,
+      "playerId": 3,
+      "guessedSodaId": 4,
+      "actualSodaId": 3,
+      "competitionId": 3
+    },
+    {
+      "id": 146,
+      "score": 10,
+      "playerId": 3,
+      "guessedSodaId": 7,
+      "actualSodaId": 4,
+      "competitionId": 3
+    },
+    {
+      "id": 147,
+      "score": 6,
+      "playerId": 3,
+      "guessedSodaId": 1,
+      "actualSodaId": 5,
+      "competitionId": 3
+    },
+    {
+      "id": 148,
+      "score": 3,
+      "playerId": 3,
+      "guessedSodaId": 10,
+      "actualSodaId": 6,
+      "competitionId": 3
+    },
+    {
+      "id": 149,
+      "score": 9,
+      "playerId": 3,
+      "guessedSodaId": 15,
+      "actualSodaId": 7,
+      "competitionId": 3
+    },
+    {
+      "id": 150,
+      "score": 5,
+      "playerId": 3,
+      "guessedSodaId": 22,
+      "actualSodaId": 10,
+      "competitionId": 3
+    },
+    {
+      "id": 151,
+      "score": 7,
+      "playerId": 3,
+      "guessedSodaId": 20,
+      "actualSodaId": 12,
+      "competitionId": 3
+    },
+    {
+      "id": 152,
+      "score": 6,
+      "playerId": 3,
+      "guessedSodaId": 16,
+      "actualSodaId": 14,
+      "competitionId": 3
+    },
+    {
+      "id": 153,
+      "score": 4,
+      "playerId": 3,
+      "guessedSodaId": 19,
+      "actualSodaId": 15,
+      "competitionId": 3
+    },
+    {
+      "id": 154,
+      "score": 5,
+      "playerId": 3,
+      "guessedSodaId": 14,
+      "actualSodaId": 16,
+      "competitionId": 3
+    },
+    {
+      "id": 155,
+      "score": 2,
+      "playerId": 3,
+      "guessedSodaId": 18,
+      "actualSodaId": 18,
+      "competitionId": 3
+    },
+    {
+      "id": 156,
+      "score": 9,
+      "playerId": 3,
+      "guessedSodaId": 3,
+      "actualSodaId": 19,
+      "competitionId": 3
+    },
+    {
+      "id": 157,
+      "score": 5,
+      "playerId": 3,
+      "guessedSodaId": 6,
+      "actualSodaId": 20,
+      "competitionId": 3
+    },
+    {
+      "id": 158,
+      "score": 6,
+      "playerId": 3,
+      "guessedSodaId": 12,
+      "actualSodaId": 21,
+      "competitionId": 3
+    },
+    {
+      "id": 159,
+      "score": 4,
+      "playerId": 3,
+      "guessedSodaId": 5,
+      "actualSodaId": 22,
+      "competitionId": 3
+    },
+    {
+      "id": 160,
+      "score": 6,
+      "playerId": 5,
+      "guessedSodaId": 12,
+      "actualSodaId": 1,
+      "competitionId": 3
+    },
+    {
+      "id": 161,
+      "score": 4,
+      "playerId": 5,
+      "guessedSodaId": 10,
+      "actualSodaId": 2,
+      "competitionId": 3
+    },
+    {
+      "id": 162,
+      "score": 3,
+      "playerId": 5,
+      "guessedSodaId": 7,
+      "actualSodaId": 3,
+      "competitionId": 3
+    },
+    {
+      "id": 163,
+      "score": 5,
+      "playerId": 5,
+      "guessedSodaId": 6,
+      "actualSodaId": 4,
+      "competitionId": 3
+    },
+    {
+      "id": 164,
+      "score": 5,
+      "playerId": 5,
+      "guessedSodaId": 18,
+      "actualSodaId": 5,
+      "competitionId": 3
+    },
+    {
+      "id": 165,
+      "score": 3,
+      "playerId": 5,
+      "guessedSodaId": 19,
+      "actualSodaId": 6,
+      "competitionId": 3
+    },
+    {
+      "id": 166,
+      "score": 3,
+      "playerId": 5,
+      "guessedSodaId": 20,
+      "actualSodaId": 7,
+      "competitionId": 3
+    },
+    {
+      "id": 167,
+      "score": 5,
+      "playerId": 5,
+      "guessedSodaId": 7,
+      "actualSodaId": 10,
+      "competitionId": 3
+    },
+    {
+      "id": 168,
+      "score": 7,
+      "playerId": 5,
+      "guessedSodaId": 4,
+      "actualSodaId": 12,
+      "competitionId": 3
+    },
+    {
+      "id": 169,
+      "score": 7,
+      "playerId": 5,
+      "guessedSodaId": 3,
+      "actualSodaId": 14,
+      "competitionId": 3
+    },
+    {
+      "id": 170,
+      "score": 7,
+      "playerId": 5,
+      "guessedSodaId": 2,
+      "actualSodaId": 15,
+      "competitionId": 3
+    },
+    {
+      "id": 171,
+      "score": 5,
+      "playerId": 5,
+      "guessedSodaId": 16,
+      "actualSodaId": 16,
+      "competitionId": 3
+    },
+    {
+      "id": 172,
+      "score": 6,
+      "playerId": 5,
+      "guessedSodaId": 14,
+      "actualSodaId": 18,
+      "competitionId": 3
+    },
+    {
+      "id": 173,
+      "score": 4,
+      "playerId": 5,
+      "guessedSodaId": 21,
+      "actualSodaId": 19,
+      "competitionId": 3
+    },
+    {
+      "id": 174,
+      "score": 4,
+      "playerId": 5,
+      "guessedSodaId": 22,
+      "actualSodaId": 20,
+      "competitionId": 3
+    },
+    {
+      "id": 175,
+      "score": 6,
+      "playerId": 5,
+      "guessedSodaId": 15,
+      "actualSodaId": 21,
+      "competitionId": 3
+    },
+    {
+      "id": 176,
+      "score": 6,
+      "playerId": 5,
+      "guessedSodaId": 21,
+      "actualSodaId": 22,
+      "competitionId": 3
+    },
+    {
+      "id": 177,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 1,
+      "actualSodaId": 1,
+      "competitionId": 3
+    },
+    {
+      "id": 178,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 2,
+      "actualSodaId": 2,
+      "competitionId": 3
+    },
+    {
+      "id": 179,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 15,
+      "actualSodaId": 3,
+      "competitionId": 3
+    },
+    {
+      "id": 180,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 12,
+      "actualSodaId": 4,
+      "competitionId": 3
+    },
+    {
+      "id": 181,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 1,
+      "actualSodaId": 5,
+      "competitionId": 3
+    },
+    {
+      "id": 182,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 19,
+      "actualSodaId": 6,
+      "competitionId": 3
+    },
+    {
+      "id": 183,
+      "score": 10,
+      "playerId": 6,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 3
+    },
+    {
+      "id": 184,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 21,
+      "actualSodaId": 10,
+      "competitionId": 3
+    },
+    {
+      "id": 185,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 2,
+      "actualSodaId": 12,
+      "competitionId": 3
+    },
+    {
+      "id": 186,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 16,
+      "actualSodaId": 14,
+      "competitionId": 3
+    },
+    {
+      "id": 187,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 21,
+      "actualSodaId": 15,
+      "competitionId": 3
+    },
+    {
+      "id": 188,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 5,
+      "actualSodaId": 16,
+      "competitionId": 3
+    },
+    {
+      "id": 189,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 15,
+      "actualSodaId": 18,
+      "competitionId": 3
+    },
+    {
+      "id": 190,
+      "score": 3,
+      "playerId": 6,
+      "guessedSodaId": 6,
+      "actualSodaId": 19,
+      "competitionId": 3
+    },
+    {
+      "id": 191,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 20,
+      "actualSodaId": 20,
+      "competitionId": 3
+    },
+    {
+      "id": 192,
+      "score": 4,
+      "playerId": 6,
+      "guessedSodaId": 4,
+      "actualSodaId": 21,
+      "competitionId": 3
+    },
+    {
+      "id": 193,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 3,
+      "actualSodaId": 22,
+      "competitionId": 3
+    },
+    {
+      "id": 194,
+      "score": 7,
+      "playerId": 4,
+      "guessedSodaId": 5,
+      "actualSodaId": 1,
+      "competitionId": 3
+    },
+    {
+      "id": 195,
+      "score": 8,
+      "playerId": 4,
+      "guessedSodaId": 4,
+      "actualSodaId": 2,
+      "competitionId": 3
+    },
+    {
+      "id": 196,
+      "score": 7,
+      "playerId": 4,
+      "guessedSodaId": 3,
+      "actualSodaId": 3,
+      "competitionId": 3
+    },
+    {
+      "id": 197,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 21,
+      "actualSodaId": 4,
+      "competitionId": 3
+    },
+    {
+      "id": 198,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 10,
+      "actualSodaId": 5,
+      "competitionId": 3
+    },
+    {
+      "id": 199,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 22,
+      "actualSodaId": 6,
+      "competitionId": 3
+    },
+    {
+      "id": 200,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 14,
+      "actualSodaId": 7,
+      "competitionId": 3
+    },
+    {
+      "id": 201,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 20,
+      "actualSodaId": 10,
+      "competitionId": 3
+    },
+    {
+      "id": 202,
+      "score": 8,
+      "playerId": 4,
+      "guessedSodaId": 4,
+      "actualSodaId": 12,
+      "competitionId": 3
+    },
+    {
+      "id": 203,
+      "score": 7,
+      "playerId": 4,
+      "guessedSodaId": 2,
+      "actualSodaId": 14,
+      "competitionId": 3
+    },
+    {
+      "id": 204,
+      "score": 4,
+      "playerId": 4,
+      "guessedSodaId": 7,
+      "actualSodaId": 15,
+      "competitionId": 3
+    },
+    {
+      "id": 205,
+      "score": 7,
+      "playerId": 4,
+      "guessedSodaId": 1,
+      "actualSodaId": 16,
+      "competitionId": 3
+    },
+    {
+      "id": 206,
+      "score": 7,
+      "playerId": 4,
+      "guessedSodaId": 15,
+      "actualSodaId": 18,
+      "competitionId": 3
+    },
+    {
+      "id": 207,
+      "score": 3,
+      "playerId": 4,
+      "guessedSodaId": 19,
+      "actualSodaId": 19,
+      "competitionId": 3
+    },
+    {
+      "id": 208,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 16,
+      "actualSodaId": 20,
+      "competitionId": 3
+    },
+    {
+      "id": 209,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 12,
+      "actualSodaId": 21,
+      "competitionId": 3
+    },
+    {
+      "id": 210,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 6,
+      "actualSodaId": 22,
+      "competitionId": 3
+    },
+    {
+      "id": 211,
+      "score": 6,
+      "playerId": 2,
+      "guessedSodaId": 20,
+      "actualSodaId": 1,
+      "competitionId": 3
+    },
+    {
+      "id": 212,
+      "score": 7,
+      "playerId": 2,
+      "guessedSodaId": 2,
+      "actualSodaId": 2,
+      "competitionId": 3
+    },
+    {
+      "id": 213,
+      "score": 5,
+      "playerId": 2,
+      "guessedSodaId": 3,
+      "actualSodaId": 3,
+      "competitionId": 3
+    },
+    {
+      "id": 214,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 5,
+      "actualSodaId": 4,
+      "competitionId": 3
+    },
+    {
+      "id": 215,
+      "score": 7,
+      "playerId": 2,
+      "guessedSodaId": 12,
+      "actualSodaId": 5,
+      "competitionId": 3
+    },
+    {
+      "id": 216,
+      "score": 6,
+      "playerId": 2,
+      "guessedSodaId": 4,
+      "actualSodaId": 6,
+      "competitionId": 3
+    },
+    {
+      "id": 217,
+      "score": 1,
+      "playerId": 2,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 3
+    },
+    {
+      "id": 218,
+      "score": 3,
+      "playerId": 2,
+      "guessedSodaId": 10,
+      "actualSodaId": 10,
+      "competitionId": 3
+    },
+    {
+      "id": 219,
+      "score": 5,
+      "playerId": 2,
+      "guessedSodaId": 6,
+      "actualSodaId": 12,
+      "competitionId": 3
+    },
+    {
+      "id": 220,
+      "score": 3,
+      "playerId": 2,
+      "guessedSodaId": 6,
+      "actualSodaId": 14,
+      "competitionId": 3
+    },
+    {
+      "id": 221,
+      "score": 3,
+      "playerId": 2,
+      "guessedSodaId": 21,
+      "actualSodaId": 15,
+      "competitionId": 3
+    },
+    {
+      "id": 222,
+      "score": 7,
+      "playerId": 2,
+      "guessedSodaId": 16,
+      "actualSodaId": 16,
+      "competitionId": 3
+    },
+    {
+      "id": 223,
+      "score": 2,
+      "playerId": 2,
+      "guessedSodaId": 18,
+      "actualSodaId": 18,
+      "competitionId": 3
+    },
+    {
+      "id": 224,
+      "score": 2,
+      "playerId": 2,
+      "guessedSodaId": 21,
+      "actualSodaId": 19,
+      "competitionId": 3
+    },
+    {
+      "id": 225,
+      "score": 5,
+      "playerId": 2,
+      "guessedSodaId": 22,
+      "actualSodaId": 20,
+      "competitionId": 3
+    },
+    {
+      "id": 226,
+      "score": 5,
+      "playerId": 2,
+      "guessedSodaId": 19,
+      "actualSodaId": 21,
+      "competitionId": 3
+    },
+    {
+      "id": 227,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 14,
+      "actualSodaId": 22,
+      "competitionId": 3
+    },
+    {
+      "id": 228,
+      "score": 7,
+      "playerId": 1,
+      "guessedSodaId": 12,
+      "actualSodaId": 1,
+      "competitionId": 3
+    },
+    {
+      "id": 229,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 16,
+      "actualSodaId": 2,
+      "competitionId": 3
+    },
+    {
+      "id": 230,
+      "score": 8,
+      "playerId": 1,
+      "guessedSodaId": 20,
+      "actualSodaId": 3,
+      "competitionId": 3
+    },
+    {
+      "id": 231,
+      "score": 4,
+      "playerId": 1,
+      "guessedSodaId": 6,
+      "actualSodaId": 4,
+      "competitionId": 3
+    },
+    {
+      "id": 232,
+      "score": 5,
+      "playerId": 1,
+      "guessedSodaId": 3,
+      "actualSodaId": 5,
+      "competitionId": 3
+    },
+    {
+      "id": 233,
+      "score": 7,
+      "playerId": 1,
+      "guessedSodaId": 22,
+      "actualSodaId": 6,
+      "competitionId": 3
+    },
+    {
+      "id": 234,
+      "score": 5,
+      "playerId": 1,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 3
+    },
+    {
+      "id": 235,
+      "score": 8,
+      "playerId": 1,
+      "guessedSodaId": 1,
+      "actualSodaId": 10,
+      "competitionId": 3
+    },
+    {
+      "id": 236,
+      "score": 4,
+      "playerId": 1,
+      "guessedSodaId": 18,
+      "actualSodaId": 12,
+      "competitionId": 3
+    },
+    {
+      "id": 237,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 2,
+      "actualSodaId": 14,
+      "competitionId": 3
+    },
+    {
+      "id": 238,
+      "score": 4,
+      "playerId": 1,
+      "guessedSodaId": 5,
+      "actualSodaId": 15,
+      "competitionId": 3
+    },
+    {
+      "id": 239,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 20,
+      "actualSodaId": 16,
+      "competitionId": 3
+    },
+    {
+      "id": 240,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 21,
+      "actualSodaId": 18,
+      "competitionId": 3
+    },
+    {
+      "id": 241,
+      "score": 2,
+      "playerId": 1,
+      "guessedSodaId": 19,
+      "actualSodaId": 19,
+      "competitionId": 3
+    },
+    {
+      "id": 242,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 4,
+      "actualSodaId": 20,
+      "competitionId": 3
+    },
+    {
+      "id": 243,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 14,
+      "actualSodaId": 21,
+      "competitionId": 3
+    },
+    {
+      "id": 244,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 21,
+      "actualSodaId": 22,
+      "competitionId": 3
+    },
+    {
+      "id": 245,
+      "score": 7,
+      "playerId": 4,
+      "guessedSodaId": 2,
+      "actualSodaId": 1,
+      "competitionId": 4
+    },
+    {
+      "id": 246,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 31,
+      "actualSodaId": 2,
+      "competitionId": 4
+    },
+    {
+      "id": 247,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 23,
+      "actualSodaId": 3,
+      "competitionId": 4
+    },
+    {
+      "id": 248,
+      "score": 8,
+      "playerId": 4,
+      "guessedSodaId": 4,
+      "actualSodaId": 4,
+      "competitionId": 4
+    },
+    {
+      "id": 249,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 27,
+      "actualSodaId": 5,
+      "competitionId": 4
+    },
+    {
+      "id": 250,
+      "score": 3,
+      "playerId": 4,
+      "guessedSodaId": 16,
+      "actualSodaId": 6,
+      "competitionId": 4
+    },
+    {
+      "id": 251,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 4
+    },
+    {
+      "id": 252,
+      "score": 2,
+      "playerId": 4,
+      "guessedSodaId": 5,
+      "actualSodaId": 10,
+      "competitionId": 4
+    },
+    {
+      "id": 253,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 26,
+      "actualSodaId": 11,
+      "competitionId": 4
+    },
+    {
+      "id": 254,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 7,
+      "actualSodaId": 12,
+      "competitionId": 4
+    },
+    {
+      "id": 255,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 29,
+      "actualSodaId": 14,
+      "competitionId": 4
+    },
+    {
+      "id": 256,
+      "score": 2,
+      "playerId": 4,
+      "guessedSodaId": 24,
+      "actualSodaId": 16,
+      "competitionId": 4
+    },
+    {
+      "id": 257,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 1,
+      "actualSodaId": 22,
+      "competitionId": 4
+    },
+    {
+      "id": 258,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 30,
+      "actualSodaId": 23,
+      "competitionId": 4
+    },
+    {
+      "id": 259,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 11,
+      "actualSodaId": 24,
+      "competitionId": 4
+    },
+    {
+      "id": 260,
+      "score": 1,
+      "playerId": 4,
+      "guessedSodaId": 27,
+      "actualSodaId": 25,
+      "competitionId": 4
+    },
+    {
+      "id": 261,
+      "score": 7,
+      "playerId": 4,
+      "guessedSodaId": 2,
+      "actualSodaId": 26,
+      "competitionId": 4
+    },
+    {
+      "id": 262,
+      "score": 2,
+      "playerId": 4,
+      "guessedSodaId": 24,
+      "actualSodaId": 27,
+      "competitionId": 4
+    },
+    {
+      "id": 263,
+      "score": 7,
+      "playerId": 4,
+      "guessedSodaId": 10,
+      "actualSodaId": 28,
+      "competitionId": 4
+    },
+    {
+      "id": 264,
+      "score": 3,
+      "playerId": 4,
+      "guessedSodaId": 10,
+      "actualSodaId": 29,
+      "competitionId": 4
+    },
+    {
+      "id": 265,
+      "score": 1,
+      "playerId": 4,
+      "guessedSodaId": 6,
+      "actualSodaId": 30,
+      "competitionId": 4
+    },
+    {
+      "id": 266,
+      "score": 7,
+      "playerId": 4,
+      "guessedSodaId": 25,
+      "actualSodaId": 31,
+      "competitionId": 4
+    },
+    {
+      "id": 267,
+      "score": 7,
+      "playerId": 2,
+      "guessedSodaId": 12,
+      "actualSodaId": 1,
+      "competitionId": 4
+    },
+    {
+      "id": 268,
+      "score": 5,
+      "playerId": 2,
+      "guessedSodaId": 5,
+      "actualSodaId": 2,
+      "competitionId": 4
+    },
+    {
+      "id": 269,
+      "score": 3,
+      "playerId": 2,
+      "guessedSodaId": 6,
+      "actualSodaId": 3,
+      "competitionId": 4
+    },
+    {
+      "id": 270,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 24,
+      "actualSodaId": 4,
+      "competitionId": 4
+    },
+    {
+      "id": 271,
+      "score": 6,
+      "playerId": 2,
+      "guessedSodaId": 3,
+      "actualSodaId": 5,
+      "competitionId": 4
+    },
+    {
+      "id": 272,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 22,
+      "actualSodaId": 6,
+      "competitionId": 4
+    },
+    {
+      "id": 273,
+      "score": 1,
+      "playerId": 2,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 4
+    },
+    {
+      "id": 274,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 14,
+      "actualSodaId": 10,
+      "competitionId": 4
+    },
+    {
+      "id": 275,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 22,
+      "actualSodaId": 11,
+      "competitionId": 4
+    },
+    {
+      "id": 276,
+      "score": 6,
+      "playerId": 2,
+      "guessedSodaId": 16,
+      "actualSodaId": 12,
+      "competitionId": 4
+    },
+    {
+      "id": 277,
+      "score": 3,
+      "playerId": 2,
+      "guessedSodaId": 5,
+      "actualSodaId": 14,
+      "competitionId": 4
+    },
+    {
+      "id": 278,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 25,
+      "actualSodaId": 16,
+      "competitionId": 4
+    },
+    {
+      "id": 279,
+      "score": 3,
+      "playerId": 2,
+      "guessedSodaId": 6,
+      "actualSodaId": 22,
+      "competitionId": 4
+    },
+    {
+      "id": 280,
+      "score": 5,
+      "playerId": 2,
+      "guessedSodaId": 29,
+      "actualSodaId": 23,
+      "competitionId": 4
+    },
+    {
+      "id": 281,
+      "score": 5,
+      "playerId": 2,
+      "guessedSodaId": 3,
+      "actualSodaId": 24,
+      "competitionId": 4
+    },
+    {
+      "id": 282,
+      "score": 3,
+      "playerId": 2,
+      "guessedSodaId": 14,
+      "actualSodaId": 25,
+      "competitionId": 4
+    },
+    {
+      "id": 283,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 26,
+      "actualSodaId": 26,
+      "competitionId": 4
+    },
+    {
+      "id": 284,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 30,
+      "actualSodaId": 27,
+      "competitionId": 4
+    },
+    {
+      "id": 285,
+      "score": 6,
+      "playerId": 2,
+      "guessedSodaId": 2,
+      "actualSodaId": 28,
+      "competitionId": 4
+    },
+    {
+      "id": 286,
+      "score": 3,
+      "playerId": 2,
+      "guessedSodaId": 25,
+      "actualSodaId": 29,
+      "competitionId": 4
+    },
+    {
+      "id": 287,
+      "score": 2,
+      "playerId": 2,
+      "guessedSodaId": 30,
+      "actualSodaId": 30,
+      "competitionId": 4
+    },
+    {
+      "id": 288,
+      "score": 1,
+      "playerId": 2,
+      "guessedSodaId": 25,
+      "actualSodaId": 31,
+      "competitionId": 4
+    },
+    {
+      "id": 289,
+      "score": 7,
+      "playerId": 5,
+      "guessedSodaId": 2,
+      "actualSodaId": 1,
+      "competitionId": 4
+    },
+    {
+      "id": 290,
+      "score": 5,
+      "playerId": 5,
+      "guessedSodaId": 10,
+      "actualSodaId": 2,
+      "competitionId": 4
+    },
+    {
+      "id": 291,
+      "score": 7,
+      "playerId": 5,
+      "guessedSodaId": 4,
+      "actualSodaId": 3,
+      "competitionId": 4
+    },
+    {
+      "id": 292,
+      "score": 5,
+      "playerId": 5,
+      "guessedSodaId": 27,
+      "actualSodaId": 4,
+      "competitionId": 4
+    },
+    {
+      "id": 293,
+      "score": 6,
+      "playerId": 5,
+      "guessedSodaId": 16,
+      "actualSodaId": 5,
+      "competitionId": 4
+    },
+    {
+      "id": 294,
+      "score": 3,
+      "playerId": 5,
+      "guessedSodaId": 31,
+      "actualSodaId": 6,
+      "competitionId": 4
+    },
+    {
+      "id": 295,
+      "score": 2,
+      "playerId": 5,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 4
+    },
+    {
+      "id": 296,
+      "score": 1,
+      "playerId": 5,
+      "guessedSodaId": 30,
+      "actualSodaId": 10,
+      "competitionId": 4
+    },
+    {
+      "id": 297,
+      "score": 5,
+      "playerId": 5,
+      "guessedSodaId": 22,
+      "actualSodaId": 11,
+      "competitionId": 4
+    },
+    {
+      "id": 298,
+      "score": 7,
+      "playerId": 5,
+      "guessedSodaId": 1,
+      "actualSodaId": 12,
+      "competitionId": 4
+    },
+    {
+      "id": 299,
+      "score": 4,
+      "playerId": 5,
+      "guessedSodaId": 31,
+      "actualSodaId": 14,
+      "competitionId": 4
+    },
+    {
+      "id": 300,
+      "score": 4,
+      "playerId": 5,
+      "guessedSodaId": 24,
+      "actualSodaId": 16,
+      "competitionId": 4
+    },
+    {
+      "id": 301,
+      "score": 5,
+      "playerId": 5,
+      "guessedSodaId": 29,
+      "actualSodaId": 22,
+      "competitionId": 4
+    },
+    {
+      "id": 302,
+      "score": 1,
+      "playerId": 5,
+      "guessedSodaId": 30,
+      "actualSodaId": 23,
+      "competitionId": 4
+    },
+    {
+      "id": 303,
+      "score": 7,
+      "playerId": 5,
+      "guessedSodaId": 2,
+      "actualSodaId": 24,
+      "competitionId": 4
+    },
+    {
+      "id": 304,
+      "score": 2,
+      "playerId": 5,
+      "guessedSodaId": 26,
+      "actualSodaId": 25,
+      "competitionId": 4
+    },
+    {
+      "id": 305,
+      "score": 6,
+      "playerId": 5,
+      "guessedSodaId": 12,
+      "actualSodaId": 26,
+      "competitionId": 4
+    },
+    {
+      "id": 306,
+      "score": 7,
+      "playerId": 5,
+      "guessedSodaId": 3,
+      "actualSodaId": 27,
+      "competitionId": 4
+    },
+    {
+      "id": 307,
+      "score": 6,
+      "playerId": 5,
+      "guessedSodaId": 10,
+      "actualSodaId": 28,
+      "competitionId": 4
+    },
+    {
+      "id": 308,
+      "score": 6,
+      "playerId": 5,
+      "guessedSodaId": 24,
+      "actualSodaId": 29,
+      "competitionId": 4
+    },
+    {
+      "id": 309,
+      "score": 1,
+      "playerId": 5,
+      "guessedSodaId": 11,
+      "actualSodaId": 30,
+      "competitionId": 4
+    },
+    {
+      "id": 310,
+      "score": 1,
+      "playerId": 5,
+      "guessedSodaId": 25,
+      "actualSodaId": 31,
+      "competitionId": 4
+    },
+    {
+      "id": 311,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 16,
+      "actualSodaId": 1,
+      "competitionId": 4
+    },
+    {
+      "id": 312,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 30,
+      "actualSodaId": 2,
+      "competitionId": 4
+    },
+    {
+      "id": 313,
+      "score": 4,
+      "playerId": 1,
+      "guessedSodaId": 10,
+      "actualSodaId": 3,
+      "competitionId": 4
+    },
+    {
+      "id": 314,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 27,
+      "actualSodaId": 4,
+      "competitionId": 4
+    },
+    {
+      "id": 315,
+      "score": 8,
+      "playerId": 1,
+      "guessedSodaId": 1,
+      "actualSodaId": 5,
+      "competitionId": 4
+    },
+    {
+      "id": 316,
+      "score": 3,
+      "playerId": 1,
+      "guessedSodaId": 6,
+      "actualSodaId": 6,
+      "competitionId": 4
+    },
+    {
+      "id": 317,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 2,
+      "actualSodaId": 7,
+      "competitionId": 4
+    },
+    {
+      "id": 318,
+      "score": 5,
+      "playerId": 1,
+      "guessedSodaId": 27,
+      "actualSodaId": 10,
+      "competitionId": 4
+    },
+    {
+      "id": 319,
+      "score": 7,
+      "playerId": 1,
+      "guessedSodaId": 1,
+      "actualSodaId": 11,
+      "competitionId": 4
+    },
+    {
+      "id": 320,
+      "score": 3,
+      "playerId": 1,
+      "guessedSodaId": 31,
+      "actualSodaId": 12,
+      "competitionId": 4
+    },
+    {
+      "id": 321,
+      "score": 2,
+      "playerId": 1,
+      "guessedSodaId": 25,
+      "actualSodaId": 14,
+      "competitionId": 4
+    },
+    {
+      "id": 322,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 7,
+      "actualSodaId": 16,
+      "competitionId": 4
+    },
+    {
+      "id": 323,
+      "score": 5,
+      "playerId": 1,
+      "guessedSodaId": 22,
+      "actualSodaId": 22,
+      "competitionId": 4
+    },
+    {
+      "id": 324,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 27,
+      "actualSodaId": 23,
+      "competitionId": 4
+    },
+    {
+      "id": 325,
+      "score": 3,
+      "playerId": 1,
+      "guessedSodaId": 25,
+      "actualSodaId": 24,
+      "competitionId": 4
+    },
+    {
+      "id": 326,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 30,
+      "actualSodaId": 25,
+      "competitionId": 4
+    },
+    {
+      "id": 327,
+      "score": 3,
+      "playerId": 1,
+      "guessedSodaId": 31,
+      "actualSodaId": 26,
+      "competitionId": 4
+    },
+    {
+      "id": 328,
+      "score": 3,
+      "playerId": 1,
+      "guessedSodaId": 31,
+      "actualSodaId": 27,
+      "competitionId": 4
+    },
+    {
+      "id": 329,
+      "score": 7,
+      "playerId": 1,
+      "guessedSodaId": 4,
+      "actualSodaId": 28,
+      "competitionId": 4
+    },
+    {
+      "id": 330,
+      "score": 3,
+      "playerId": 1,
+      "guessedSodaId": 10,
+      "actualSodaId": 29,
+      "competitionId": 4
+    },
+    {
+      "id": 331,
+      "score": 2,
+      "playerId": 1,
+      "guessedSodaId": 25,
+      "actualSodaId": 30,
+      "competitionId": 4
+    },
+    {
+      "id": 332,
+      "score": 3,
+      "playerId": 1,
+      "guessedSodaId": 30,
+      "actualSodaId": 31,
+      "competitionId": 4
+    },
+    {
+      "id": 333,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 1,
+      "actualSodaId": 1,
+      "competitionId": 4
+    },
+    {
+      "id": 334,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 2,
+      "actualSodaId": 2,
+      "competitionId": 4
+    },
+    {
+      "id": 335,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 3,
+      "actualSodaId": 3,
+      "competitionId": 4
+    },
+    {
+      "id": 336,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 4,
+      "actualSodaId": 4,
+      "competitionId": 4
+    },
+    {
+      "id": 337,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 2,
+      "actualSodaId": 5,
+      "competitionId": 4
+    },
+    {
+      "id": 338,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 29,
+      "actualSodaId": 6,
+      "competitionId": 4
+    },
+    {
+      "id": 339,
+      "score": 10,
+      "playerId": 6,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 4
+    },
+    {
+      "id": 340,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 22,
+      "actualSodaId": 10,
+      "competitionId": 4
+    },
+    {
+      "id": 341,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 5,
+      "actualSodaId": 11,
+      "competitionId": 4
+    },
+    {
+      "id": 342,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 4,
+      "actualSodaId": 12,
+      "competitionId": 4
+    },
+    {
+      "id": 343,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 14,
+      "actualSodaId": 14,
+      "competitionId": 4
+    },
+    {
+      "id": 344,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 16,
+      "actualSodaId": 16,
+      "competitionId": 4
+    },
+    {
+      "id": 345,
+      "score": 3,
+      "playerId": 6,
+      "guessedSodaId": 30,
+      "actualSodaId": 22,
+      "competitionId": 4
+    },
+    {
+      "id": 346,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 24,
+      "actualSodaId": 23,
+      "competitionId": 4
+    },
+    {
+      "id": 347,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 6,
+      "actualSodaId": 24,
+      "competitionId": 4
+    },
+    {
+      "id": 348,
+      "score": 5,
+      "playerId": 6,
+      "guessedSodaId": 25,
+      "actualSodaId": 25,
+      "competitionId": 4
+    },
+    {
+      "id": 349,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 11,
+      "actualSodaId": 26,
+      "competitionId": 4
+    },
+    {
+      "id": 350,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 1,
+      "actualSodaId": 27,
+      "competitionId": 4
+    },
+    {
+      "id": 351,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 12,
+      "actualSodaId": 28,
+      "competitionId": 4
+    },
+    {
+      "id": 352,
+      "score": 5,
+      "playerId": 6,
+      "guessedSodaId": 14,
+      "actualSodaId": 29,
+      "competitionId": 4
+    },
+    {
+      "id": 353,
+      "score": 2,
+      "playerId": 6,
+      "guessedSodaId": 31,
+      "actualSodaId": 30,
+      "competitionId": 4
+    },
+    {
+      "id": 354,
+      "score": 3,
+      "playerId": 6,
+      "guessedSodaId": 26,
+      "actualSodaId": 31,
+      "competitionId": 4
+    },
+    {
+      "id": 355,
+      "score": 10,
+      "playerId": 3,
+      "guessedSodaId": 29,
+      "actualSodaId": 1,
+      "competitionId": 4
+    },
+    {
+      "id": 356,
+      "score": 7,
+      "playerId": 3,
+      "guessedSodaId": 14,
+      "actualSodaId": 2,
+      "competitionId": 4
+    },
+    {
+      "id": 357,
+      "score": 6,
+      "playerId": 3,
+      "guessedSodaId": 3,
+      "actualSodaId": 3,
+      "competitionId": 4
+    },
+    {
+      "id": 358,
+      "score": 7,
+      "playerId": 3,
+      "guessedSodaId": 1,
+      "actualSodaId": 4,
+      "competitionId": 4
+    },
+    {
+      "id": 359,
+      "score": 7,
+      "playerId": 3,
+      "guessedSodaId": 1,
+      "actualSodaId": 5,
+      "competitionId": 4
+    },
+    {
+      "id": 360,
+      "score": 1,
+      "playerId": 3,
+      "guessedSodaId": 24,
+      "actualSodaId": 6,
+      "competitionId": 4
+    },
+    {
+      "id": 361,
+      "score": 10,
+      "playerId": 3,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 4
+    },
+    {
+      "id": 362,
+      "score": 7,
+      "playerId": 3,
+      "guessedSodaId": 2,
+      "actualSodaId": 10,
+      "competitionId": 4
+    },
+    {
+      "id": 363,
+      "score": 4,
+      "playerId": 3,
+      "guessedSodaId": 12,
+      "actualSodaId": 11,
+      "competitionId": 4
+    },
+    {
+      "id": 364,
+      "score": 5,
+      "playerId": 3,
+      "guessedSodaId": 11,
+      "actualSodaId": 12,
+      "competitionId": 4
+    },
+    {
+      "id": 365,
+      "score": 5,
+      "playerId": 3,
+      "guessedSodaId": 10,
+      "actualSodaId": 14,
+      "competitionId": 4
+    },
+    {
+      "id": 366,
+      "score": 3,
+      "playerId": 3,
+      "guessedSodaId": 23,
+      "actualSodaId": 16,
+      "competitionId": 4
+    },
+    {
+      "id": 367,
+      "score": 2,
+      "playerId": 3,
+      "guessedSodaId": 31,
+      "actualSodaId": 22,
+      "competitionId": 4
+    },
+    {
+      "id": 368,
+      "score": 6,
+      "playerId": 3,
+      "guessedSodaId": 22,
+      "actualSodaId": 23,
+      "competitionId": 4
+    },
+    {
+      "id": 369,
+      "score": 6,
+      "playerId": 3,
+      "guessedSodaId": 4,
+      "actualSodaId": 24,
+      "competitionId": 4
+    },
+    {
+      "id": 370,
+      "score": 1,
+      "playerId": 3,
+      "guessedSodaId": 16,
+      "actualSodaId": 25,
+      "competitionId": 4
+    },
+    {
+      "id": 371,
+      "score": 3,
+      "playerId": 3,
+      "guessedSodaId": 30,
+      "actualSodaId": 26,
+      "competitionId": 4
+    },
+    {
+      "id": 372,
+      "score": 7,
+      "playerId": 3,
+      "guessedSodaId": 27,
+      "actualSodaId": 27,
+      "competitionId": 4
+    },
+    {
+      "id": 373,
+      "score": 5,
+      "playerId": 3,
+      "guessedSodaId": 25,
+      "actualSodaId": 28,
+      "competitionId": 4
+    },
+    {
+      "id": 374,
+      "score": 6,
+      "playerId": 3,
+      "guessedSodaId": 2,
+      "actualSodaId": 29,
+      "competitionId": 4
+    },
+    {
+      "id": 375,
+      "score": 1,
+      "playerId": 3,
+      "guessedSodaId": 28,
+      "actualSodaId": 30,
+      "competitionId": 4
+    },
+    {
+      "id": 376,
+      "score": 1,
+      "playerId": 3,
+      "guessedSodaId": 26,
+      "actualSodaId": 31,
+      "competitionId": 4
+    },
+    {
+      "id": 377,
+      "score": 9,
+      "playerId": 7,
+      "guessedSodaId": 2,
+      "actualSodaId": 1,
+      "competitionId": 4
+    },
+    {
+      "id": 378,
+      "score": 8,
+      "playerId": 7,
+      "guessedSodaId": 4,
+      "actualSodaId": 2,
+      "competitionId": 4
+    },
+    {
+      "id": 379,
+      "score": 7,
+      "playerId": 7,
+      "guessedSodaId": 3,
+      "actualSodaId": 3,
+      "competitionId": 4
+    },
+    {
+      "id": 380,
+      "score": 9,
+      "playerId": 7,
+      "guessedSodaId": 2,
+      "actualSodaId": 4,
+      "competitionId": 4
+    },
+    {
+      "id": 381,
+      "score": 9,
+      "playerId": 7,
+      "guessedSodaId": 6,
+      "actualSodaId": 5,
+      "competitionId": 4
+    },
+    {
+      "id": 382,
+      "score": 5,
+      "playerId": 7,
+      "guessedSodaId": 28,
+      "actualSodaId": 6,
+      "competitionId": 4
+    },
+    {
+      "id": 383,
+      "score": 3,
+      "playerId": 7,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 4
+    },
+    {
+      "id": 384,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 6,
+      "actualSodaId": 10,
+      "competitionId": 4
+    },
+    {
+      "id": 385,
+      "score": 5,
+      "playerId": 7,
+      "guessedSodaId": 14,
+      "actualSodaId": 11,
+      "competitionId": 4
+    },
+    {
+      "id": 386,
+      "score": 9,
+      "playerId": 7,
+      "guessedSodaId": 1,
+      "actualSodaId": 12,
+      "competitionId": 4
+    },
+    {
+      "id": 387,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 29,
+      "actualSodaId": 14,
+      "competitionId": 4
+    },
+    {
+      "id": 388,
+      "score": 4,
+      "playerId": 7,
+      "guessedSodaId": 16,
+      "actualSodaId": 16,
+      "competitionId": 4
+    },
+    {
+      "id": 389,
+      "score": 5,
+      "playerId": 7,
+      "guessedSodaId": 12,
+      "actualSodaId": 22,
+      "competitionId": 4
+    },
+    {
+      "id": 390,
+      "score": 5,
+      "playerId": 7,
+      "guessedSodaId": 26,
+      "actualSodaId": 23,
+      "competitionId": 4
+    },
+    {
+      "id": 391,
+      "score": 7,
+      "playerId": 7,
+      "guessedSodaId": 25,
+      "actualSodaId": 24,
+      "competitionId": 4
+    },
+    {
+      "id": 392,
+      "score": 4,
+      "playerId": 7,
+      "guessedSodaId": 30,
+      "actualSodaId": 25,
+      "competitionId": 4
+    },
+    {
+      "id": 393,
+      "score": 5,
+      "playerId": 7,
+      "guessedSodaId": 10,
+      "actualSodaId": 26,
+      "competitionId": 4
+    },
+    {
+      "id": 394,
+      "score": 5,
+      "playerId": 7,
+      "guessedSodaId": 11,
+      "actualSodaId": 27,
+      "competitionId": 4
+    },
+    {
+      "id": 395,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 24,
+      "actualSodaId": 28,
+      "competitionId": 4
+    },
+    {
+      "id": 396,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 27,
+      "actualSodaId": 29,
+      "competitionId": 4
+    },
+    {
+      "id": 397,
+      "score": 2,
+      "playerId": 7,
+      "guessedSodaId": 30,
+      "actualSodaId": 30,
+      "competitionId": 4
+    },
+    {
+      "id": 398,
+      "score": 2,
+      "playerId": 7,
+      "guessedSodaId": 31,
+      "actualSodaId": 31,
+      "competitionId": 4
+    },
+    {
+      "id": 402,
+      "score": 6,
+      "playerId": 9,
+      "guessedSodaId": 10,
+      "actualSodaId": 26,
+      "competitionId": 5
+    },
+    {
+      "id": 403,
+      "score": 5,
+      "playerId": 9,
+      "guessedSodaId": 7,
+      "actualSodaId": 38,
+      "competitionId": 5
+    },
+    {
+      "id": 404,
+      "score": 5,
+      "playerId": 9,
+      "guessedSodaId": 22,
+      "actualSodaId": 39,
+      "competitionId": 5
+    },
+    {
+      "id": 405,
+      "score": 8,
+      "playerId": 9,
+      "guessedSodaId": 2,
+      "actualSodaId": 3,
+      "competitionId": 5
+    },
+    {
+      "id": 406,
+      "score": 7,
+      "playerId": 9,
+      "guessedSodaId": 1,
+      "actualSodaId": 10,
+      "competitionId": 5
+    },
+    {
+      "id": 407,
+      "score": 4,
+      "playerId": 9,
+      "guessedSodaId": 19,
+      "actualSodaId": 36,
+      "competitionId": 5
+    },
+    {
+      "id": 408,
+      "score": 6,
+      "playerId": 9,
+      "guessedSodaId": 7,
+      "actualSodaId": 16,
+      "competitionId": 5
+    },
+    {
+      "id": 409,
+      "score": 8,
+      "playerId": 9,
+      "guessedSodaId": 2,
+      "actualSodaId": 5,
+      "competitionId": 5
+    },
+    {
+      "id": 410,
+      "score": 3,
+      "playerId": 9,
+      "guessedSodaId": 39,
+      "actualSodaId": 33,
+      "competitionId": 5
+    },
+    {
+      "id": 411,
+      "score": 6,
+      "playerId": 9,
+      "guessedSodaId": 4,
+      "actualSodaId": 2,
+      "competitionId": 5
+    },
+    {
+      "id": 412,
+      "score": 5,
+      "playerId": 9,
+      "guessedSodaId": 20,
+      "actualSodaId": 15,
+      "competitionId": 5
+    },
+    {
+      "id": 413,
+      "score": 4,
+      "playerId": 9,
+      "guessedSodaId": 12,
+      "actualSodaId": 17,
+      "competitionId": 5
+    },
+    {
+      "id": 414,
+      "score": 3,
+      "playerId": 9,
+      "guessedSodaId": 7,
+      "actualSodaId": 25,
+      "competitionId": 5
+    },
+    {
+      "id": 415,
+      "score": 5,
+      "playerId": 9,
+      "guessedSodaId": 26,
+      "actualSodaId": 19,
+      "competitionId": 5
+    },
+    {
+      "id": 416,
+      "score": 5,
+      "playerId": 9,
+      "guessedSodaId": 3,
+      "actualSodaId": 28,
+      "competitionId": 5
+    },
+    {
+      "id": 417,
+      "score": 6,
+      "playerId": 9,
+      "guessedSodaId": 22,
+      "actualSodaId": 22,
+      "competitionId": 5
+    },
+    {
+      "id": 418,
+      "score": 2,
+      "playerId": 9,
+      "guessedSodaId": 34,
+      "actualSodaId": 37,
+      "competitionId": 5
+    },
+    {
+      "id": 419,
+      "score": 6,
+      "playerId": 9,
+      "guessedSodaId": 15,
+      "actualSodaId": 34,
+      "competitionId": 5
+    },
+    {
+      "id": 420,
+      "score": 9,
+      "playerId": 9,
+      "guessedSodaId": 2,
+      "actualSodaId": 4,
+      "competitionId": 5
+    },
+    {
+      "id": 421,
+      "score": 3,
+      "playerId": 9,
+      "guessedSodaId": 37,
+      "actualSodaId": 7,
+      "competitionId": 5
+    },
+    {
+      "id": 422,
+      "score": 2,
+      "playerId": 9,
+      "guessedSodaId": 34,
+      "actualSodaId": 6,
+      "competitionId": 5
+    },
+    {
+      "id": 423,
+      "score": 6,
+      "playerId": 9,
+      "guessedSodaId": 3,
+      "actualSodaId": 20,
+      "competitionId": 5
+    },
+    {
+      "id": 424,
+      "score": 7,
+      "playerId": 9,
+      "guessedSodaId": 4,
+      "actualSodaId": 12,
+      "competitionId": 5
+    },
+    {
+      "id": 425,
+      "score": 7,
+      "playerId": 9,
+      "guessedSodaId": 5,
+      "actualSodaId": 1,
+      "competitionId": 5
+    },
+    {
+      "id": 426,
+      "score": 4,
+      "playerId": 4,
+      "guessedSodaId": 20,
+      "actualSodaId": 19,
+      "competitionId": 5
+    },
+    {
+      "id": 427,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 34,
+      "actualSodaId": 25,
+      "competitionId": 5
+    },
+    {
+      "id": 428,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 3,
+      "actualSodaId": 28,
+      "competitionId": 5
+    },
+    {
+      "id": 429,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 4,
+      "actualSodaId": 10,
+      "competitionId": 5
+    },
+    {
+      "id": 430,
+      "score": 2,
+      "playerId": 4,
+      "guessedSodaId": 38,
+      "actualSodaId": 36,
+      "competitionId": 5
+    },
+    {
+      "id": 431,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 2,
+      "actualSodaId": 26,
+      "competitionId": 5
+    },
+    {
+      "id": 432,
+      "score": 4,
+      "playerId": 4,
+      "guessedSodaId": 17,
+      "actualSodaId": 20,
+      "competitionId": 5
+    },
+    {
+      "id": 433,
+      "score": 3,
+      "playerId": 4,
+      "guessedSodaId": 37,
+      "actualSodaId": 33,
+      "competitionId": 5
+    },
+    {
+      "id": 434,
+      "score": 4,
+      "playerId": 4,
+      "guessedSodaId": 39,
+      "actualSodaId": 17,
+      "competitionId": 5
+    },
+    {
+      "id": 435,
+      "score": 2,
+      "playerId": 4,
+      "guessedSodaId": 26,
+      "actualSodaId": 34,
+      "competitionId": 5
+    },
+    {
+      "id": 436,
+      "score": 3,
+      "playerId": 4,
+      "guessedSodaId": 10,
+      "actualSodaId": 6,
+      "competitionId": 5
+    },
+    {
+      "id": 437,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 1,
+      "actualSodaId": 3,
+      "competitionId": 5
+    },
+    {
+      "id": 438,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 22,
+      "actualSodaId": 39,
+      "competitionId": 5
+    },
+    {
+      "id": 439,
+      "score": 3,
+      "playerId": 4,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 5
+    },
+    {
+      "id": 440,
+      "score": 4,
+      "playerId": 4,
+      "guessedSodaId": 16,
+      "actualSodaId": 12,
+      "competitionId": 5
+    },
+    {
+      "id": 441,
+      "score": 2,
+      "playerId": 4,
+      "guessedSodaId": 25,
+      "actualSodaId": 37,
+      "competitionId": 5
+    },
+    {
+      "id": 442,
+      "score": 1,
+      "playerId": 4,
+      "guessedSodaId": 28,
+      "actualSodaId": 15,
+      "competitionId": 5
+    },
+    {
+      "id": 443,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 5,
+      "actualSodaId": 2,
+      "competitionId": 5
+    },
+    {
+      "id": 444,
+      "score": 6,
+      "playerId": 4,
+      "guessedSodaId": 19,
+      "actualSodaId": 5,
+      "competitionId": 5
+    },
+    {
+      "id": 445,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 6,
+      "actualSodaId": 22,
+      "competitionId": 5
+    },
+    {
+      "id": 446,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 15,
+      "actualSodaId": 4,
+      "competitionId": 5
+    },
+    {
+      "id": 447,
+      "score": 3,
+      "playerId": 4,
+      "guessedSodaId": 28,
+      "actualSodaId": 16,
+      "competitionId": 5
+    },
+    {
+      "id": 448,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 36,
+      "actualSodaId": 38,
+      "competitionId": 5
+    },
+    {
+      "id": 449,
+      "score": 5,
+      "playerId": 4,
+      "guessedSodaId": 12,
+      "actualSodaId": 1,
+      "competitionId": 5
+    },
+    {
+      "id": 450,
+      "score": 8,
+      "playerId": 7,
+      "guessedSodaId": 6,
+      "actualSodaId": 15,
+      "competitionId": 5
+    },
+    {
+      "id": 451,
+      "score": 8,
+      "playerId": 7,
+      "guessedSodaId": 2,
+      "actualSodaId": 4,
+      "competitionId": 5
+    },
+    {
+      "id": 452,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 38,
+      "actualSodaId": 20,
+      "competitionId": 5
+    },
+    {
+      "id": 453,
+      "score": 5,
+      "playerId": 7,
+      "guessedSodaId": 26,
+      "actualSodaId": 16,
+      "competitionId": 5
+    },
+    {
+      "id": 454,
+      "score": 7,
+      "playerId": 7,
+      "guessedSodaId": 37,
+      "actualSodaId": 3,
+      "competitionId": 5
+    },
+    {
+      "id": 455,
+      "score": 3,
+      "playerId": 7,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 5
+    },
+    {
+      "id": 456,
+      "score": 5,
+      "playerId": 7,
+      "guessedSodaId": 39,
+      "actualSodaId": 39,
+      "competitionId": 5
+    },
+    {
+      "id": 457,
+      "score": 4,
+      "playerId": 7,
+      "guessedSodaId": 38,
+      "actualSodaId": 25,
+      "competitionId": 5
+    },
+    {
+      "id": 458,
+      "score": 2,
+      "playerId": 7,
+      "guessedSodaId": 16,
+      "actualSodaId": 33,
+      "competitionId": 5
+    },
+    {
+      "id": 459,
+      "score": 7,
+      "playerId": 7,
+      "guessedSodaId": 4,
+      "actualSodaId": 12,
+      "competitionId": 5
+    },
+    {
+      "id": 460,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 33,
+      "actualSodaId": 22,
+      "competitionId": 5
+    },
+    {
+      "id": 461,
+      "score": 4,
+      "playerId": 7,
+      "guessedSodaId": 34,
+      "actualSodaId": 34,
+      "competitionId": 5
+    },
+    {
+      "id": 462,
+      "score": 7,
+      "playerId": 7,
+      "guessedSodaId": 25,
+      "actualSodaId": 38,
+      "competitionId": 5
+    },
+    {
+      "id": 463,
+      "score": 7,
+      "playerId": 7,
+      "guessedSodaId": 17,
+      "actualSodaId": 2,
+      "competitionId": 5
+    },
+    {
+      "id": 464,
+      "score": 5,
+      "playerId": 7,
+      "guessedSodaId": 10,
+      "actualSodaId": 36,
+      "competitionId": 5
+    },
+    {
+      "id": 465,
+      "score": 4,
+      "playerId": 7,
+      "guessedSodaId": 37,
+      "actualSodaId": 37,
+      "competitionId": 5
+    },
+    {
+      "id": 466,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 6,
+      "actualSodaId": 19,
+      "competitionId": 5
+    },
+    {
+      "id": 467,
+      "score": 5,
+      "playerId": 7,
+      "guessedSodaId": 20,
+      "actualSodaId": 10,
+      "competitionId": 5
+    },
+    {
+      "id": 468,
+      "score": 3,
+      "playerId": 7,
+      "guessedSodaId": 26,
+      "actualSodaId": 17,
+      "competitionId": 5
+    },
+    {
+      "id": 469,
+      "score": 5,
+      "playerId": 7,
+      "guessedSodaId": 15,
+      "actualSodaId": 6,
+      "competitionId": 5
+    },
+    {
+      "id": 470,
+      "score": 8,
+      "playerId": 7,
+      "guessedSodaId": 1,
+      "actualSodaId": 28,
+      "competitionId": 5
+    },
+    {
+      "id": 471,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 19,
+      "actualSodaId": 26,
+      "competitionId": 5
+    },
+    {
+      "id": 472,
+      "score": 7,
+      "playerId": 7,
+      "guessedSodaId": 3,
+      "actualSodaId": 5,
+      "competitionId": 5
+    },
+    {
+      "id": 473,
+      "score": 7,
+      "playerId": 7,
+      "guessedSodaId": 3,
+      "actualSodaId": 1,
+      "competitionId": 5
+    },
+    {
+      "id": 474,
+      "score": 3,
+      "playerId": 8,
+      "guessedSodaId": 1,
+      "actualSodaId": 2,
+      "competitionId": 5
+    },
+    {
+      "id": 475,
+      "score": 8,
+      "playerId": 8,
+      "guessedSodaId": 19,
+      "actualSodaId": 15,
+      "competitionId": 5
+    },
+    {
+      "id": 476,
+      "score": 3,
+      "playerId": 8,
+      "guessedSodaId": 39,
+      "actualSodaId": 37,
+      "competitionId": 5
+    },
+    {
+      "id": 477,
+      "score": 3,
+      "playerId": 8,
+      "guessedSodaId": 39,
+      "actualSodaId": 17,
+      "competitionId": 5
+    },
+    {
+      "id": 478,
+      "score": 5,
+      "playerId": 8,
+      "guessedSodaId": 2,
+      "actualSodaId": 5,
+      "competitionId": 5
+    },
+    {
+      "id": 479,
+      "score": 6,
+      "playerId": 8,
+      "guessedSodaId": 22,
+      "actualSodaId": 16,
+      "competitionId": 5
+    },
+    {
+      "id": 480,
+      "score": 5,
+      "playerId": 8,
+      "guessedSodaId": 3,
+      "actualSodaId": 22,
+      "competitionId": 5
+    },
+    {
+      "id": 481,
+      "score": 4,
+      "playerId": 8,
+      "guessedSodaId": 7,
+      "actualSodaId": 38,
+      "competitionId": 5
+    },
+    {
+      "id": 482,
+      "score": 1,
+      "playerId": 8,
+      "guessedSodaId": 7,
+      "actualSodaId": 34,
+      "competitionId": 5
+    },
+    {
+      "id": 483,
+      "score": 4,
+      "playerId": 8,
+      "guessedSodaId": 2,
+      "actualSodaId": 28,
+      "competitionId": 5
+    },
+    {
+      "id": 484,
+      "score": 3,
+      "playerId": 8,
+      "guessedSodaId": 1,
+      "actualSodaId": 12,
+      "competitionId": 5
+    },
+    {
+      "id": 485,
+      "score": 4,
+      "playerId": 8,
+      "guessedSodaId": 4,
+      "actualSodaId": 3,
+      "competitionId": 5
+    },
+    {
+      "id": 486,
+      "score": 1,
+      "playerId": 8,
+      "guessedSodaId": 34,
+      "actualSodaId": 6,
+      "competitionId": 5
+    },
+    {
+      "id": 487,
+      "score": 2,
+      "playerId": 8,
+      "guessedSodaId": 37,
+      "actualSodaId": 36,
+      "competitionId": 5
+    },
+    {
+      "id": 488,
+      "score": 2,
+      "playerId": 8,
+      "guessedSodaId": 26,
+      "actualSodaId": 33,
+      "competitionId": 5
+    },
+    {
+      "id": 489,
+      "score": 2,
+      "playerId": 8,
+      "guessedSodaId": 1,
+      "actualSodaId": 20,
+      "competitionId": 5
+    },
+    {
+      "id": 490,
+      "score": 10,
+      "playerId": 8,
+      "guessedSodaId": 19,
+      "actualSodaId": 19,
+      "competitionId": 5
+    },
+    {
+      "id": 491,
+      "score": 5,
+      "playerId": 8,
+      "guessedSodaId": 2,
+      "actualSodaId": 26,
+      "competitionId": 5
+    },
+    {
+      "id": 492,
+      "score": 5,
+      "playerId": 8,
+      "guessedSodaId": 2,
+      "actualSodaId": 10,
+      "competitionId": 5
+    },
+    {
+      "id": 493,
+      "score": 1,
+      "playerId": 8,
+      "guessedSodaId": 7,
+      "actualSodaId": 25,
+      "competitionId": 5
+    },
+    {
+      "id": 494,
+      "score": 2,
+      "playerId": 8,
+      "guessedSodaId": 39,
+      "actualSodaId": 39,
+      "competitionId": 5
+    },
+    {
+      "id": 495,
+      "score": 5,
+      "playerId": 8,
+      "guessedSodaId": 2,
+      "actualSodaId": 4,
+      "competitionId": 5
+    },
+    {
+      "id": 496,
+      "score": 1,
+      "playerId": 8,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 5
+    },
+    {
+      "id": 497,
+      "score": 5,
+      "playerId": 8,
+      "guessedSodaId": 2,
+      "actualSodaId": 1,
+      "competitionId": 5
+    },
+    {
+      "id": 498,
+      "score": 7,
+      "playerId": 2,
+      "guessedSodaId": 2,
+      "actualSodaId": 2,
+      "competitionId": 5
+    },
+    {
+      "id": 499,
+      "score": 2,
+      "playerId": 2,
+      "guessedSodaId": 26,
+      "actualSodaId": 34,
+      "competitionId": 5
+    },
+    {
+      "id": 500,
+      "score": 5,
+      "playerId": 2,
+      "guessedSodaId": 39,
+      "actualSodaId": 39,
+      "competitionId": 5
+    },
+    {
+      "id": 501,
+      "score": 1,
+      "playerId": 2,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 5
+    },
+    {
+      "id": 502,
+      "score": 5,
+      "playerId": 2,
+      "guessedSodaId": 16,
+      "actualSodaId": 28,
+      "competitionId": 5
+    },
+    {
+      "id": 503,
+      "score": 2,
+      "playerId": 2,
+      "guessedSodaId": 37,
+      "actualSodaId": 17,
+      "competitionId": 5
+    },
+    {
+      "id": 504,
+      "score": 3,
+      "playerId": 2,
+      "guessedSodaId": 39,
+      "actualSodaId": 38,
+      "competitionId": 5
+    },
+    {
+      "id": 505,
+      "score": 6,
+      "playerId": 2,
+      "guessedSodaId": 19,
+      "actualSodaId": 10,
+      "competitionId": 5
+    },
+    {
+      "id": 506,
+      "score": 7,
+      "playerId": 2,
+      "guessedSodaId": 1,
+      "actualSodaId": 5,
+      "competitionId": 5
+    },
+    {
+      "id": 507,
+      "score": 6,
+      "playerId": 2,
+      "guessedSodaId": 15,
+      "actualSodaId": 6,
+      "competitionId": 5
+    },
+    {
+      "id": 508,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 3,
+      "actualSodaId": 4,
+      "competitionId": 5
+    },
+    {
+      "id": 509,
+      "score": 2,
+      "playerId": 2,
+      "guessedSodaId": 33,
+      "actualSodaId": 36,
+      "competitionId": 5
+    },
+    {
+      "id": 510,
+      "score": 2,
+      "playerId": 2,
+      "guessedSodaId": 17,
+      "actualSodaId": 16,
+      "competitionId": 5
+    },
+    {
+      "id": 511,
+      "score": 3,
+      "playerId": 2,
+      "guessedSodaId": 25,
+      "actualSodaId": 22,
+      "competitionId": 5
+    },
+    {
+      "id": 512,
+      "score": 2,
+      "playerId": 2,
+      "guessedSodaId": 6,
+      "actualSodaId": 15,
+      "competitionId": 5
+    },
+    {
+      "id": 513,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 39,
+      "actualSodaId": 26,
+      "competitionId": 5
+    },
+    {
+      "id": 514,
+      "score": 3,
+      "playerId": 2,
+      "guessedSodaId": 6,
+      "actualSodaId": 12,
+      "competitionId": 5
+    },
+    {
+      "id": 515,
+      "score": 3,
+      "playerId": 2,
+      "guessedSodaId": 34,
+      "actualSodaId": 3,
+      "competitionId": 5
+    },
+    {
+      "id": 516,
+      "score": 2,
+      "playerId": 2,
+      "guessedSodaId": 33,
+      "actualSodaId": 19,
+      "competitionId": 5
+    },
+    {
+      "id": 517,
+      "score": 1,
+      "playerId": 2,
+      "guessedSodaId": 37,
+      "actualSodaId": 37,
+      "competitionId": 5
+    },
+    {
+      "id": 518,
+      "score": 1,
+      "playerId": 2,
+      "guessedSodaId": 7,
+      "actualSodaId": 25,
+      "competitionId": 5
+    },
+    {
+      "id": 519,
+      "score": 3,
+      "playerId": 2,
+      "guessedSodaId": 28,
+      "actualSodaId": 20,
+      "competitionId": 5
+    },
+    {
+      "id": 520,
+      "score": 2,
+      "playerId": 2,
+      "guessedSodaId": 37,
+      "actualSodaId": 33,
+      "competitionId": 5
+    },
+    {
+      "id": 521,
+      "score": 6,
+      "playerId": 2,
+      "guessedSodaId": 4,
+      "actualSodaId": 1,
+      "competitionId": 5
+    },
+    {
+      "id": 522,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 5
+    },
+    {
+      "id": 523,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 39,
+      "actualSodaId": 34,
+      "competitionId": 5
+    },
+    {
+      "id": 524,
+      "score": 5,
+      "playerId": 1,
+      "guessedSodaId": 2,
+      "actualSodaId": 6,
+      "competitionId": 5
+    },
+    {
+      "id": 525,
+      "score": 8,
+      "playerId": 1,
+      "guessedSodaId": 1,
+      "actualSodaId": 12,
+      "competitionId": 5
+    },
+    {
+      "id": 526,
+      "score": 5,
+      "playerId": 1,
+      "guessedSodaId": 7,
+      "actualSodaId": 20,
+      "competitionId": 5
+    },
+    {
+      "id": 527,
+      "score": 2,
+      "playerId": 1,
+      "guessedSodaId": 37,
+      "actualSodaId": 37,
+      "competitionId": 5
+    },
+    {
+      "id": 528,
+      "score": 5,
+      "playerId": 1,
+      "guessedSodaId": 38,
+      "actualSodaId": 25,
+      "competitionId": 5
+    },
+    {
+      "id": 529,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 3,
+      "actualSodaId": 2,
+      "competitionId": 5
+    },
+    {
+      "id": 530,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 22,
+      "actualSodaId": 39,
+      "competitionId": 5
+    },
+    {
+      "id": 531,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 28,
+      "actualSodaId": 28,
+      "competitionId": 5
+    },
+    {
+      "id": 532,
+      "score": 3,
+      "playerId": 1,
+      "guessedSodaId": 25,
+      "actualSodaId": 3,
+      "competitionId": 5
+    },
+    {
+      "id": 533,
+      "score": 1,
+      "playerId": 1,
+      "guessedSodaId": 19,
+      "actualSodaId": 36,
+      "competitionId": 5
+    },
+    {
+      "id": 534,
+      "score": 4,
+      "playerId": 1,
+      "guessedSodaId": 5,
+      "actualSodaId": 22,
+      "competitionId": 5
+    },
+    {
+      "id": 535,
+      "score": 4,
+      "playerId": 1,
+      "guessedSodaId": 15,
+      "actualSodaId": 17,
+      "competitionId": 5
+    },
+    {
+      "id": 536,
+      "score": 3,
+      "playerId": 1,
+      "guessedSodaId": 33,
+      "actualSodaId": 15,
+      "competitionId": 5
+    },
+    {
+      "id": 537,
+      "score": 3,
+      "playerId": 1,
+      "guessedSodaId": 37,
+      "actualSodaId": 33,
+      "competitionId": 5
+    },
+    {
+      "id": 538,
+      "score": 3,
+      "playerId": 1,
+      "guessedSodaId": 6,
+      "actualSodaId": 10,
+      "competitionId": 5
+    },
+    {
+      "id": 539,
+      "score": 2,
+      "playerId": 1,
+      "guessedSodaId": 6,
+      "actualSodaId": 19,
+      "competitionId": 5
+    },
+    {
+      "id": 540,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 16,
+      "actualSodaId": 38,
+      "competitionId": 5
+    },
+    {
+      "id": 541,
+      "score": 7,
+      "playerId": 1,
+      "guessedSodaId": 1,
+      "actualSodaId": 4,
+      "competitionId": 5
+    },
+    {
+      "id": 542,
+      "score": 4,
+      "playerId": 1,
+      "guessedSodaId": 34,
+      "actualSodaId": 16,
+      "competitionId": 5
+    },
+    {
+      "id": 543,
+      "score": 4,
+      "playerId": 1,
+      "guessedSodaId": 10,
+      "actualSodaId": 5,
+      "competitionId": 5
+    },
+    {
+      "id": 544,
+      "score": 5,
+      "playerId": 1,
+      "guessedSodaId": 38,
+      "actualSodaId": 26,
+      "competitionId": 5
+    },
+    {
+      "id": 545,
+      "score": 5,
+      "playerId": 1,
+      "guessedSodaId": 4,
+      "actualSodaId": 1,
+      "competitionId": 5
+    },
+    {
+      "id": 546,
+      "score": 8,
+      "playerId": 5,
+      "guessedSodaId": 4,
+      "actualSodaId": 22,
+      "competitionId": 5
+    },
+    {
+      "id": 547,
+      "score": 2,
+      "playerId": 5,
+      "guessedSodaId": 26,
+      "actualSodaId": 33,
+      "competitionId": 5
+    },
+    {
+      "id": 548,
+      "score": 6,
+      "playerId": 5,
+      "guessedSodaId": 6,
+      "actualSodaId": 28,
+      "competitionId": 5
+    },
+    {
+      "id": 549,
+      "score": 3,
+      "playerId": 5,
+      "guessedSodaId": 37,
+      "actualSodaId": 37,
+      "competitionId": 5
+    },
+    {
+      "id": 550,
+      "score": 3,
+      "playerId": 5,
+      "guessedSodaId": 20,
+      "actualSodaId": 10,
+      "competitionId": 5
+    },
+    {
+      "id": 551,
+      "score": 9,
+      "playerId": 5,
+      "guessedSodaId": 2,
+      "actualSodaId": 3,
+      "competitionId": 5
+    },
+    {
+      "id": 552,
+      "score": 5,
+      "playerId": 5,
+      "guessedSodaId": 39,
+      "actualSodaId": 19,
+      "competitionId": 5
+    },
+    {
+      "id": 553,
+      "score": 9,
+      "playerId": 5,
+      "guessedSodaId": 1,
+      "actualSodaId": 4,
+      "competitionId": 5
+    },
+    {
+      "id": 554,
+      "score": 2,
+      "playerId": 5,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 5
+    },
+    {
+      "id": 555,
+      "score": 5,
+      "playerId": 5,
+      "guessedSodaId": 34,
+      "actualSodaId": 25,
+      "competitionId": 5
+    },
+    {
+      "id": 556,
+      "score": 4,
+      "playerId": 5,
+      "guessedSodaId": 22,
+      "actualSodaId": 20,
+      "competitionId": 5
+    },
+    {
+      "id": 557,
+      "score": 3,
+      "playerId": 5,
+      "guessedSodaId": 38,
+      "actualSodaId": 17,
+      "competitionId": 5
+    },
+    {
+      "id": 558,
+      "score": 4,
+      "playerId": 5,
+      "guessedSodaId": 15,
+      "actualSodaId": 38,
+      "competitionId": 5
+    },
+    {
+      "id": 559,
+      "score": 6,
+      "playerId": 5,
+      "guessedSodaId": 16,
+      "actualSodaId": 6,
+      "competitionId": 5
+    },
+    {
+      "id": 560,
+      "score": 2,
+      "playerId": 5,
+      "guessedSodaId": 36,
+      "actualSodaId": 36,
+      "competitionId": 5
+    },
+    {
+      "id": 561,
+      "score": 7,
+      "playerId": 5,
+      "guessedSodaId": 22,
+      "actualSodaId": 26,
+      "competitionId": 5
+    },
+    {
+      "id": 562,
+      "score": 7,
+      "playerId": 5,
+      "guessedSodaId": 12,
+      "actualSodaId": 16,
+      "competitionId": 5
+    },
+    {
+      "id": 563,
+      "score": 1,
+      "playerId": 5,
+      "guessedSodaId": 26,
+      "actualSodaId": 15,
+      "competitionId": 5
+    },
+    {
+      "id": 564,
+      "score": 3,
+      "playerId": 5,
+      "guessedSodaId": 19,
+      "actualSodaId": 39,
+      "competitionId": 5
+    },
+    {
+      "id": 565,
+      "score": 9,
+      "playerId": 5,
+      "guessedSodaId": 5,
+      "actualSodaId": 5,
+      "competitionId": 5
+    },
+    {
+      "id": 566,
+      "score": 7,
+      "playerId": 5,
+      "guessedSodaId": 28,
+      "actualSodaId": 12,
+      "competitionId": 5
+    },
+    {
+      "id": 567,
+      "score": 4,
+      "playerId": 5,
+      "guessedSodaId": 38,
+      "actualSodaId": 34,
+      "competitionId": 5
+    },
+    {
+      "id": 568,
+      "score": 7,
+      "playerId": 5,
+      "guessedSodaId": 10,
+      "actualSodaId": 2,
+      "competitionId": 5
+    },
+    {
+      "id": 569,
+      "score": 8,
+      "playerId": 5,
+      "guessedSodaId": 3,
+      "actualSodaId": 1,
+      "competitionId": 5
+    },
+    {
+      "id": 570,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 2,
+      "actualSodaId": 6,
+      "competitionId": 5
+    },
+    {
+      "id": 571,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 1,
+      "actualSodaId": 5,
+      "competitionId": 5
+    },
+    {
+      "id": 572,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 39,
+      "actualSodaId": 39,
+      "competitionId": 5
+    },
+    {
+      "id": 573,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 5,
+      "actualSodaId": 15,
+      "competitionId": 5
+    },
+    {
+      "id": 574,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 25,
+      "actualSodaId": 16,
+      "competitionId": 5
+    },
+    {
+      "id": 575,
+      "score": 5,
+      "playerId": 6,
+      "guessedSodaId": 26,
+      "actualSodaId": 22,
+      "competitionId": 5
+    },
+    {
+      "id": 576,
+      "score": 9,
+      "playerId": 6,
+      "guessedSodaId": 20,
+      "actualSodaId": 20,
+      "competitionId": 5
+    },
+    {
+      "id": 577,
+      "score": 3,
+      "playerId": 6,
+      "guessedSodaId": 33,
+      "actualSodaId": 33,
+      "competitionId": 5
+    },
+    {
+      "id": 578,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 2,
+      "actualSodaId": 2,
+      "competitionId": 5
+    },
+    {
+      "id": 579,
+      "score": 4,
+      "playerId": 6,
+      "guessedSodaId": 16,
+      "actualSodaId": 36,
+      "competitionId": 5
+    },
+    {
+      "id": 580,
+      "score": 10,
+      "playerId": 6,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 5
+    },
+    {
+      "id": 581,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 4,
+      "actualSodaId": 12,
+      "competitionId": 5
+    },
+    {
+      "id": 582,
+      "score": 5,
+      "playerId": 6,
+      "guessedSodaId": 38,
+      "actualSodaId": 38,
+      "competitionId": 5
+    },
+    {
+      "id": 583,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 4,
+      "actualSodaId": 4,
+      "competitionId": 5
+    },
+    {
+      "id": 584,
+      "score": 3,
+      "playerId": 6,
+      "guessedSodaId": 19,
+      "actualSodaId": 37,
+      "competitionId": 5
+    },
+    {
+      "id": 585,
+      "score": 5,
+      "playerId": 6,
+      "guessedSodaId": 34,
+      "actualSodaId": 26,
+      "competitionId": 5
+    },
+    {
+      "id": 586,
+      "score": 2,
+      "playerId": 6,
+      "guessedSodaId": 37,
+      "actualSodaId": 17,
+      "competitionId": 5
+    },
+    {
+      "id": 587,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 10,
+      "actualSodaId": 28,
+      "competitionId": 5
+    },
+    {
+      "id": 588,
+      "score": 1,
+      "playerId": 6,
+      "guessedSodaId": 34,
+      "actualSodaId": 34,
+      "competitionId": 5
+    },
+    {
+      "id": 589,
+      "score": 4,
+      "playerId": 6,
+      "guessedSodaId": 17,
+      "actualSodaId": 25,
+      "competitionId": 5
+    },
+    {
+      "id": 590,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 6,
+      "actualSodaId": 19,
+      "competitionId": 5
+    },
+    {
+      "id": 591,
+      "score": 7,
+      "playerId": 6,
+      "guessedSodaId": 28,
+      "actualSodaId": 10,
+      "competitionId": 5
+    },
+    {
+      "id": 592,
+      "score": 5,
+      "playerId": 6,
+      "guessedSodaId": 22,
+      "actualSodaId": 3,
+      "competitionId": 5
+    },
+    {
+      "id": 593,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 1,
+      "actualSodaId": 1,
+      "competitionId": 5
+    },
+    {
+      "id": 594,
+      "score": 2,
+      "playerId": 3,
+      "guessedSodaId": 16,
+      "actualSodaId": 36,
+      "competitionId": 6
+    },
+    {
+      "id": 595,
+      "score": 7,
+      "playerId": 3,
+      "guessedSodaId": 3,
+      "actualSodaId": 2,
+      "competitionId": 6
+    },
+    {
+      "id": 596,
+      "score": 3,
+      "playerId": 3,
+      "guessedSodaId": 19,
+      "actualSodaId": 22,
+      "competitionId": 6
+    },
+    {
+      "id": 597,
+      "score": 7,
+      "playerId": 3,
+      "guessedSodaId": 1,
+      "actualSodaId": 28,
+      "competitionId": 6
+    },
+    {
+      "id": 598,
+      "score": 5,
+      "playerId": 3,
+      "guessedSodaId": 33,
+      "actualSodaId": 6,
+      "competitionId": 6
+    },
+    {
+      "id": 599,
+      "score": 8,
+      "playerId": 3,
+      "guessedSodaId": 12,
+      "actualSodaId": 17,
+      "competitionId": 6
+    },
+    {
+      "id": 600,
+      "score": 7,
+      "playerId": 3,
+      "guessedSodaId": 20,
+      "actualSodaId": 12,
+      "competitionId": 6
+    },
+    {
+      "id": 601,
+      "score": 4,
+      "playerId": 3,
+      "guessedSodaId": 36,
+      "actualSodaId": 26,
+      "competitionId": 6
+    },
+    {
+      "id": 602,
+      "score": 5,
+      "playerId": 3,
+      "guessedSodaId": 15,
+      "actualSodaId": 20,
+      "competitionId": 6
+    },
+    {
+      "id": 603,
+      "score": 7,
+      "playerId": 3,
+      "guessedSodaId": 4,
+      "actualSodaId": 5,
+      "competitionId": 6
+    },
+    {
+      "id": 604,
+      "score": 4,
+      "playerId": 3,
+      "guessedSodaId": 37,
+      "actualSodaId": 33,
+      "competitionId": 6
+    },
+    {
+      "id": 605,
+      "score": 10,
+      "playerId": 3,
+      "guessedSodaId": 7,
+      "actualSodaId": 7,
+      "competitionId": 6
+    },
+    {
+      "id": 606,
+      "score": 6,
+      "playerId": 3,
+      "guessedSodaId": 5,
+      "actualSodaId": 4,
+      "competitionId": 6
+    },
+    {
+      "id": 607,
+      "score": 3,
+      "playerId": 3,
+      "guessedSodaId": 10,
+      "actualSodaId": 3,
+      "competitionId": 6
+    },
+    {
+      "id": 608,
+      "score": 1,
+      "playerId": 3,
+      "guessedSodaId": 25,
+      "actualSodaId": 15,
+      "competitionId": 6
+    },
+    {
+      "id": 609,
+      "score": 1,
+      "playerId": 3,
+      "guessedSodaId": 10,
+      "actualSodaId": 16,
+      "competitionId": 6
+    },
+    {
+      "id": 610,
+      "score": 3,
+      "playerId": 3,
+      "guessedSodaId": 36,
+      "actualSodaId": 19,
+      "competitionId": 6
+    },
+    {
+      "id": 611,
+      "score": 4,
+      "playerId": 3,
+      "guessedSodaId": 17,
+      "actualSodaId": 10,
+      "competitionId": 6
+    },
+    {
+      "id": 612,
+      "score": 1,
+      "playerId": 3,
+      "guessedSodaId": 28,
+      "actualSodaId": 25,
+      "competitionId": 6
+    },
+    {
+      "id": 613,
+      "score": 1,
+      "playerId": 3,
+      "guessedSodaId": 26,
+      "actualSodaId": 37,
+      "competitionId": 6
+    },
+    {
+      "id": 614,
+      "score": 7,
+      "playerId": 3,
+      "guessedSodaId": 2,
+      "actualSodaId": 1,
+      "competitionId": 6
+    },
+    {
+      "id": 615,
+      "score": 6,
+      "playerId": 3,
+      "guessedSodaId": 22,
+      "actualSodaId": 10,
+      "competitionId": 7
+    },
+    {
+      "id": 617,
+      "score": 8,
+      "playerId": 3,
+      "guessedSodaId": 2,
+      "actualSodaId": 2,
+      "competitionId": 7
+    },
+    {
+      "id": 620,
+      "score": 10,
+      "playerId": 3,
+      "guessedSodaId": 1,
+      "actualSodaId": 12,
+      "competitionId": 7
+    },
+    {
+      "id": 624,
+      "score": 6,
+      "playerId": 3,
+      "guessedSodaId": 12,
+      "actualSodaId": 4,
+      "competitionId": 7
+    },
+    {
+      "id": 629,
+      "score": 5,
+      "playerId": 3,
+      "guessedSodaId": 3,
+      "actualSodaId": 3,
+      "competitionId": 7
+    },
+    {
+      "id": 635,
+      "score": 2,
+      "playerId": 3,
+      "guessedSodaId": 10,
+      "actualSodaId": 22,
+      "competitionId": 7
+    },
+    {
+      "id": 642,
+      "score": 8,
+      "playerId": 3,
+      "guessedSodaId": 4,
+      "actualSodaId": 1,
+      "competitionId": 7
+    },
+    {
+      "id": 643,
+      "score": 6,
+      "playerId": 2,
+      "guessedSodaId": 22,
+      "actualSodaId": 2,
+      "competitionId": 7
+    },
+    {
+      "id": 644,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 10,
+      "actualSodaId": 10,
+      "competitionId": 7
+    },
+    {
+      "id": 645,
+      "score": 5,
+      "playerId": 2,
+      "guessedSodaId": 1,
+      "actualSodaId": 4,
+      "competitionId": 7
+    },
+    {
+      "id": 646,
+      "score": 4,
+      "playerId": 2,
+      "guessedSodaId": 3,
+      "actualSodaId": 3,
+      "competitionId": 7
+    },
+    {
+      "id": 647,
+      "score": 7,
+      "playerId": 2,
+      "guessedSodaId": 4,
+      "actualSodaId": 12,
+      "competitionId": 7
+    },
+    {
+      "id": 648,
+      "score": 3,
+      "playerId": 2,
+      "guessedSodaId": 22,
+      "actualSodaId": 22,
+      "competitionId": 7
+    },
+    {
+      "id": 649,
+      "score": 6,
+      "playerId": 2,
+      "guessedSodaId": 1,
+      "actualSodaId": 1,
+      "competitionId": 7
+    },
+    {
+      "id": 650,
+      "score": 8,
+      "playerId": 1,
+      "guessedSodaId": 1,
+      "actualSodaId": 10,
+      "competitionId": 7
+    },
+    {
+      "id": 652,
+      "score": 7,
+      "playerId": 1,
+      "guessedSodaId": 2,
+      "actualSodaId": 3,
+      "competitionId": 7
+    },
+    {
+      "id": 655,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 22,
+      "actualSodaId": 22,
+      "competitionId": 7
+    },
+    {
+      "id": 659,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 4,
+      "actualSodaId": 2,
+      "competitionId": 7
+    },
+    {
+      "id": 664,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 3,
+      "actualSodaId": 4,
+      "competitionId": 7
+    },
+    {
+      "id": 670,
+      "score": 7,
+      "playerId": 1,
+      "guessedSodaId": 2,
+      "actualSodaId": 12,
+      "competitionId": 7
+    },
+    {
+      "id": 677,
+      "score": 6,
+      "playerId": 1,
+      "guessedSodaId": 12,
+      "actualSodaId": 1,
+      "competitionId": 7
+    },
+    {
+      "id": 678,
+      "score": 9,
+      "playerId": 5,
+      "guessedSodaId": 1,
+      "actualSodaId": 4,
+      "competitionId": 7
+    },
+    {
+      "id": 680,
+      "score": 4,
+      "playerId": 5,
+      "guessedSodaId": 22,
+      "actualSodaId": 10,
+      "competitionId": 7
+    },
+    {
+      "id": 683,
+      "score": 5,
+      "playerId": 5,
+      "guessedSodaId": 10,
+      "actualSodaId": 22,
+      "competitionId": 7
+    },
+    {
+      "id": 687,
+      "score": 6,
+      "playerId": 5,
+      "guessedSodaId": 3,
+      "actualSodaId": 12,
+      "competitionId": 7
+    },
+    {
+      "id": 692,
+      "score": 8,
+      "playerId": 5,
+      "guessedSodaId": 2,
+      "actualSodaId": 3,
+      "competitionId": 7
+    },
+    {
+      "id": 698,
+      "score": 8,
+      "playerId": 5,
+      "guessedSodaId": 12,
+      "actualSodaId": 2,
+      "competitionId": 7
+    },
+    {
+      "id": 705,
+      "score": 9,
+      "playerId": 5,
+      "guessedSodaId": 4,
+      "actualSodaId": 1,
+      "competitionId": 7
+    },
+    {
+      "id": 706,
+      "score": 7,
+      "playerId": 7,
+      "guessedSodaId": 4,
+      "actualSodaId": 4,
+      "competitionId": 7
+    },
+    {
+      "id": 708,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 10,
+      "actualSodaId": 22,
+      "competitionId": 7
+    },
+    {
+      "id": 711,
+      "score": 8,
+      "playerId": 7,
+      "guessedSodaId": 1,
+      "actualSodaId": 10,
+      "competitionId": 7
+    },
+    {
+      "id": 715,
+      "score": 8,
+      "playerId": 7,
+      "guessedSodaId": 12,
+      "actualSodaId": 12,
+      "competitionId": 7
+    },
+    {
+      "id": 720,
+      "score": 6,
+      "playerId": 7,
+      "guessedSodaId": 22,
+      "actualSodaId": 2,
+      "competitionId": 7
+    },
+    {
+      "id": 726,
+      "score": 7,
+      "playerId": 7,
+      "guessedSodaId": 3,
+      "actualSodaId": 3,
+      "competitionId": 7
+    },
+    {
+      "id": 733,
+      "score": 8,
+      "playerId": 7,
+      "guessedSodaId": 2,
+      "actualSodaId": 1,
+      "competitionId": 7
+    },
+    {
+      "id": 734,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 2,
+      "actualSodaId": 2,
+      "competitionId": 7
+    },
+    {
+      "id": 736,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 22,
+      "actualSodaId": 22,
+      "competitionId": 7
+    },
+    {
+      "id": 739,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 3,
+      "actualSodaId": 4,
+      "competitionId": 7
+    },
+    {
+      "id": 743,
+      "score": 8,
+      "playerId": 6,
+      "guessedSodaId": 4,
+      "actualSodaId": 12,
+      "competitionId": 7
+    },
+    {
+      "id": 748,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 12,
+      "actualSodaId": 10,
+      "competitionId": 7
+    },
+    {
+      "id": 754,
+      "score": 6,
+      "playerId": 6,
+      "guessedSodaId": 22,
+      "actualSodaId": 3,
+      "competitionId": 7
+    },
+    {
+      "id": 761,
+      "score": 9,
+      "playerId": 6,
+      "guessedSodaId": 1,
+      "actualSodaId": 1,
+      "competitionId": 7
+    }
+  ]
+}
