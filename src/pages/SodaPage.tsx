@@ -8,15 +8,6 @@ import { SortableTable } from '../components/SortableTable';
 import { db, pct, rating } from '../lib/data';
 import { ID_RATE_TOOLTIP, ADJUSTED_ID_RATE_TOOLTIP, AVG_TASTE_WHEN_GUESSED_TOOLTIP } from '../lib/tooltips';
 
-const thStyle: React.CSSProperties = {
-  padding: '10px 14px',
-  fontWeight: 700,
-  fontSize: '0.75rem',
-  textTransform: 'uppercase',
-  letterSpacing: '0.08em',
-  color: 'var(--text-muted)',
-  background: 'var(--bg-lighter)',
-};
 
 const tooltipStyle = {
   background: 'var(--bg-lighter)',
