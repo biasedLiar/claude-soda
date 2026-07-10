@@ -13,6 +13,7 @@ export function Layout() {
   return (
     <div className="grid-bg scanlines" style={{ minHeight: '100vh' }}>
       <header
+        className="header"
         style={{
           background: 'rgba(13, 13, 26, 0.92)',
           borderBottom: '1px solid var(--border)',
@@ -41,7 +42,7 @@ export function Layout() {
         >
           JulebrussStats
         </NavLink>
-        <nav style={{ display: 'flex', gap: 4 }}>
+        <nav className="header-nav" style={{ display: 'flex', gap: 4 }}>
           {NAV_ITEMS.map((item) => (
             <NavLink
               key={item.to}

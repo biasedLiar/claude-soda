@@ -139,6 +139,7 @@ export function SodasPage() {
       <section style={{ marginTop: 40 }}>
         <h2 style={{ margin: '0 0 16px', fontSize: '1rem' }}>Most common mistakes</h2>
         <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden' }}>
+          <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
             <thead>
               <tr style={{ borderBottom: '2px solid var(--border)' }}>
@@ -162,6 +163,7 @@ export function SodasPage() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       </section>
     </div>

@@ -186,6 +186,24 @@ p {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
+@media (max-width: 640px) {
+  .header {
+    flex-wrap: wrap !important;
+    padding: 10px 16px !important;
+    height: auto !important;
+    gap: 8px !important;
+  }
+
+  .header-nav {
+    flex-wrap: wrap !important;
+    gap: 2px !important;
+  }
+
+  main {
+    padding: 24px 16px !important;
+  }
+}
+
 .tooltip-icon {
   display: inline-flex;
   align-items: center;
