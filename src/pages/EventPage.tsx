@@ -4,6 +4,16 @@ import { ColorBadge } from '../components/ColorBadge';
 import { competitionLeaderboard, competitionSodaStats } from '../lib/stats';
 import { db, formatDate, pct, rating } from '../lib/data';
 
+const thStyle: React.CSSProperties = {
+  padding: '10px 14px',
+  fontWeight: 700,
+  fontSize: '0.75rem',
+  textTransform: 'uppercase',
+  letterSpacing: '0.08em',
+  color: 'var(--text-muted)',
+  background: 'var(--bg-lighter)',
+};
+
 export function EventPage() {
   const { id } = useParams<{ id: string }>();
   const compId = Number(id);
@@ -20,9 +30,9 @@ export function EventPage() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
       <div>
-        <Link to="/events" style={{ color: '#6b7280', fontSize: '0.875rem', textDecoration: 'none' }}>← Events</Link>
-        <h1 style={{ margin: '8px 0 4px', fontSize: '2rem', fontWeight: 800, color: '#1a1a2e' }}>{competition.name}</h1>
-        <div style={{ color: '#6b7280', fontSize: '0.9rem' }}>{formatDate(competition.date)}</div>
+        <Link to="/events" style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>← Events</Link>
+        <h1 style={{ margin: '8px 0 4px', fontSize: '2rem' }}>{competition.name}</h1>
+        <div style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{formatDate(competition.date)}</div>
       </div>
 
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
@@ -35,16 +45,16 @@ export function EventPage() {
       </div>
 
       <section>
-        <h2 style={{ margin: '0 0 16px', fontSize: '1.1rem', fontWeight: 700, color: '#1a1a2e' }}>🏆 Leaderboard</h2>
-        <div style={{ background: '#fff', border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden' }}>
+        <h2 style={{ margin: '0 0 16px', fontSize: '1rem' }}>Leaderboard</h2>
+        <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
             <thead>
-              <tr style={{ background: '#f9fafb', borderBottom: '2px solid #e5e7eb' }}>
-                <th style={{ padding: '10px 14px', textAlign: 'left', fontWeight: 700, fontSize: '0.78rem', textTransform: 'uppercase', color: '#6b7280' }}>Rank</th>
-                <th style={{ padding: '10px 14px', textAlign: 'left', fontWeight: 700, fontSize: '0.78rem', textTransform: 'uppercase', color: '#6b7280' }}>Player</th>
-                <th style={{ padding: '10px 14px', textAlign: 'right', fontWeight: 700, fontSize: '0.78rem', textTransform: 'uppercase', color: '#6b7280' }}>Correct</th>
-                <th style={{ padding: '10px 14px', textAlign: 'right', fontWeight: 700, fontSize: '0.78rem', textTransform: 'uppercase', color: '#6b7280' }}>Accuracy</th>
-                <th style={{ padding: '10px 14px', textAlign: 'right', fontWeight: 700, fontSize: '0.78rem', textTransform: 'uppercase', color: '#6b7280' }}>Avg Taste Given</th>
+              <tr style={{ borderBottom: '2px solid var(--border)' }}>
+                <th style={{ ...thStyle, textAlign: 'left' }}>Rank</th>
+                <th style={{ ...thStyle, textAlign: 'left' }}>Player</th>
+                <th style={{ ...thStyle, textAlign: 'right' }}>Correct</th>
+                <th style={{ ...thStyle, textAlign: 'right' }}>Accuracy</th>
+                <th style={{ ...thStyle, textAlign: 'right' }}>Avg Taste Given</th>
               </tr>
             </thead>
             <tbody>
@@ -52,23 +62,24 @@ export function EventPage() {
                 <tr
                   key={r.player.id}
                   style={{
-                    borderBottom: '1px solid #f3f4f6',
-                    background: r.rank === 1 ? '#fffbeb' : undefined,
+                    borderBottom: '1px solid var(--border)',
+                    background: r.rank === 1 ? 'rgba(0, 255, 255, 0.05)' : undefined,
+                    borderLeft: r.rank === 1 ? '2px solid var(--secondary)' : undefined,
                   }}
                 >
-                  <td style={{ padding: '12px 14px', fontWeight: 700, fontSize: '1.1rem', color: r.rank === 1 ? '#d97706' : '#9ca3af' }}>
-                    {r.rank === 1 ? '🏆' : r.rank}
+                  <td style={{ padding: '12px 14px', fontWeight: 700, fontSize: '1.1rem', color: r.rank === 1 ? 'var(--secondary)' : 'var(--text-muted)' }}>
+                    {r.rank === 1 && leaderboard.length > 1 ? '🏆' : r.rank}
                   </td>
                   <td style={{ padding: '12px 14px' }}>
-                    <Link to={`/players/${r.player.id}`} style={{ color: '#1a1a2e', fontWeight: 600, textDecoration: 'none' }}>
+                    <Link to={`/players/${r.player.id}`} style={{ color: 'var(--text)', fontWeight: 600 }}>
                       {r.player.name}
                     </Link>
                   </td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right' }}>{r.correct} / {r.guesses}</td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', fontWeight: 700, color: r.accuracy >= 0.2 ? '#059669' : '#dc2626' }}>
+                  <td style={{ padding: '12px 14px', textAlign: 'right', color: 'var(--text-muted)' }}>{r.correct} / {r.guesses}</td>
+                  <td style={{ padding: '12px 14px', textAlign: 'right', fontWeight: 700, color: r.accuracy >= 0.2 ? 'var(--cta)' : 'var(--primary)' }}>
                     {pct(r.accuracy)}
                   </td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right' }}>★ {rating(r.avgTaste)}</td>
+                  <td style={{ padding: '12px 14px', textAlign: 'right', color: 'var(--secondary)' }}>★ {rating(r.avgTaste)}</td>
                 </tr>
               ))}
             </tbody>
@@ -77,32 +88,32 @@ export function EventPage() {
       </section>
 
       <section>
-        <h2 style={{ margin: '0 0 16px', fontSize: '1.1rem', fontWeight: 700, color: '#1a1a2e' }}>Sodas in this event</h2>
-        <div style={{ background: '#fff', border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden' }}>
+        <h2 style={{ margin: '0 0 16px', fontSize: '1rem' }}>Sodas in this event</h2>
+        <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
             <thead>
-              <tr style={{ background: '#f9fafb', borderBottom: '2px solid #e5e7eb' }}>
-                <th style={{ padding: '10px 14px', textAlign: 'left', fontWeight: 700, fontSize: '0.78rem', textTransform: 'uppercase', color: '#6b7280' }}>Soda</th>
-                <th style={{ padding: '10px 14px', textAlign: 'left', fontWeight: 700, fontSize: '0.78rem', textTransform: 'uppercase', color: '#6b7280' }}>Color</th>
-                <th style={{ padding: '10px 14px', textAlign: 'right', fontWeight: 700, fontSize: '0.78rem', textTransform: 'uppercase', color: '#6b7280' }}>Tasters</th>
-                <th style={{ padding: '10px 14px', textAlign: 'right', fontWeight: 700, fontSize: '0.78rem', textTransform: 'uppercase', color: '#6b7280' }}>ID Rate</th>
-                <th style={{ padding: '10px 14px', textAlign: 'right', fontWeight: 700, fontSize: '0.78rem', textTransform: 'uppercase', color: '#6b7280' }}>Avg Taste</th>
+              <tr style={{ borderBottom: '2px solid var(--border)' }}>
+                <th style={{ ...thStyle, textAlign: 'left' }}>Soda</th>
+                <th style={{ ...thStyle, textAlign: 'left' }}>Color</th>
+                <th style={{ ...thStyle, textAlign: 'right' }}>Tasters</th>
+                <th style={{ ...thStyle, textAlign: 'right' }}>ID Rate</th>
+                <th style={{ ...thStyle, textAlign: 'right' }}>Avg Taste</th>
               </tr>
             </thead>
             <tbody>
               {sodaStats.map((s) => (
-                <tr key={s.soda.id} style={{ borderBottom: '1px solid #f3f4f6' }}>
+                <tr key={s.soda.id} style={{ borderBottom: '1px solid var(--border)' }}>
                   <td style={{ padding: '12px 14px' }}>
-                    <Link to={`/sodas/${s.soda.id}`} style={{ color: '#1a1a2e', fontWeight: 600, textDecoration: 'none' }}>
+                    <Link to={`/sodas/${s.soda.id}`} style={{ color: 'var(--text)', fontWeight: 600 }}>
                       {s.soda.name}
                     </Link>
                   </td>
                   <td style={{ padding: '12px 14px' }}><ColorBadge color={s.soda.color} /></td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right' }}>{s.guesses}</td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', fontWeight: 700, color: s.correctRate >= 0.2 ? '#059669' : '#dc2626' }}>
+                  <td style={{ padding: '12px 14px', textAlign: 'right', color: 'var(--text-muted)' }}>{s.guesses}</td>
+                  <td style={{ padding: '12px 14px', textAlign: 'right', fontWeight: 700, color: s.correctRate >= 0.2 ? 'var(--cta)' : 'var(--primary)' }}>
                     {s.guesses > 0 ? pct(s.correctRate) : '—'}
                   </td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right' }}>
+                  <td style={{ padding: '12px 14px', textAlign: 'right', color: 'var(--secondary)' }}>
                     {s.avgTaste > 0 ? `★ ${rating(s.avgTaste)}` : '—'}
                   </td>
                 </tr>

@@ -18,6 +18,12 @@ function round2(n: number): number {
   return Math.round(n * 100) / 100;
 }
 
+function adjustedRate(correct: number, total: number, sodaCount: number): number {
+  if (total === 0 || sodaCount <= 1) return 0;
+  const chance = 1 / sodaCount;
+  return round2((correct / total - chance) / (1 - chance));
+}
+
 export function globalStats(data: DbData): GlobalStats {
   const sodaGuessMap = new Map<number, { correct: number; total: number; totalTaste: number }>();
   for (const g of data.guesses) {
@@ -69,15 +75,23 @@ export function playerStats(id: number, data: DbData): PlayerStats | null {
 
   const guesses = data.guesses.filter((g) => g.playerId === id);
   const correct = guesses.filter((g) => g.guessedSodaId === g.actualSodaId).length;
-  const competitions = new Set(guesses.map((g) => g.competitionId)).size;
+  const competitionIds = [...new Set(guesses.map((g) => g.competitionId))];
+
+  const adjPerComp = competitionIds.map((cid) => {
+    const cg = guesses.filter((g) => g.competitionId === cid);
+    const cc = cg.filter((g) => g.guessedSodaId === g.actualSodaId).length;
+    const N = data.competitionSodas.filter((cs) => cs.competitionId === cid).length;
+    return adjustedRate(cc, cg.length, N);
+  });
 
   return {
     player,
     totalGuesses: guesses.length,
     correctGuesses: correct,
     accuracy: guesses.length > 0 ? round2(correct / guesses.length) : 0,
+    adjustedAccuracy: round2(avg(adjPerComp)),
     avgTasteGiven: round2(avg(guesses.map((g) => g.score))),
-    competitionsPlayed: competitions,
+    competitionsPlayed: competitionIds.length,
   };
 }
 
@@ -90,11 +104,13 @@ export function playerCompetitionHistory(playerId: number, data: DbData): Player
     const comp = data.competitions.find((c) => c.id === cid)!;
     const guesses = data.guesses.filter((g) => g.playerId === playerId && g.competitionId === cid);
     const correct = guesses.filter((g) => g.guessedSodaId === g.actualSodaId).length;
+    const N = data.competitionSodas.filter((cs) => cs.competitionId === cid).length;
     return {
       competition: comp,
       guesses: guesses.length,
       correct,
       accuracy: guesses.length > 0 ? round2(correct / guesses.length) : 0,
+      adjustedAccuracy: adjustedRate(correct, guesses.length, N),
       avgTaste: round2(avg(guesses.map((g) => g.score))),
     };
   }).sort((a, b) => a.competition.id - b.competition.id);
@@ -108,12 +124,43 @@ export function sodaStats(id: number, data: DbData): SodaStats | null {
   const guesses = data.guesses.filter((g) => g.actualSodaId === id);
   const correct = guesses.filter((g) => g.guessedSodaId === id).length;
 
+  // Adjusted correct rate — per competition, then averaged
+  const competitionIds = data.competitionSodas
+    .filter((cs) => cs.sodaId === id)
+    .map((cs) => cs.competitionId);
+  const adjPerComp: number[] = [];
+  for (const cid of competitionIds) {
+    const cg = guesses.filter((g) => g.competitionId === cid);
+    if (cg.length === 0) continue;
+    const cc = cg.filter((g) => g.guessedSodaId === id).length;
+    const N = data.competitionSodas.filter((cs) => cs.competitionId === cid).length;
+    adjPerComp.push(adjustedRate(cc, cg.length, N));
+  }
+  const adjustedCorrectRate = round2(avg(adjPerComp));
+
+  // Avg taste when guessed (guessedSodaId === id)
+  const guessedAsThis = data.guesses.filter((g) => g.guessedSodaId === id);
+  const avgTasteWhenGuessed = round2(avg(guessedAsThis.map((g) => g.score)));
+
+  // confusedWith: when actual = this soda, what was guessed (wrong)
   const wrongGuesses = guesses.filter((g) => g.guessedSodaId !== id);
   const confusionCount = new Map<number, number>();
   for (const g of wrongGuesses) {
     confusionCount.set(g.guessedSodaId, (confusionCount.get(g.guessedSodaId) ?? 0) + 1);
   }
-  const topConfusions = [...confusionCount.entries()]
+  const confusedWith = [...confusionCount.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 3)
+    .map(([sodaId, count]) => ({ soda: data.sodas.find((s) => s.id === sodaId)!, count }))
+    .filter((c) => c.soda != null);
+
+  // guessedAs: when guessed = this soda, what was it actually (wrong)
+  const falsePositives = data.guesses.filter((g) => g.guessedSodaId === id && g.actualSodaId !== id);
+  const guessedAsCount = new Map<number, number>();
+  for (const g of falsePositives) {
+    guessedAsCount.set(g.actualSodaId, (guessedAsCount.get(g.actualSodaId) ?? 0) + 1);
+  }
+  const guessedAs = [...guessedAsCount.entries()]
     .sort((a, b) => b[1] - a[1])
     .slice(0, 3)
     .map(([sodaId, count]) => ({ soda: data.sodas.find((s) => s.id === sodaId)!, count }))
@@ -125,8 +172,11 @@ export function sodaStats(id: number, data: DbData): SodaStats | null {
     totalGuesses: guesses.length,
     correctGuesses: correct,
     correctRate: guesses.length > 0 ? round2(correct / guesses.length) : 0,
+    adjustedCorrectRate,
     avgTaste: round2(avg(guesses.map((g) => g.score))),
-    topConfusions,
+    avgTasteWhenGuessed,
+    confusedWith,
+    guessedAs,
   };
 }
 

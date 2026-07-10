@@ -8,6 +8,7 @@ import { SodaPage } from './pages/SodaPage';
 import { EventsPage } from './pages/EventsPage';
 import { EventPage } from './pages/EventPage';
 import { LeaderboardPage } from './pages/LeaderboardPage';
+import { ChartsPage } from './pages/ChartsPage';
 
 export function App() {
   return (
@@ -22,6 +23,7 @@ export function App() {
           <Route path="/events" element={<EventsPage />} />
           <Route path="/events/:id" element={<EventPage />} />
           <Route path="/leaderboard" element={<LeaderboardPage />} />
+          <Route path="/charts" element={<ChartsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

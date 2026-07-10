@@ -42,6 +42,7 @@ export type PlayerStats = {
   totalGuesses: number;
   correctGuesses: number;
   accuracy: number;
+  adjustedAccuracy: number;
   avgTasteGiven: number;
   competitionsPlayed: number;
 };
@@ -52,8 +53,11 @@ export type SodaStats = {
   totalGuesses: number;
   correctGuesses: number;
   correctRate: number;
+  adjustedCorrectRate: number;
   avgTaste: number;
-  topConfusions: Array<{ soda: Soda; count: number }>;
+  avgTasteWhenGuessed: number;
+  confusedWith: Array<{ soda: Soda; count: number }>;
+  guessedAs: Array<{ soda: Soda; count: number }>;
 };
 
 export type CompetitionSummary = {
@@ -86,6 +90,7 @@ export type PlayerCompetitionResult = {
   guesses: number;
   correct: number;
   accuracy: number;
+  adjustedAccuracy: number;
   avgTaste: number;
 };
 

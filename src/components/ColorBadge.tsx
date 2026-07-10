@@ -1,12 +1,16 @@
 const COLOR_MAP: Record<string, { bg: string; text: string; label: string }> = {
-  red: { bg: '#fde8e8', text: '#c0392b', label: 'Red' },
-  brown: { bg: '#f5ebe0', text: '#6b3a2a', label: 'Brown' },
-  green: { bg: '#e8f5e9', text: '#2e7d32', label: 'Green' },
-  pink: { bg: '#fce4ec', text: '#c2185b', label: 'Pink' },
-  orange: { bg: '#fff3e0', text: '#e65100', label: 'Orange' },
+  red: { bg: 'rgba(255, 77, 109, 0.15)', text: '#ff4d6d', label: 'Red' },
+  brown: { bg: 'rgba(201, 145, 90, 0.15)', text: '#c9915a', label: 'Brown' },
+  green: { bg: 'rgba(57, 255, 20, 0.15)', text: '#39ff14', label: 'Green' },
+  pink: { bg: 'rgba(255, 0, 110, 0.15)', text: '#ff69b4', label: 'Pink' },
+  orange: { bg: 'rgba(255, 140, 0, 0.15)', text: '#ff8c00', label: 'Orange' },
 };
 
-const DEFAULT = { bg: '#f3f4f6', text: '#374151', label: 'Unknown' };
+const DEFAULT = { bg: 'rgba(160, 160, 184, 0.15)', text: '#a0a0b8', label: 'Unknown' };
+
+export function sodaColorHex(color: string): string {
+  return (COLOR_MAP[color] ?? DEFAULT).text;
+}
 
 type Props = { color: string };
 
@@ -17,11 +21,14 @@ export function ColorBadge({ color }: Props) {
       style={{
         backgroundColor: style.bg,
         color: style.text,
+        border: `1px solid ${style.text}40`,
         padding: '2px 8px',
-        borderRadius: '12px',
+        borderRadius: '4px',
         fontSize: '0.75rem',
         fontWeight: 600,
         display: 'inline-block',
+        textTransform: 'uppercase',
+        letterSpacing: '0.05em',
       }}
     >
       {style.label}

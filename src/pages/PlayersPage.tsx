@@ -3,6 +3,7 @@ import { SortableTable } from '../components/SortableTable';
 import { allPlayersSummary } from '../lib/stats';
 import { db, pct, rating } from '../lib/data';
 import type { PlayerStats } from '../lib/types';
+import { ACCURACY_TOOLTIP } from '../lib/tooltips';
 
 const players = allPlayersSummary(db);
 
@@ -11,10 +12,10 @@ export function PlayersPage() {
 
   return (
     <div>
-      <h1 style={{ margin: '0 0 8px', fontSize: '1.8rem', fontWeight: 800, color: '#1a1a2e' }}>Players</h1>
-      <p style={{ margin: '0 0 28px', color: '#6b7280' }}>{players.length} players across all competitions</p>
+      <h1 style={{ margin: '0 0 8px', fontSize: '1.8rem' }}>Players</h1>
+      <p style={{ margin: '0 0 28px', color: 'var(--text-muted)' }}>{players.length} players across all competitions</p>
 
-      <div style={{ background: '#fff', border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden' }}>
+      <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden' }}>
         <SortableTable<PlayerStats>
           rowKey={(r) => r.player.id}
           defaultSort="accuracy"
@@ -25,7 +26,7 @@ export function PlayersPage() {
             {
               key: 'name',
               label: 'Player',
-              render: (r) => <span style={{ fontWeight: 600, color: '#1a1a2e' }}>{r.player.name}</span>,
+              render: (r) => <span style={{ fontWeight: 600, color: 'var(--text)' }}>{r.player.name}</span>,
               sortValue: (r) => r.player.name,
             },
             {
@@ -45,9 +46,10 @@ export function PlayersPage() {
             {
               key: 'accuracy',
               label: 'Accuracy',
+              tooltip: ACCURACY_TOOLTIP,
               align: 'right',
               render: (r) => (
-                <span style={{ fontWeight: 700, color: r.accuracy >= 0.2 ? '#059669' : '#dc2626' }}>
+                <span style={{ fontWeight: 700, color: r.accuracy >= 0.2 ? 'var(--cta)' : 'var(--primary)' }}>
                   {pct(r.accuracy)}
                 </span>
               ),
@@ -57,7 +59,7 @@ export function PlayersPage() {
               key: 'avgTasteGiven',
               label: 'Avg Taste Given',
               align: 'right',
-              render: (r) => `★ ${rating(r.avgTasteGiven)}`,
+              render: (r) => <span style={{ color: 'var(--secondary)' }}>★ {rating(r.avgTasteGiven)}</span>,
               sortValue: (r) => r.avgTasteGiven,
             },
           ]}

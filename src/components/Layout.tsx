@@ -6,28 +6,40 @@ const NAV_ITEMS = [
   { to: '/sodas', label: 'Sodas' },
   { to: '/events', label: 'Events' },
   { to: '/leaderboard', label: 'Leaderboard' },
+  { to: '/charts', label: 'Charts' },
 ];
 
 export function Layout() {
   return (
-    <div style={{ minHeight: '100vh', background: '#f9fafb', fontFamily: 'system-ui, sans-serif' }}>
+    <div className="grid-bg scanlines" style={{ minHeight: '100vh' }}>
       <header
         style={{
-          background: '#1a1a2e',
-          color: '#fff',
+          background: 'rgba(13, 13, 26, 0.92)',
+          borderBottom: '1px solid var(--border)',
+          backdropFilter: 'blur(10px)',
           padding: '0 24px',
           display: 'flex',
           alignItems: 'center',
           gap: 32,
-          height: 56,
+          height: 64,
           position: 'sticky',
           top: 0,
-          zIndex: 10,
-          boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+          zIndex: 100,
         }}
       >
-        <NavLink to="/" style={{ color: '#fff', textDecoration: 'none', fontWeight: 800, fontSize: '1.05rem', letterSpacing: '-0.01em' }}>
-          🥤 JulebrussStats
+        <NavLink
+          to="/"
+          style={{
+            color: 'var(--primary)',
+            textDecoration: 'none',
+            fontFamily: 'Russo One, sans-serif',
+            fontSize: '1.1rem',
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            textShadow: '0 0 10px rgba(255, 0, 110, 0.6)',
+          }}
+        >
+          JulebrussStats
         </NavLink>
         <nav style={{ display: 'flex', gap: 4 }}>
           {NAV_ITEMS.map((item) => (
@@ -36,14 +48,17 @@ export function Layout() {
               to={item.to}
               end={item.exact}
               style={({ isActive }) => ({
-                color: isActive ? '#fff' : 'rgba(255,255,255,0.65)',
+                color: isActive ? 'var(--secondary)' : 'var(--text-muted)',
                 textDecoration: 'none',
                 padding: '6px 12px',
-                borderRadius: 6,
-                fontSize: '0.875rem',
+                borderRadius: 4,
+                fontSize: '0.8rem',
                 fontWeight: isActive ? 600 : 400,
-                background: isActive ? 'rgba(255,255,255,0.12)' : 'transparent',
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                background: isActive ? 'rgba(0, 255, 255, 0.08)' : 'transparent',
                 transition: 'all 0.15s',
+                textShadow: isActive ? '0 0 8px rgba(0, 255, 255, 0.5)' : 'none',
               })}
             >
               {item.label}
@@ -51,7 +66,7 @@ export function Layout() {
           ))}
         </nav>
       </header>
-      <main style={{ maxWidth: 960, margin: '0 auto', padding: '32px 24px' }}>
+      <main style={{ maxWidth: 1024, margin: '0 auto', padding: '40px 24px' }}>
         <Outlet />
       </main>
     </div>

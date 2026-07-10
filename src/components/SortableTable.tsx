@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Tooltip } from './Tooltip';
 
 type Column<T> = {
   key: string;
   label: string;
+  tooltip?: string;
   render?: (row: T) => React.ReactNode;
   sortValue?: (row: T) => number | string;
   align?: 'left' | 'right' | 'center';
@@ -15,11 +17,27 @@ type Props<T> = {
   defaultDir?: 'asc' | 'desc';
   rowKey: (row: T) => string | number;
   onRowClick?: (row: T) => void;
+  pageSize?: number;
 };
 
-export function SortableTable<T>({ columns, data, defaultSort, defaultDir = 'desc', rowKey, onRowClick }: Props<T>) {
+const btnStyle = (active: boolean, disabled: boolean): React.CSSProperties => ({
+  padding: '5px 12px',
+  borderRadius: 4,
+  border: `1px solid ${active ? 'var(--secondary)' : 'var(--border)'}`,
+  background: active ? 'rgba(0, 255, 255, 0.1)' : 'transparent',
+  color: disabled ? 'var(--border)' : active ? 'var(--secondary)' : 'var(--text-muted)',
+  fontFamily: 'Chakra Petch, sans-serif',
+  fontSize: '0.8rem',
+  cursor: disabled ? 'default' : 'pointer',
+  userSelect: 'none',
+});
+
+export function SortableTable<T>({ columns, data, defaultSort, defaultDir = 'desc', rowKey, onRowClick, pageSize }: Props<T>) {
   const [sortKey, setSortKey] = useState<string>(defaultSort ?? columns[0].key);
   const [dir, setDir] = useState<'asc' | 'desc'>(defaultDir);
+  const [page, setPage] = useState(0);
+
+  useEffect(() => { setPage(0); }, [sortKey, dir]);
 
   function handleSort(key: string) {
     if (key === sortKey) {
@@ -40,6 +58,9 @@ export function SortableTable<T>({ columns, data, defaultSort, defaultDir = 'des
       })
     : data;
 
+  const totalPages = pageSize ? Math.ceil(sorted.length / pageSize) : 1;
+  const rows = pageSize ? sorted.slice(page * pageSize, (page + 1) * pageSize) : sorted;
+
   return (
     <div style={{ overflowX: 'auto' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
@@ -52,19 +73,25 @@ export function SortableTable<T>({ columns, data, defaultSort, defaultDir = 'des
                 style={{
                   padding: '10px 14px',
                   textAlign: c.align ?? 'left',
-                  background: '#f9fafb',
-                  borderBottom: '2px solid #e5e7eb',
+                  background: 'var(--bg-lighter)',
+                  borderBottom: '2px solid var(--border)',
                   fontWeight: 700,
-                  fontSize: '0.78rem',
+                  fontSize: '0.75rem',
                   textTransform: 'uppercase',
-                  letterSpacing: '0.04em',
+                  letterSpacing: '0.08em',
                   cursor: c.sortValue ? 'pointer' : 'default',
                   whiteSpace: 'nowrap',
                   userSelect: 'none',
-                  color: sortKey === c.key ? '#1a1a2e' : '#6b7280',
+                  color: sortKey === c.key ? 'var(--secondary)' : 'var(--text-muted)',
+                  fontFamily: 'Chakra Petch, sans-serif',
                 }}
               >
-                {c.label}
+                {c.tooltip ? (
+                  <Tooltip text={c.tooltip}>
+                    {c.label}
+                    <span className="tooltip-icon">i</span>
+                  </Tooltip>
+                ) : c.label}
                 {c.sortValue && sortKey === c.key && (
                   <span style={{ marginLeft: 4 }}>{dir === 'desc' ? '↓' : '↑'}</span>
                 )}
@@ -73,16 +100,17 @@ export function SortableTable<T>({ columns, data, defaultSort, defaultDir = 'des
           </tr>
         </thead>
         <tbody>
-          {sorted.map((row) => (
+          {rows.map((row) => (
             <tr
               key={rowKey(row)}
               onClick={() => onRowClick?.(row)}
               style={{
                 cursor: onRowClick ? 'pointer' : 'default',
-                borderBottom: '1px solid #f3f4f6',
+                borderBottom: '1px solid var(--border)',
+                transition: 'background 0.15s',
               }}
               onMouseEnter={(e) => {
-                if (onRowClick) (e.currentTarget as HTMLTableRowElement).style.background = '#f9fafb';
+                if (onRowClick) (e.currentTarget as HTMLTableRowElement).style.background = 'var(--bg-lighter)';
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLTableRowElement).style.background = '';
@@ -104,6 +132,17 @@ export function SortableTable<T>({ columns, data, defaultSort, defaultDir = 'des
           ))}
         </tbody>
       </table>
+      {pageSize && totalPages > 1 && (
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '12px 16px', borderTop: '1px solid var(--border)' }}>
+          <button style={btnStyle(false, page === 0)} disabled={page === 0} onClick={() => setPage(0)}>«</button>
+          <button style={btnStyle(false, page === 0)} disabled={page === 0} onClick={() => setPage((p) => p - 1)}>‹</button>
+          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontFamily: 'Chakra Petch, sans-serif', minWidth: 80, textAlign: 'center' }}>
+            {page + 1} / {totalPages}
+          </span>
+          <button style={btnStyle(false, page === totalPages - 1)} disabled={page === totalPages - 1} onClick={() => setPage((p) => p + 1)}>›</button>
+          <button style={btnStyle(false, page === totalPages - 1)} disabled={page === totalPages - 1} onClick={() => setPage(totalPages - 1)}>»</button>
+        </div>
+      )}
     </div>
   );
 }

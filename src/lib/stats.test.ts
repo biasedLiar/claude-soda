@@ -34,15 +34,15 @@ const fixture: DbData = {
     { competitionId: 2, sodaId: 2 },
   ],
   guesses: [
-    // Competition 1, Alice: 2/3 correct
+    // Competition 1 (N=3), Alice: 2/3 correct
     { id: 1, score: 8, playerId: 1, guessedSodaId: 1, actualSodaId: 1, competitionId: 1 },
     { id: 2, score: 6, playerId: 1, guessedSodaId: 2, actualSodaId: 2, competitionId: 1 },
     { id: 3, score: 4, playerId: 1, guessedSodaId: 1, actualSodaId: 3, competitionId: 1 }, // wrong (confused 3 for 1)
-    // Competition 1, Bob: 1/3 correct
+    // Competition 1 (N=3), Bob: 1/3 correct
     { id: 4, score: 7, playerId: 2, guessedSodaId: 1, actualSodaId: 1, competitionId: 1 },
     { id: 5, score: 3, playerId: 2, guessedSodaId: 1, actualSodaId: 2, competitionId: 1 }, // wrong (confused 2 for 1)
     { id: 6, score: 5, playerId: 2, guessedSodaId: 1, actualSodaId: 3, competitionId: 1 }, // wrong (confused 3 for 1)
-    // Competition 2, Alice only: 1/2 correct
+    // Competition 2 (N=2), Alice only: 1/2 correct
     { id: 7, score: 9, playerId: 1, guessedSodaId: 1, actualSodaId: 1, competitionId: 2 },
     { id: 8, score: 5, playerId: 1, guessedSodaId: 1, actualSodaId: 2, competitionId: 2 }, // wrong
   ],
@@ -104,6 +104,20 @@ describe('playerStats', () => {
     const stats = playerStats(1, fixture)!;
     expect(stats.avgTasteGiven).toBeCloseTo(6.4);
   });
+
+  it('calculates Alice adjustedAccuracy correctly', () => {
+    const stats = playerStats(1, fixture)!;
+    // Comp1 (N=3): 2/3 correct, chance=1/3, adj=(2/3-1/3)/(2/3)=0.5
+    // Comp2 (N=2): 1/2 correct, chance=1/2, adj=(1/2-1/2)/(1/2)=0
+    // avg = 0.25
+    expect(stats.adjustedAccuracy).toBe(0.25);
+  });
+
+  it('calculates Bob adjustedAccuracy correctly', () => {
+    const stats = playerStats(2, fixture)!;
+    // Comp1 (N=3): 1/3 correct, chance=1/3, adj=0 (exactly at chance)
+    expect(stats.adjustedAccuracy).toBe(0);
+  });
 });
 
 describe('playerCompetitionHistory', () => {
@@ -118,6 +132,14 @@ describe('playerCompetitionHistory', () => {
     const history = playerCompetitionHistory(1, fixture);
     expect(history[0].accuracy).toBeCloseTo(0.67, 1); // 2/3
     expect(history[1].accuracy).toBe(0.5); // 1/2
+  });
+
+  it('calculates per-competition adjustedAccuracy', () => {
+    const history = playerCompetitionHistory(1, fixture);
+    // Comp1 (N=3): 2/3 correct → adj=0.5
+    expect(history[0].adjustedAccuracy).toBe(0.5);
+    // Comp2 (N=2): 1/2 correct → adj=0
+    expect(history[1].adjustedAccuracy).toBe(0);
   });
 
   it('returns empty array for player with no guesses', () => {
@@ -140,17 +162,45 @@ describe('sodaStats', () => {
     expect(stats.appearances).toBe(2);
   });
 
-  it('calculates top confusions for Cola C (id=3)', () => {
-    const stats = sodaStats(3, fixture)!;
-    // Soda 3 was guessed as soda 1 by both Alice (id 3) and Bob (id 6)
-    expect(stats.topConfusions).toHaveLength(1);
-    expect(stats.topConfusions[0].soda.id).toBe(1);
-    expect(stats.topConfusions[0].count).toBe(2);
+  it('calculates Cola A adjustedCorrectRate', () => {
+    const stats = sodaStats(1, fixture)!;
+    // Comp1 (N=3): 2/2 tasters correct → adj=1; Comp2 (N=2): 1/1 correct → adj=1
+    expect(stats.adjustedCorrectRate).toBe(1);
   });
 
-  it('returns empty confusions when never guessed wrong', () => {
+  it('calculates Cola C adjustedCorrectRate', () => {
+    const stats = sodaStats(3, fixture)!;
+    // Cola C only in Comp1 (N=3): 0/2 correct, chance=1/3, adj=(0-1/3)/(2/3)=-0.5
+    expect(stats.adjustedCorrectRate).toBe(-0.5);
+  });
+
+  it('calculates avgTasteWhenGuessed for Cola A', () => {
     const stats = sodaStats(1, fixture)!;
-    expect(stats.topConfusions).toHaveLength(0);
+    // Guesses where guessedSodaId=1: ids 1,3,4,5,6,7,8 → scores 8,4,7,3,5,9,5 → avg=41/7≈5.86
+    expect(stats.avgTasteWhenGuessed).toBeCloseTo(5.86, 1);
+  });
+
+  it('calculates confusedWith for Cola C (id=3)', () => {
+    const stats = sodaStats(3, fixture)!;
+    // Soda 3 was guessed as soda 1 by both Alice (id 3) and Bob (id 6)
+    expect(stats.confusedWith).toHaveLength(1);
+    expect(stats.confusedWith[0].soda.id).toBe(1);
+    expect(stats.confusedWith[0].count).toBe(2);
+  });
+
+  it('calculates guessedAs for Cola A (id=1)', () => {
+    const stats = sodaStats(1, fixture)!;
+    // guessedSodaId=1 but actualSodaId !== 1: ids 3(actual=3), 5(actual=2), 6(actual=3), 8(actual=2)
+    // actual=3: count 2, actual=2: count 2
+    expect(stats.guessedAs).toHaveLength(2);
+    const counts = new Map(stats.guessedAs.map((g) => [g.soda.id, g.count]));
+    expect(counts.get(2)).toBe(2);
+    expect(counts.get(3)).toBe(2);
+  });
+
+  it('returns empty confusedWith when never guessed wrong', () => {
+    const stats = sodaStats(1, fixture)!;
+    expect(stats.confusedWith).toHaveLength(0);
   });
 });
 
