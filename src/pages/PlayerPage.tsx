@@ -181,7 +181,7 @@ export function PlayerPage() {
         <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden' }}>
           <SortableTable
             rowKey={(r) => r.soda.id}
-            defaultSort="total"
+            defaultSort="avgTaste"
             defaultDir="desc"
             onRowClick={(r) => navigate(`/sodas/${r.soda.id}`)}
             data={sodaRows}
