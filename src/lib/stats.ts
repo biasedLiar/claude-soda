@@ -46,7 +46,7 @@ export function globalStats(data: DbData): GlobalStats {
     .slice(0, 3)
     .map(({ soda, avgTaste }) => ({ soda, avgTaste }));
 
-  const byRate = [...sodaRates].sort((a, b) => b.correctRate - a.correctRate);
+  const byRate = [...sodaRates].sort((a, b) => b.correctRate - a.correctRate || a.guesses - b.guesses);
   const mostAccurate = byRate.slice(0, 3).map(({ soda, correctRate, guesses }) => ({ soda, correctRate, guesses }));
   const leastAccurate = [...byRate].reverse().slice(0, 3).map(({ soda, correctRate, guesses }) => ({ soda, correctRate, guesses }));
 
