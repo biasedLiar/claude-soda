@@ -212,6 +212,7 @@ export function PlayerPage() {
             defaultSort="avgTaste"
             defaultDir="desc"
             onRowClick={(r) => navigate(`/sodas/${r.soda.id}`)}
+            pageSize={10}
             data={sodaRows}
             columns={[
               {
