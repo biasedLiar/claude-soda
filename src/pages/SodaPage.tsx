@@ -99,8 +99,8 @@ export function SodaPage() {
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
         <StatCard label="Avg Taste Rating" value={`★ ${rating(stats.avgTaste)}`} accent />
         <StatCard label="Avg Rating When Guessed" value={stats.totalGuesses > 0 ? `★ ${rating(stats.avgTasteWhenGuessed)}` : '—'} tooltip={AVG_TASTE_WHEN_GUESSED_TOOLTIP} />
-        <StatCard label="ID Rate" value={stats.totalGuesses > 0 ? pct(stats.correctRate) : '—'} tooltip={ID_RATE_TOOLTIP} />
-        <StatCard label="Adjusted ID Rate" value={stats.totalGuesses > 0 ? pct(stats.adjustedCorrectRate) : '—'} tooltip={ADJUSTED_ID_RATE_TOOLTIP} />
+        <StatCard label="Accuracy" value={stats.totalGuesses > 0 ? pct(stats.correctRate) : '—'} tooltip={ID_RATE_TOOLTIP} />
+        <StatCard label="Adjusted Accuracy" value={stats.totalGuesses > 0 ? pct(stats.adjustedCorrectRate) : '—'} tooltip={ADJUSTED_ID_RATE_TOOLTIP} />
         <StatCard label="Times tasted" value={stats.totalGuesses} />
         <StatCard label="Events" value={stats.appearances} />
       </div>
@@ -128,7 +128,7 @@ export function SodaPage() {
       {idChartData.length > 1 && (
         <section>
           <h2 style={{ margin: '0 0 16px', fontSize: '1rem' }}>
-            <InfoTooltip text={ADJUSTED_ID_RATE_TOOLTIP}>Adjusted ID rate per competition<span className="tooltip-icon">i</span></InfoTooltip>
+            <InfoTooltip text={ADJUSTED_ID_RATE_TOOLTIP}>Adjusted Accuracy per competition<span className="tooltip-icon">i</span></InfoTooltip>
           </h2>
           <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 12, padding: '20px 8px' }}>
             <ResponsiveContainer width="100%" height={200}>
@@ -137,7 +137,7 @@ export function SodaPage() {
                 <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#a0a0b8', fontFamily: 'Chakra Petch' }} />
                 <YAxis tickFormatter={(v) => `${v}%`} tick={{ fontSize: 11, fill: '#a0a0b8', fontFamily: 'Chakra Petch' }} />
                 <ReferenceLine y={0} stroke="#ff006e" strokeWidth={2} strokeDasharray="6 3" />
-                <Tooltip formatter={(v) => [`${v}%`, 'Adjusted ID Rate']} contentStyle={tooltipStyle} />
+                <Tooltip formatter={(v) => [`${v}%`, 'Adjusted Accuracy']} contentStyle={tooltipStyle} />
                 <Line type="monotone" dataKey="adjRate" stroke="#00ffff" strokeWidth={2} dot={{ r: 4, fill: '#00ffff' }} activeDot={{ r: 6 }} />
               </LineChart>
             </ResponsiveContainer>

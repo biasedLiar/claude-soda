@@ -1,21 +1,14 @@
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link, Navigate, useNavigate } from 'react-router-dom';
 import { StatCard } from '../components/StatCard';
 import { ColorBadge } from '../components/ColorBadge';
+import { SortableTable } from '../components/SortableTable';
 import { competitionLeaderboard, competitionSodaStats } from '../lib/stats';
 import { db, formatDate, pct, rating } from '../lib/data';
-
-const thStyle: React.CSSProperties = {
-  padding: '10px 14px',
-  fontWeight: 700,
-  fontSize: '0.75rem',
-  textTransform: 'uppercase',
-  letterSpacing: '0.08em',
-  color: 'var(--text-muted)',
-  background: 'var(--bg-lighter)',
-};
+import type { RankedPlayer, CompetitionSodaStat } from '../lib/types';
 
 export function EventPage() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const compId = Number(id);
   const competition = db.competitions.find((c) => c.id === compId);
 
@@ -47,83 +40,120 @@ export function EventPage() {
       <section>
         <h2 style={{ margin: '0 0 16px', fontSize: '1rem' }}>Leaderboard</h2>
         <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden' }}>
-          <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
-            <thead>
-              <tr style={{ borderBottom: '2px solid var(--border)' }}>
-                <th style={{ ...thStyle, textAlign: 'left' }}>Rank</th>
-                <th style={{ ...thStyle, textAlign: 'left' }}>Player</th>
-                <th style={{ ...thStyle, textAlign: 'right' }}>Correct</th>
-                <th style={{ ...thStyle, textAlign: 'right' }}>Accuracy</th>
-                <th style={{ ...thStyle, textAlign: 'right' }}>Avg Taste Given</th>
-              </tr>
-            </thead>
-            <tbody>
-              {leaderboard.map((r) => (
-                <tr
-                  key={r.player.id}
-                  style={{
-                    borderBottom: '1px solid var(--border)',
-                    background: r.rank === 1 ? 'rgba(0, 255, 255, 0.05)' : undefined,
-                    borderLeft: r.rank === 1 ? '2px solid var(--secondary)' : undefined,
-                  }}
-                >
-                  <td style={{ padding: '12px 14px', fontWeight: 700, fontSize: '1.1rem', color: r.rank === 1 ? 'var(--secondary)' : 'var(--text-muted)' }}>
+          <SortableTable<RankedPlayer>
+            rowKey={(r) => r.player.id}
+            defaultSort="accuracy"
+            defaultDir="desc"
+            onRowClick={(r) => navigate(`/players/${r.player.id}`)}
+            data={leaderboard}
+            columns={[
+              {
+                key: 'rank',
+                label: 'Rank',
+                render: (r) => (
+                  <span style={{ fontWeight: 700, fontSize: '1.1rem', color: r.rank === 1 && leaderboard.length > 1 ? 'var(--secondary)' : 'var(--text-muted)' }}>
                     {r.rank === 1 && leaderboard.length > 1 ? '🏆' : r.rank}
-                  </td>
-                  <td style={{ padding: '12px 14px' }}>
-                    <Link to={`/players/${r.player.id}`} style={{ color: 'var(--text)', fontWeight: 600 }}>
-                      {r.player.name}
-                    </Link>
-                  </td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', color: 'var(--text-muted)' }}>{r.correct} / {r.guesses}</td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', fontWeight: 700, color: r.accuracy >= 0.2 ? 'var(--cta)' : 'var(--primary)' }}>
+                  </span>
+                ),
+                sortValue: (r) => r.rank,
+              },
+              {
+                key: 'player',
+                label: 'Player',
+                render: (r) => (
+                  <Link to={`/players/${r.player.id}`} style={{ color: 'var(--text)', fontWeight: 600 }}>
+                    {r.player.name}
+                  </Link>
+                ),
+                sortValue: (r) => r.player.name,
+              },
+              {
+                key: 'correct',
+                label: 'Correct',
+                align: 'right',
+                render: (r) => <span style={{ color: 'var(--text-muted)' }}>{r.correct} / {r.guesses}</span>,
+                sortValue: (r) => r.correct,
+              },
+              {
+                key: 'accuracy',
+                label: 'Accuracy',
+                align: 'right',
+                render: (r) => (
+                  <span style={{ fontWeight: 700, color: r.accuracy >= 0.2 ? 'var(--cta)' : 'var(--primary)' }}>
                     {pct(r.accuracy)}
-                  </td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', color: 'var(--secondary)' }}>★ {rating(r.avgTaste)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          </div>
+                  </span>
+                ),
+                sortValue: (r) => r.accuracy,
+              },
+              {
+                key: 'avgTaste',
+                label: 'Avg Taste Given',
+                align: 'right',
+                render: (r) => <span style={{ color: 'var(--secondary)' }}>★ {rating(r.avgTaste)}</span>,
+                sortValue: (r) => r.avgTaste,
+              },
+            ]}
+          />
         </div>
       </section>
 
       <section>
         <h2 style={{ margin: '0 0 16px', fontSize: '1rem' }}>Sodas in this event</h2>
         <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden' }}>
-          <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
-            <thead>
-              <tr style={{ borderBottom: '2px solid var(--border)' }}>
-                <th style={{ ...thStyle, textAlign: 'left' }}>Soda</th>
-                <th style={{ ...thStyle, textAlign: 'left' }}>Color</th>
-                <th style={{ ...thStyle, textAlign: 'right' }}>Tasters</th>
-                <th style={{ ...thStyle, textAlign: 'right' }}>ID Rate</th>
-                <th style={{ ...thStyle, textAlign: 'right' }}>Avg Taste</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sodaStats.map((s) => (
-                <tr key={s.soda.id} style={{ borderBottom: '1px solid var(--border)' }}>
-                  <td style={{ padding: '12px 14px' }}>
-                    <Link to={`/sodas/${s.soda.id}`} style={{ color: 'var(--text)', fontWeight: 600 }}>
-                      {s.soda.name}
-                    </Link>
-                  </td>
-                  <td style={{ padding: '12px 14px' }}><ColorBadge color={s.soda.color} /></td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', color: 'var(--text-muted)' }}>{s.guesses}</td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', fontWeight: 700, color: s.correctRate >= 0.2 ? 'var(--cta)' : 'var(--primary)' }}>
-                    {s.guesses > 0 ? pct(s.correctRate) : '—'}
-                  </td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', color: 'var(--secondary)' }}>
-                    {s.avgTaste > 0 ? `★ ${rating(s.avgTaste)}` : '—'}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          </div>
+          <SortableTable<CompetitionSodaStat>
+            rowKey={(r) => r.soda.id}
+            defaultSort="correctRate"
+            defaultDir="desc"
+            onRowClick={(r) => navigate(`/sodas/${r.soda.id}`)}
+            data={sodaStats}
+            columns={[
+              {
+                key: 'soda',
+                label: 'Soda',
+                render: (r) => (
+                  <Link to={`/sodas/${r.soda.id}`} style={{ color: 'var(--text)', fontWeight: 600 }}>
+                    {r.soda.name}
+                  </Link>
+                ),
+                sortValue: (r) => r.soda.name,
+              },
+              {
+                key: 'color',
+                label: 'Color',
+                render: (r) => <ColorBadge color={r.soda.color} />,
+                sortValue: (r) => r.soda.color,
+              },
+              {
+                key: 'guesses',
+                label: 'Tasters',
+                align: 'right',
+                render: (r) => <span style={{ color: 'var(--text-muted)' }}>{r.guesses}</span>,
+                sortValue: (r) => r.guesses,
+              },
+              {
+                key: 'correctRate',
+                label: 'Accuracy',
+                align: 'right',
+                render: (r) => (
+                  <span style={{ fontWeight: 700, color: r.correctRate >= 0.2 ? 'var(--cta)' : 'var(--primary)' }}>
+                    {r.guesses > 0 ? pct(r.correctRate) : '—'}
+                  </span>
+                ),
+                sortValue: (r) => r.correctRate,
+              },
+              {
+                key: 'avgTaste',
+                label: 'Avg Taste',
+                align: 'right',
+                render: (r) => (
+                  <span style={{ color: 'var(--secondary)' }}>
+                    {r.avgTaste > 0 ? `★ ${rating(r.avgTaste)}` : '—'}
+                  </span>
+                ),
+                sortValue: (r) => r.avgTaste,
+              },
+            ]}
+          />
         </div>
       </section>
     </div>

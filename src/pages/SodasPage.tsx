@@ -11,30 +11,24 @@ const allSodas = allSodasSummary(db);
 const colors = ['All', ...Array.from(new Set(db.sodas.map((s) => s.color))).sort()];
 
 const sodaMap = new Map(db.sodas.map((s) => [s.id, s]));
-const mistakeCounts = new Map<string, number>();
+const mistakeCounts = new Map<string, { count: number; totalScore: number }>();
 for (const g of db.guesses) {
   if (g.guessedSodaId === g.actualSodaId) continue;
   const key = `${g.actualSodaId}:${g.guessedSodaId}`;
-  mistakeCounts.set(key, (mistakeCounts.get(key) ?? 0) + 1);
+  const entry = mistakeCounts.get(key) ?? { count: 0, totalScore: 0 };
+  entry.count++;
+  entry.totalScore += g.score;
+  mistakeCounts.set(key, entry);
 }
 const topMistakes = [...mistakeCounts.entries()]
-  .sort(([, a], [, b]) => b - a)
+  .sort(([, a], [, b]) => b.count - a.count)
   .slice(0, 10)
-  .map(([key, count]) => {
+  .map(([key, { count, totalScore }]) => {
     const [actualId, guessedId] = key.split(':').map(Number);
-    return { actual: sodaMap.get(actualId)!, guessed: sodaMap.get(guessedId)!, count };
+    return { actual: sodaMap.get(actualId)!, guessed: sodaMap.get(guessedId)!, count, avgTaste: totalScore / count };
   })
   .filter((r) => r.actual && r.guessed);
 
-const thStyle: React.CSSProperties = {
-  padding: '10px 14px',
-  fontWeight: 700,
-  fontSize: '0.75rem',
-  textTransform: 'uppercase',
-  letterSpacing: '0.08em',
-  color: 'var(--text-muted)',
-  background: 'var(--bg-lighter)',
-};
 
 export function SodasPage() {
   const navigate = useNavigate();
@@ -110,7 +104,7 @@ export function SodasPage() {
             },
             {
               key: 'correctRate',
-              label: 'ID Rate',
+              label: 'Accuracy',
               tooltip: ID_RATE_TOOLTIP,
               align: 'right',
               render: (r) => (
@@ -122,7 +116,7 @@ export function SodasPage() {
             },
             {
               key: 'adjustedCorrectRate',
-              label: 'Adjusted ID Rate',
+              label: 'Adjusted Accuracy',
               tooltip: ADJUSTED_ID_RATE_TOOLTIP,
               align: 'right',
               render: (r) => (
@@ -139,31 +133,46 @@ export function SodasPage() {
       <section style={{ marginTop: 40 }}>
         <h2 style={{ margin: '0 0 16px', fontSize: '1rem' }}>Most common mistakes</h2>
         <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden' }}>
-          <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
-            <thead>
-              <tr style={{ borderBottom: '2px solid var(--border)' }}>
-                <th style={{ ...thStyle, textAlign: 'left' }}>Actual soda</th>
-                <th style={{ ...thStyle, textAlign: 'left' }}>Guessed as</th>
-                <th style={{ ...thStyle, textAlign: 'right' }}>Times</th>
-              </tr>
-            </thead>
-            <tbody>
-              {topMistakes.map((r) => (
-                <tr key={`${r.actual.id}:${r.guessed.id}`} style={{ borderBottom: '1px solid var(--border)' }}>
-                  <td style={{ padding: '12px 14px', display: 'flex', alignItems: 'center', gap: 10 }}>
+          <SortableTable
+            rowKey={(r) => `${r.actual.id}:${r.guessed.id}`}
+            defaultSort="count"
+            defaultDir="desc"
+            onRowClick={(r) => navigate(`/sodas/${r.actual.id}`)}
+            data={topMistakes}
+            columns={[
+              {
+                key: 'actual',
+                label: 'Actual soda',
+                render: (r) => (
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                     <ColorBadge color={r.actual.color} />
                     <Link to={`/sodas/${r.actual.id}`} style={{ color: 'var(--text)', fontWeight: 500 }}>{r.actual.name}</Link>
-                  </td>
-                  <td style={{ padding: '12px 14px' }}>
-                    <Link to={`/sodas/${r.guessed.id}`} style={{ color: 'var(--text-muted)' }}>{r.guessed.name}</Link>
-                  </td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', fontWeight: 700, color: 'var(--primary)' }}>{r.count}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          </div>
+                  </span>
+                ),
+                sortValue: (r) => r.actual.name,
+              },
+              {
+                key: 'guessed',
+                label: 'Guessed as',
+                render: (r) => <Link to={`/sodas/${r.guessed.id}`} style={{ color: 'var(--text-muted)' }}>{r.guessed.name}</Link>,
+                sortValue: (r) => r.guessed.name,
+              },
+              {
+                key: 'count',
+                label: 'Times',
+                align: 'right',
+                render: (r) => <span style={{ fontWeight: 700, color: 'var(--primary)' }}>{r.count}</span>,
+                sortValue: (r) => r.count,
+              },
+              {
+                key: 'avgTaste',
+                label: 'Avg Taste',
+                align: 'right',
+                render: (r) => <span style={{ color: 'var(--secondary)' }}>★ {rating(r.avgTaste)}</span>,
+                sortValue: (r) => r.avgTaste,
+              },
+            ]}
+          />
         </div>
       </section>
     </div>

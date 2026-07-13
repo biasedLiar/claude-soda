@@ -113,7 +113,15 @@ export function playerCompetitionHistory(playerId: number, data: DbData): Player
       adjustedAccuracy: adjustedRate(correct, guesses.length, N),
       avgTaste: round2(avg(guesses.map((g) => g.score))),
     };
-  }).sort((a, b) => a.competition.id - b.competition.id);
+  }).sort((a, b) => {
+    const a2020 = /2020/.test(a.competition.name);
+    const b2020 = /2020/.test(b.competition.name);
+    if (a2020 !== b2020) return a2020 ? 1 : -1;
+    const aYear = parseInt(/(\d{4})/.exec(a.competition.name)?.[1] ?? '0');
+    const bYear = parseInt(/(\d{4})/.exec(b.competition.name)?.[1] ?? '0');
+    if (aYear !== bYear) return bYear - aYear;
+    return b.competition.name.localeCompare(a.competition.name);
+  });
 }
 
 export function sodaStats(id: number, data: DbData): SodaStats | null {

@@ -88,26 +88,20 @@ const compScatter = sortedComps.map((comp) => {
   const N = db.competitionSodas.filter((cs) => cs.competitionId === comp.id).length;
   const compGuesses = db.guesses.filter((g) => g.competitionId === comp.id);
   const playerIds = [...new Set(compGuesses.map((g) => g.playerId))];
-  const accPerPlayer = playerIds.map((pid) => {
-    const pg = compGuesses.filter((g) => g.playerId === pid);
-    if (pg.length === 0) return 0;
-    const correct = pg.filter((g) => g.guessedSodaId === g.actualSodaId).length;
-    return correct / pg.length;
-  });
-  return { name: shortName(comp), sodaCount: N, avgAccuracy: Math.round(avg(accPerPlayer) * 100) };
-}).filter((d) => d.sodaCount > 0);
-
-// Line chart data: soda taste over time
-const sodaLines = db.sodas.filter(
-  (s) => db.competitionSodas.filter((cs) => cs.sodaId === s.id).length >= 2
-);
-
+  if (playerIds.length === 0) return null;
+  const correct = compGuesses.filter((g) => g.guessedSodaId === g.actualSodaId).length;
+  const avgCorrect = Math.round((correct / playerIds.length) * 10) / 10;
+  return { name: shortName(comp), sodaCount: N, avgCorrect };
+}).filter((d): d is NonNullable<typeof d> => d !== null && d.sodaCount > 0);
 
 // Line chart data: player accuracy over time
 const activePlayers = db.players.filter((p) => {
   const compIds = new Set(db.guesses.filter((g) => g.playerId === p.id).map((g) => g.competitionId));
   return compIds.size >= 2;
 });
+
+// Fast attendance lookup
+const playerCompAttendance = new Set(db.guesses.map((g) => `${g.playerId}:${g.competitionId}`));
 
 // Group competitions by short name so same-label events are merged into one data point
 const compGroups: Array<{ label: string; ids: number[] }> = [];
@@ -123,6 +117,13 @@ for (const comp of sortedComps) {
   }
 }
 
+// Line chart data: soda taste over time
+const sodaLines = db.sodas.filter((s) => {
+  const sodaCompIds = new Set(
+    db.competitionSodas.filter((cs) => cs.sodaId === s.id).map((cs) => cs.competitionId)
+  );
+  return compGroups.filter(({ ids }) => ids.some((id) => sodaCompIds.has(id))).length >= 3;
+});
 
 const sodaTasteData = compGroups.map(({ label, ids }) => {
   const row: Record<string, unknown> = { name: label };
@@ -133,7 +134,24 @@ const sodaTasteData = compGroups.map(({ label, ids }) => {
   return row;
 });
 
-const playerAccuracyData = compGroups.map(({ label, ids }) => {
+// Gap endpoints: compGroup indices where a player has a gap just before or after
+const playerGapEndpoints = new Map<number, Set<number>>();
+for (const player of activePlayers) {
+  const attendedIdxs = compGroups
+    .map(({ ids }, idx) => ({ idx, attended: ids.some((cid) => playerCompAttendance.has(`${player.id}:${cid}`)) }))
+    .filter((x) => x.attended)
+    .map((x) => x.idx);
+  const endpoints = new Set<number>();
+  for (let k = 0; k + 1 < attendedIdxs.length; k++) {
+    if (attendedIdxs[k + 1] > attendedIdxs[k] + 1) {
+      endpoints.add(attendedIdxs[k]);
+      endpoints.add(attendedIdxs[k + 1]);
+    }
+  }
+  playerGapEndpoints.set(player.id, endpoints);
+}
+
+const playerAccuracyData = compGroups.map(({ label, ids }, idx) => {
   const yearMatch = /(\d{4})/.exec(label);
   const year = yearMatch ? parseInt(yearMatch[1]) : 0;
   const row: Record<string, unknown> = { name: label, year };
@@ -143,7 +161,28 @@ const playerAccuracyData = compGroups.map(({ label, ids }) => {
     );
     if (allGs.length === 0) continue;
     const correct = allGs.filter((g) => g.guessedSodaId === g.actualSodaId).length;
-    row[`p${player.id}`] = Math.round((correct / allGs.length) * 100);
+    row[`p${player.id}`] = correct;
+    if (playerGapEndpoints.get(player.id)?.has(idx)) {
+      row[`gap_p${player.id}`] = correct;
+    }
+  }
+  return row;
+});
+
+const playerTasteData = compGroups.map(({ label, ids }, idx) => {
+  const yearMatch = /(\d{4})/.exec(label);
+  const year = yearMatch ? parseInt(yearMatch[1]) : 0;
+  const row: Record<string, unknown> = { name: label, year };
+  for (const player of activePlayers) {
+    const allGs = ids.flatMap((compId) =>
+      db.guesses.filter((g) => g.playerId === player.id && g.competitionId === compId)
+    );
+    if (allGs.length === 0) continue;
+    const avgTaste = Math.round(avg(allGs.map((g) => g.score)) * 100) / 100;
+    row[`pt${player.id}`] = avgTaste;
+    if (playerGapEndpoints.get(player.id)?.has(idx)) {
+      row[`gap_pt${player.id}`] = avgTaste;
+    }
   }
   return row;
 });
@@ -188,7 +227,7 @@ function SodaAdjTip({ active, payload }: { active?: boolean; payload?: Array<{ p
     <div style={tooltipStyle}>
       <div style={{ fontWeight: 700, marginBottom: 4 }}>{d.name}</div>
       <div>Avg taste: {d.taste}</div>
-      <div>Adjusted ID Rate: {d.adjRate}%</div>
+      <div>Adjusted Accuracy: {d.adjRate}%</div>
     </div>
   );
 }
@@ -213,31 +252,30 @@ function SodaTasteTip({ active, payload, label, activeKey }: LineTipProps) {
   );
 }
 
-function PlayerAccuracyTip({ active, payload, label, activeKey }: LineTipProps) {
+function PlayerAccuracyTip({ active, payload, label }: LineTipProps) {
   if (!active || !payload?.length) return null;
-  let entries = payload.filter((e) => e.value !== undefined && !String(e.dataKey).startsWith('gap_'));
-  if (activeKey) entries = entries.filter((e) => e.dataKey === activeKey);
+  const entries = payload.filter((e) => e.value !== undefined && !String(e.dataKey).startsWith('gap_'));
   if (entries.length === 0) return null;
   return (
     <div style={tooltipStyle}>
       <div style={{ fontWeight: 700, marginBottom: 6 }}>{label}</div>
       {entries.map((e) => (
         <div key={e.dataKey} style={{ color: e.color, marginBottom: 2 }}>
-          {e.name}: {e.value}%
+          {e.name}: {e.value}
         </div>
       ))}
     </div>
   );
 }
 
-function CompScatterTip({ active, payload }: { active?: boolean; payload?: Array<{ payload: { name: string; sodaCount: number; avgAccuracy: number } }> }) {
+function CompScatterTip({ active, payload }: { active?: boolean; payload?: Array<{ payload: { name: string; sodaCount: number; avgCorrect: number } }> }) {
   if (!active || !payload?.length) return null;
   const d = payload[0].payload;
   return (
     <div style={tooltipStyle}>
       <div style={{ fontWeight: 700, marginBottom: 4 }}>{d.name}</div>
       <div>Sodas: {d.sodaCount}</div>
-      <div>Avg Accuracy: {d.avgAccuracy}%</div>
+      <div>Avg correct per player: {d.avgCorrect}</div>
     </div>
   );
 }
@@ -255,9 +293,42 @@ const cardStyle: React.CSSProperties = {
 
 const legendStyle = { fontFamily: 'Chakra Petch', fontSize: '0.72rem', color: 'var(--text-muted)' };
 
+const selectStyle: React.CSSProperties = {
+  background: 'var(--bg-lighter)',
+  border: '1px solid var(--border)',
+  borderRadius: 6,
+  color: 'var(--text)',
+  padding: '6px 10px',
+  fontSize: '0.8rem',
+  fontFamily: 'Chakra Petch, sans-serif',
+  cursor: 'pointer',
+  marginBottom: 12,
+};
+
+function LineSelector({ options, value, onChange, placeholder }: {
+  options: Array<{ value: string; label: string }>;
+  value: string | null;
+  onChange: (v: string | null) => void;
+  placeholder: string;
+}) {
+  return (
+    <select
+      value={value ?? ''}
+      onChange={(e) => onChange(e.target.value || null)}
+      style={selectStyle}
+    >
+      <option value="">{placeholder}</option>
+      {options.map((o) => (
+        <option key={o.value} value={o.value}>{o.label}</option>
+      ))}
+    </select>
+  );
+}
+
 export function ChartsPage() {
   const [activeSodaKey, setActiveSodaKey] = useState<string | null>(null);
   const [activePlayerKey, setActivePlayerKey] = useState<string | null>(null);
+  const [activePlayerTasteKey, setActivePlayerTasteKey] = useState<string | null>(null);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 48 }}>
@@ -267,74 +338,144 @@ export function ChartsPage() {
       </div>
 
       <section style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
-        <h2 style={{ margin: 0, fontSize: '1rem' }}>Scatterplots</h2>
-
-        <div>
-          <h3 style={{ margin: '0 0 12px', fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-            Avg Taste vs. Perceived Taste
-          </h3>
-          <div style={cardStyle}>
-            <ResponsiveContainer width="100%" aspect={scatterAspect}>
-              <ScatterChart margin={{ left: 0, right: 24, top: 8, bottom: 8 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#2d2d4a" />
-                <XAxis dataKey="taste" name="Avg Taste" domain={tasteDomain} ticks={tasteTicks} type="number" {...axisProps} label={{ value: 'Avg Taste', position: 'insideBottom', offset: -2, fill: '#a0a0b8', fontSize: 11, fontFamily: 'Chakra Petch' }} />
-                <YAxis dataKey="perceivedTaste" name="Perceived Taste" domain={perceivedDomain} ticks={perceivedTicks} type="number" {...axisProps} label={{ value: 'Avg Rating When Guessed', angle: -90, position: 'insideLeft', fill: '#a0a0b8', fontSize: 11, fontFamily: 'Chakra Petch' }} />
-                <ZAxis range={[36, 36]} />
-                <Tooltip content={<SodaScatterTip />} />
-                <ReferenceLine segment={[{ x: diagMin, y: diagMin }, { x: diagMax, y: diagMax }]} stroke="#a0a0b8" strokeDasharray="4 4" strokeWidth={1} />
-                <Scatter data={sodaScatter} shape={<ScatterDot />} />
-              </ScatterChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-        <div>
-          <h3 style={{ margin: '0 0 12px', fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-            <InfoTooltip text={ADJUSTED_ID_RATE_TOOLTIP}>
-              Avg Taste vs. Adjusted ID Rate<span className="tooltip-icon">i</span>
-            </InfoTooltip>
-          </h3>
-          <div style={cardStyle}>
-            <ResponsiveContainer width="100%" aspect={1.3}>
-              <ScatterChart margin={{ left: 8, right: 24, top: 8, bottom: 8 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#2d2d4a" />
-                <XAxis dataKey="adjRate" name="Adjusted ID Rate" type="number" domain={adjRateDomain} ticks={adjRateTicks} tickFormatter={(v) => `${v}%`} {...axisProps} label={{ value: 'Adjusted ID Rate', position: 'insideBottom', offset: -2, fill: '#a0a0b8', fontSize: 11, fontFamily: 'Chakra Petch' }} />
-                <YAxis dataKey="taste" name="Avg Taste" type="number" domain={tasteAdjDomain} ticks={tasteAdjTicks} {...axisProps} label={{ value: 'Avg Taste', angle: -90, position: 'insideLeft', fill: '#a0a0b8', fontSize: 11, fontFamily: 'Chakra Petch' }} />
-                <ZAxis range={[36, 36]} />
-                <Tooltip content={<SodaAdjTip />} />
-                <ReferenceLine x={0} stroke="#ff006e" strokeWidth={2} strokeDasharray="6 3" />
-                <Scatter data={sodaScatter} shape={<ScatterDot />} />
-              </ScatterChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-        <div>
-          <h3 style={{ margin: '0 0 12px', fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-            Competition Difficulty (Sodas vs. Avg Accuracy)
-          </h3>
-          <div style={cardStyle}>
-            <ResponsiveContainer width="100%" height={280}>
-              <ScatterChart margin={{ left: 8, right: 24, top: 8, bottom: 8 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#2d2d4a" />
-                <XAxis dataKey="sodaCount" name="No. of Sodas" type="number" allowDecimals={false} {...axisProps} label={{ value: 'No. of Sodas', position: 'insideBottom', offset: -2, fill: '#a0a0b8', fontSize: 11, fontFamily: 'Chakra Petch' }} />
-                <YAxis dataKey="avgAccuracy" name="Avg Accuracy" type="number" domain={[0, 100]} tickFormatter={(v) => `${v}%`} {...axisProps} label={{ value: 'Avg Accuracy', angle: -90, position: 'insideLeft', fill: '#a0a0b8', fontSize: 11, fontFamily: 'Chakra Petch' }} />
-                <ZAxis range={[36, 36]} />
-                <Tooltip content={<CompScatterTip />} />
-                <Scatter data={compScatter} shape={<CompDot />} />
-              </ScatterChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-      </section>
-
-      <section style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
         <h2 style={{ margin: 0, fontSize: '1rem' }}>Over Time</h2>
 
         <div>
           <h3 style={{ margin: '0 0 12px', fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-            Soda Taste Over Competitions
+            Player Correct Guesses Over Competitions
           </h3>
+          <LineSelector
+            options={activePlayers.map((p) => ({ value: `p${p.id}`, label: p.name }))}
+            value={activePlayerKey}
+            onChange={setActivePlayerKey}
+            placeholder="All players"
+          />
+          <div style={cardStyle}>
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={playerAccuracyData} margin={{ left: 0, right: 24, top: 8, bottom: 8 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#2d2d4a" />
+                <XAxis type="number" dataKey="year" domain={playerYearDomain} ticks={playerYearTicks} tickFormatter={(v: number) => String(v)} {...axisProps} />
+                <YAxis allowDecimals={false} {...axisProps} />
+                <Tooltip content={(props) => <PlayerAccuracyTip {...(props as unknown as LineTipProps)} />} />
+                <Legend
+                  wrapperStyle={{ ...legendStyle, cursor: 'pointer' }}
+                  onMouseEnter={(data: { dataKey?: string | number | ((o: unknown) => unknown) }) => { if (typeof data.dataKey === 'string') setActivePlayerKey(data.dataKey); }}
+                  onMouseLeave={() => setActivePlayerKey(null)}
+                />
+                {activePlayers.flatMap((player, i) => {
+                  const key = `p${player.id}`;
+                  const gapKey = `gap_p${player.id}`;
+                  const color = PLAYER_PALETTE[i % PLAYER_PALETTE.length];
+                  const dim = activePlayerKey !== null && activePlayerKey !== key;
+                  const sw = activePlayerKey === key ? 3 : 2;
+                  return [
+                    <Line
+                      key={gapKey}
+                      type="monotone"
+                      dataKey={gapKey}
+                      stroke={color}
+                      strokeWidth={activePlayerKey === key ? 2 : 1}
+                      strokeDasharray="4 4"
+                      strokeOpacity={dim ? 0.05 : activePlayerKey === key ? 0.8 : 0.35}
+                      dot={false}
+                      activeDot={false}
+                      connectNulls={true}
+                      legendType="none"
+                    />,
+                    <Line
+                      key={player.id}
+                      type="monotone"
+                      dataKey={key}
+                      name={player.name}
+                      stroke={color}
+                      strokeWidth={sw}
+                      strokeOpacity={dim ? 0.15 : 1}
+                      dot={{ r: 4, fill: color, fillOpacity: dim ? 0.15 : 1 }}
+                      activeDot={{ r: 6 }}
+                      connectNulls={false}
+                      onMouseEnter={() => setActivePlayerKey(key)}
+                      onMouseLeave={() => setActivePlayerKey(null)}
+                    />,
+                  ];
+                })}
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        <div>
+          <h3 style={{ margin: '0 0 12px', fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+            Player Avg Taste Over Competitions
+          </h3>
+          <LineSelector
+            options={activePlayers.map((p) => ({ value: `pt${p.id}`, label: p.name }))}
+            value={activePlayerTasteKey}
+            onChange={setActivePlayerTasteKey}
+            placeholder="All players"
+          />
+          <div style={cardStyle}>
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={playerTasteData} margin={{ left: 0, right: 24, top: 8, bottom: 8 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#2d2d4a" />
+                <XAxis type="number" dataKey="year" domain={playerYearDomain} ticks={playerYearTicks} tickFormatter={(v: number) => String(v)} {...axisProps} />
+                <YAxis domain={[0, 10]} {...axisProps} />
+                <Tooltip content={(props) => <PlayerAccuracyTip {...(props as unknown as LineTipProps)} />} />
+                <Legend
+                  wrapperStyle={{ ...legendStyle, cursor: 'pointer' }}
+                  onMouseEnter={(data: { dataKey?: string | number | ((o: unknown) => unknown) }) => { if (typeof data.dataKey === 'string') setActivePlayerTasteKey(data.dataKey); }}
+                  onMouseLeave={() => setActivePlayerTasteKey(null)}
+                />
+                {activePlayers.flatMap((player, i) => {
+                  const key = `pt${player.id}`;
+                  const gapKey = `gap_pt${player.id}`;
+                  const color = PLAYER_PALETTE[i % PLAYER_PALETTE.length];
+                  const dim = activePlayerTasteKey !== null && activePlayerTasteKey !== key;
+                  const sw = activePlayerTasteKey === key ? 3 : 2;
+                  return [
+                    <Line
+                      key={gapKey}
+                      type="monotone"
+                      dataKey={gapKey}
+                      stroke={color}
+                      strokeWidth={activePlayerTasteKey === key ? 2 : 1}
+                      strokeDasharray="4 4"
+                      strokeOpacity={dim ? 0.05 : activePlayerTasteKey === key ? 0.8 : 0.35}
+                      dot={false}
+                      activeDot={false}
+                      connectNulls={true}
+                      legendType="none"
+                    />,
+                    <Line
+                      key={key}
+                      type="monotone"
+                      dataKey={key}
+                      name={player.name}
+                      stroke={color}
+                      strokeWidth={sw}
+                      strokeOpacity={dim ? 0.15 : 1}
+                      dot={{ r: 4, fill: color, fillOpacity: dim ? 0.15 : 1 }}
+                      activeDot={{ r: 6 }}
+                      connectNulls={false}
+                      onMouseEnter={() => setActivePlayerTasteKey(key)}
+                      onMouseLeave={() => setActivePlayerTasteKey(null)}
+                    />,
+                  ];
+                })}
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        <div>
+          <h3 style={{ margin: '0 0 12px', fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+            Soda Taste Over Competitions (≥3 events)
+          </h3>
+          <LineSelector
+            options={sodaLines.map((s) => ({ value: `s${s.id}`, label: s.name }))}
+            value={activeSodaKey}
+            onChange={setActiveSodaKey}
+            placeholder="All sodas"
+          />
           <div style={cardStyle}>
             <ResponsiveContainer width="100%" height={480}>
               <LineChart data={sodaTasteData} margin={{ left: 0, right: 24, top: 8, bottom: 8 }}>
@@ -372,84 +513,65 @@ export function ChartsPage() {
             </ResponsiveContainer>
           </div>
         </div>
+      </section>
+
+      <section style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+        <h2 style={{ margin: 0, fontSize: '1rem' }}>Scatterplots</h2>
 
         <div>
           <h3 style={{ margin: '0 0 12px', fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-            Player Accuracy Over Competitions
+            Avg Taste vs. Perceived Taste
           </h3>
           <div style={cardStyle}>
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={playerAccuracyData} margin={{ left: 0, right: 24, top: 8, bottom: 8 }}>
+            <ResponsiveContainer width="100%" aspect={scatterAspect}>
+              <ScatterChart margin={{ left: 0, right: 24, top: 8, bottom: 8 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#2d2d4a" />
-                <XAxis type="number" dataKey="year" domain={playerYearDomain} ticks={playerYearTicks} tickFormatter={(v: number) => String(v)} {...axisProps} />
-                <YAxis domain={[0, 100]} tickFormatter={(v) => `${v}%`} {...axisProps} />
-                <Tooltip content={(props) => <PlayerAccuracyTip {...(props as unknown as LineTipProps)} activeKey={activePlayerKey} />} />
-                <Legend
-                  wrapperStyle={{ ...legendStyle, cursor: 'pointer' }}
-                  onMouseEnter={(data: { dataKey?: string | number | ((o: unknown) => unknown) }) => { if (typeof data.dataKey === 'string') setActivePlayerKey(data.dataKey); }}
-                  onMouseLeave={() => setActivePlayerKey(null)}
-                />
-                {activePlayers.flatMap((player, i) => {
-                  const key = `p${player.id}`;
-                  const gapKey = `gap_p${player.id}`;
-                  const color = PLAYER_PALETTE[i % PLAYER_PALETTE.length];
-                  const dim = activePlayerKey !== null && activePlayerKey !== key;
-                  const sw = activePlayerKey === key ? 3 : 2;
+                <XAxis dataKey="taste" name="Avg Taste" domain={tasteDomain} ticks={tasteTicks} type="number" {...axisProps} label={{ value: 'Avg Taste', position: 'insideBottom', offset: -2, fill: '#a0a0b8', fontSize: 11, fontFamily: 'Chakra Petch' }} />
+                <YAxis dataKey="perceivedTaste" name="Perceived Taste" domain={perceivedDomain} ticks={perceivedTicks} type="number" {...axisProps} label={{ value: 'Avg Rating When Guessed', angle: -90, position: 'insideLeft', fill: '#a0a0b8', fontSize: 11, fontFamily: 'Chakra Petch' }} />
+                <ZAxis range={[36, 36]} />
+                <Tooltip content={<SodaScatterTip />} />
+                <ReferenceLine segment={[{ x: diagMin, y: diagMin }, { x: diagMax, y: diagMax }]} stroke="#a0a0b8" strokeDasharray="4 4" strokeWidth={1} />
+                <Scatter data={sodaScatter} shape={<ScatterDot />} />
+              </ScatterChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
 
-                  // Find consecutive data points for this player where the year gap > 1.5
-                  const gapPairs: Array<[number, number]> = [];
-                  let lastIdx: number | null = null;
-                  for (let idx = 0; idx < playerAccuracyData.length; idx++) {
-                    if (playerAccuracyData[idx][key] !== undefined) {
-                      if (lastIdx !== null) {
-                        const yearGap = (playerAccuracyData[idx].year as number) - (playerAccuracyData[lastIdx].year as number);
-                        if (yearGap > 1.5) gapPairs.push([lastIdx, idx]);
-                      }
-                      lastIdx = idx;
-                    }
-                  }
+        <div>
+          <h3 style={{ margin: '0 0 12px', fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+            <InfoTooltip text={ADJUSTED_ID_RATE_TOOLTIP}>
+              Avg Taste vs. Adjusted Accuracy<span className="tooltip-icon">i</span>
+            </InfoTooltip>
+          </h3>
+          <div style={cardStyle}>
+            <ResponsiveContainer width="100%" aspect={1.3}>
+              <ScatterChart margin={{ left: 8, right: 24, top: 8, bottom: 8 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#2d2d4a" />
+                <XAxis dataKey="adjRate" name="Adjusted Accuracy" type="number" domain={adjRateDomain} ticks={adjRateTicks} tickFormatter={(v) => `${v}%`} {...axisProps} label={{ value: 'Adjusted Accuracy', position: 'insideBottom', offset: -2, fill: '#a0a0b8', fontSize: 11, fontFamily: 'Chakra Petch' }} />
+                <YAxis dataKey="taste" name="Avg Taste" type="number" domain={tasteAdjDomain} ticks={tasteAdjTicks} {...axisProps} label={{ value: 'Avg Taste', angle: -90, position: 'insideLeft', fill: '#a0a0b8', fontSize: 11, fontFamily: 'Chakra Petch' }} />
+                <ZAxis range={[36, 36]} />
+                <Tooltip content={<SodaAdjTip />} />
+                <ReferenceLine x={0} stroke="#ff006e" strokeWidth={2} strokeDasharray="6 3" />
+                <Scatter data={sodaScatter} shape={<ScatterDot />} />
+              </ScatterChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
 
-                  const lines: React.ReactElement[] = [
-                    <Line
-                      key={player.id}
-                      type="monotone"
-                      dataKey={key}
-                      name={player.name}
-                      stroke={color}
-                      strokeWidth={sw}
-                      strokeOpacity={dim ? 0.15 : 1}
-                      dot={{ r: 4, fill: color, fillOpacity: dim ? 0.15 : 1 }}
-                      activeDot={{ r: 6 }}
-                      connectNulls={false}
-                      onMouseEnter={() => setActivePlayerKey(key)}
-                      onMouseLeave={() => setActivePlayerKey(null)}
-                    />,
-                  ];
-                  gapPairs.forEach(([srcIdx, dstIdx], gi) => {
-                    lines.push(
-                      <Line
-                        key={`${player.id}-gap-${gi}`}
-                        data={[
-                          { year: playerAccuracyData[srcIdx].year as number, [gapKey]: playerAccuracyData[srcIdx][key] as number },
-                          { year: playerAccuracyData[dstIdx].year as number, [gapKey]: playerAccuracyData[dstIdx][key] as number },
-                        ]}
-                        type="linear"
-                        dataKey={gapKey}
-                        stroke={color}
-                        strokeWidth={sw}
-                        strokeOpacity={dim ? 0.15 : 1}
-                        strokeDasharray="5 5"
-                        dot={false}
-                        legendType="none"
-                        isAnimationActive={false}
-                        onMouseEnter={() => setActivePlayerKey(key)}
-                        onMouseLeave={() => setActivePlayerKey(null)}
-                      />
-                    );
-                  });
-                  return lines;
-                })}
-              </LineChart>
+        <div>
+          <h3 style={{ margin: '0 0 12px', fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+            Competition Difficulty (Sodas vs. Avg Correct per Player)
+          </h3>
+          <div style={cardStyle}>
+            <ResponsiveContainer width="100%" height={280}>
+              <ScatterChart margin={{ left: 8, right: 24, top: 8, bottom: 8 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#2d2d4a" />
+                <XAxis dataKey="sodaCount" name="No. of Sodas" type="number" allowDecimals={false} {...axisProps} label={{ value: 'No. of Sodas', position: 'insideBottom', offset: -2, fill: '#a0a0b8', fontSize: 11, fontFamily: 'Chakra Petch' }} />
+                <YAxis dataKey="avgCorrect" name="Avg Correct / Player" type="number" allowDecimals={false} {...axisProps} label={{ value: 'Avg Correct / Player', angle: -90, position: 'insideLeft', fill: '#a0a0b8', fontSize: 11, fontFamily: 'Chakra Petch' }} />
+                <ZAxis range={[36, 36]} />
+                <Tooltip content={<CompScatterTip />} />
+                <Scatter data={compScatter} shape={<CompDot />} />
+              </ScatterChart>
             </ResponsiveContainer>
           </div>
         </div>

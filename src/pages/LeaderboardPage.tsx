@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { SortableTable } from '../components/SortableTable';
 import { allPlayersSummary, competitionLeaderboard } from '../lib/stats';
 import { db, pct, rating } from '../lib/data';
 import { Tooltip } from '../components/Tooltip';
@@ -7,7 +8,6 @@ import { ACCURACY_TOOLTIP } from '../lib/tooltips';
 import type { Player } from '../lib/types';
 
 const players = allPlayersSummary(db).filter((p) => p.totalGuesses > 0);
-const byTaste = [...players].sort((a, b) => b.avgTasteGiven - a.avgTasteGiven);
 
 const medalMap = new Map<number, { gold: number; silver: number; bronze: number }>();
 for (const comp of db.competitions) {
@@ -105,17 +105,9 @@ function MedalTable({ medals }: { medals: MedalRow[] }) {
   );
 }
 
-const thStyle: React.CSSProperties = {
-  padding: '10px 14px',
-  fontWeight: 700,
-  fontSize: '0.75rem',
-  textTransform: 'uppercase',
-  letterSpacing: '0.08em',
-  color: 'var(--text-muted)',
-  background: 'var(--bg-lighter)',
-};
-
 export function LeaderboardPage() {
+  const navigate = useNavigate();
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
       <div>
@@ -136,47 +128,47 @@ export function LeaderboardPage() {
       <section>
         <h2 style={{ margin: '0 0 16px', fontSize: '1rem' }}>Accuracy ranking</h2>
         <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden' }}>
-          <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
-            <thead>
-              <tr style={{ borderBottom: '2px solid var(--border)' }}>
-                <th style={{ ...thStyle, textAlign: 'left' }}>Rank</th>
-                <th style={{ ...thStyle, textAlign: 'left' }}>Player</th>
-                <th style={{ ...thStyle, textAlign: 'right' }}>Events</th>
-                <th style={{ ...thStyle, textAlign: 'right' }}>Correct / Total</th>
-                <th style={{ ...thStyle, textAlign: 'right' }}>
-                  <Tooltip text={ACCURACY_TOOLTIP}>Accuracy<span className="tooltip-icon">i</span></Tooltip>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {players.map((p, i) => (
-                <tr
-                  key={p.player.id}
-                  style={{
-                    borderBottom: '1px solid var(--border)',
-                    background: i === 0 ? 'rgba(0, 255, 255, 0.05)' : undefined,
-                    borderLeft: i === 0 ? '2px solid var(--secondary)' : undefined,
-                  }}
-                >
-                  <td style={{ padding: '12px 14px', fontWeight: 700, fontSize: '1.1rem', color: i === 0 ? 'var(--secondary)' : 'var(--text-muted)' }}>
-                    {i === 0 ? '🏆' : i + 1}
-                  </td>
-                  <td style={{ padding: '12px 14px' }}>
-                    <Link to={`/players/${p.player.id}`} style={{ color: 'var(--text)', fontWeight: 600 }}>
-                      {p.player.name}
-                    </Link>
-                  </td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', color: 'var(--text-muted)' }}>{p.competitionsPlayed}</td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', color: 'var(--text-muted)' }}>{p.correctGuesses} / {p.totalGuesses}</td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', fontWeight: 700, color: p.accuracy >= 0.2 ? 'var(--cta)' : 'var(--primary)' }}>
-                    {pct(p.accuracy)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          </div>
+          <SortableTable
+            rowKey={(r) => r.player.id}
+            defaultSort="accuracy"
+            defaultDir="desc"
+            onRowClick={(r) => navigate(`/players/${r.player.id}`)}
+            data={players}
+            columns={[
+              {
+                key: 'name',
+                label: 'Player',
+                render: (r) => <Link to={`/players/${r.player.id}`} style={{ color: 'var(--text)', fontWeight: 600 }}>{r.player.name}</Link>,
+                sortValue: (r) => r.player.name,
+              },
+              {
+                key: 'events',
+                label: 'Events',
+                align: 'right',
+                render: (r) => <span style={{ color: 'var(--text-muted)' }}>{r.competitionsPlayed}</span>,
+                sortValue: (r) => r.competitionsPlayed,
+              },
+              {
+                key: 'correct',
+                label: 'Correct / Total',
+                align: 'right',
+                render: (r) => <span style={{ color: 'var(--text-muted)' }}>{r.correctGuesses} / {r.totalGuesses}</span>,
+                sortValue: (r) => r.correctGuesses,
+              },
+              {
+                key: 'accuracy',
+                label: 'Accuracy',
+                tooltip: ACCURACY_TOOLTIP,
+                align: 'right',
+                render: (r) => (
+                  <span style={{ fontWeight: 700, color: r.accuracy >= 0.2 ? 'var(--cta)' : 'var(--primary)' }}>
+                    {pct(r.accuracy)}
+                  </span>
+                ),
+                sortValue: (r) => r.accuracy,
+              },
+            ]}
+          />
         </div>
       </section>
 
@@ -186,43 +178,35 @@ export function LeaderboardPage() {
           Who gives the highest average taste ratings — ranked from most generous to harshest critic.
         </p>
         <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden' }}>
-          <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
-            <thead>
-              <tr style={{ borderBottom: '2px solid var(--border)' }}>
-                <th style={{ ...thStyle, textAlign: 'left' }}>Rank</th>
-                <th style={{ ...thStyle, textAlign: 'left' }}>Player</th>
-                <th style={{ ...thStyle, textAlign: 'right' }}>Total Tastings</th>
-                <th style={{ ...thStyle, textAlign: 'right' }}>Avg Taste Given</th>
-              </tr>
-            </thead>
-            <tbody>
-              {byTaste.map((p, i) => (
-                <tr
-                  key={p.player.id}
-                  style={{
-                    borderBottom: '1px solid var(--border)',
-                    background: i === 0 ? 'rgba(0, 255, 255, 0.05)' : undefined,
-                    borderLeft: i === 0 ? '2px solid var(--secondary)' : undefined,
-                  }}
-                >
-                  <td style={{ padding: '12px 14px', fontWeight: 700, color: i === 0 ? 'var(--secondary)' : 'var(--text-muted)' }}>
-                    {i === 0 ? '🌟' : i + 1}
-                  </td>
-                  <td style={{ padding: '12px 14px' }}>
-                    <Link to={`/players/${p.player.id}`} style={{ color: 'var(--text)', fontWeight: 600 }}>
-                      {p.player.name}
-                    </Link>
-                  </td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', color: 'var(--text-muted)' }}>{p.totalGuesses}</td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', fontWeight: 700, color: 'var(--secondary)' }}>
-                    ★ {rating(p.avgTasteGiven)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          </div>
+          <SortableTable
+            rowKey={(r) => r.player.id}
+            defaultSort="avgTasteGiven"
+            defaultDir="desc"
+            onRowClick={(r) => navigate(`/players/${r.player.id}`)}
+            data={players}
+            columns={[
+              {
+                key: 'name',
+                label: 'Player',
+                render: (r) => <Link to={`/players/${r.player.id}`} style={{ color: 'var(--text)', fontWeight: 600 }}>{r.player.name}</Link>,
+                sortValue: (r) => r.player.name,
+              },
+              {
+                key: 'totalGuesses',
+                label: 'Total Tastings',
+                align: 'right',
+                render: (r) => <span style={{ color: 'var(--text-muted)' }}>{r.totalGuesses}</span>,
+                sortValue: (r) => r.totalGuesses,
+              },
+              {
+                key: 'avgTasteGiven',
+                label: 'Avg Taste Given',
+                align: 'right',
+                render: (r) => <span style={{ fontWeight: 700, color: 'var(--secondary)' }}>★ {rating(r.avgTasteGiven)}</span>,
+                sortValue: (r) => r.avgTasteGiven,
+              },
+            ]}
+          />
         </div>
       </section>
     </div>

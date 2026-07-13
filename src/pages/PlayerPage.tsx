@@ -6,16 +6,7 @@ import { SortableTable } from '../components/SortableTable';
 import { playerStats, playerCompetitionHistory } from '../lib/stats';
 import { db, pct, rating } from '../lib/data';
 import { ACCURACY_TOOLTIP } from '../lib/tooltips';
-
-const thStyle: React.CSSProperties = {
-  padding: '10px 14px',
-  fontWeight: 700,
-  fontSize: '0.75rem',
-  textTransform: 'uppercase',
-  letterSpacing: '0.08em',
-  color: 'var(--text-muted)',
-  background: 'var(--bg-lighter)',
-};
+import type { PlayerCompetitionResult, Guess, Soda } from '../lib/types';
 
 const tooltipStyle = {
   background: 'var(--bg-lighter)',
@@ -26,6 +17,8 @@ const tooltipStyle = {
   fontSize: '0.85rem',
 };
 
+type MistakeRow = { actual: Soda; guessed: Soda; count: number; avgTaste: number };
+
 export function PlayerPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -35,10 +28,9 @@ export function PlayerPage() {
   if (!stats) return <Navigate to="/players" replace />;
 
   const history = playerCompetitionHistory(playerId, db);
-  const guesses = db.guesses.filter((g) => g.playerId === playerId);
-
   const sodaMap = new Map(db.sodas.map((s) => [s.id, s]));
   const compMap = new Map(db.competitions.map((c) => [c.id, c]));
+  const guesses = db.guesses.filter((g) => g.playerId === playerId);
 
   const incorrectCounts = new Map<string, number>();
   for (const g of guesses) {
@@ -51,9 +43,11 @@ export function PlayerPage() {
     .sort(([, a], [, b]) => b - a)
     .map(([key, count]) => {
       const [actualId, guessedId] = key.split(':').map(Number);
-      return { actual: sodaMap.get(actualId), guessed: sodaMap.get(guessedId), count };
+      const matchingGuesses = guesses.filter((g) => g.actualSodaId === actualId && g.guessedSodaId === guessedId);
+      const avgTaste = matchingGuesses.reduce((sum, g) => sum + g.score, 0) / matchingGuesses.length;
+      return { actual: sodaMap.get(actualId), guessed: sodaMap.get(guessedId), count, avgTaste };
     })
-    .filter((r) => r.actual && r.guessed);
+    .filter((r): r is MistakeRow => !!(r.actual && r.guessed));
 
   const sodaStatsMap = new Map<number, { correct: number; total: number; totalScore: number }>();
   for (const g of guesses) {
@@ -75,7 +69,7 @@ export function PlayerPage() {
 
   const chartData = history.map((h) => ({
     name: h.competition.name.replace(/Julebrus\s*/i, '').replace(/\s*\(.*\)/, '').trim() || h.competition.name,
-    accuracy: Math.round(h.accuracy * 100),
+    correct: h.correct,
     avgTaste: h.avgTaste,
   }));
 
@@ -95,15 +89,15 @@ export function PlayerPage() {
 
       {history.length > 1 && (
         <section>
-          <h2 style={{ margin: '0 0 16px', fontSize: '1rem' }}>Accuracy per competition</h2>
+          <h2 style={{ margin: '0 0 16px', fontSize: '1rem' }}>Correct guesses per competition</h2>
           <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 12, padding: '20px 8px' }}>
             <ResponsiveContainer width="100%" height={200}>
               <LineChart data={chartData} margin={{ left: 0, right: 16 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#2d2d4a" />
                 <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#a0a0b8', fontFamily: 'Chakra Petch' }} />
-                <YAxis domain={[0, 100]} tickFormatter={(v) => `${v}%`} tick={{ fontSize: 11, fill: '#a0a0b8', fontFamily: 'Chakra Petch' }} />
-                <Tooltip formatter={(v) => [`${v}%`, 'Accuracy']} contentStyle={tooltipStyle} />
-                <Line type="monotone" dataKey="accuracy" stroke="#00ffff" strokeWidth={2} dot={{ r: 4, fill: '#00ffff' }} activeDot={{ r: 6 }} />
+                <YAxis allowDecimals={false} tick={{ fontSize: 11, fill: '#a0a0b8', fontFamily: 'Chakra Petch' }} />
+                <Tooltip formatter={(v) => [v, 'Correct guesses']} contentStyle={tooltipStyle} />
+                <Line type="monotone" dataKey="correct" stroke="#00ffff" strokeWidth={2} dot={{ r: 4, fill: '#00ffff' }} activeDot={{ r: 6 }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -114,28 +108,41 @@ export function PlayerPage() {
         <section>
           <h2 style={{ margin: '0 0 16px', fontSize: '1rem' }}>Frequent incorrect guesses</h2>
           <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
-              <thead>
-                <tr style={{ borderBottom: '2px solid var(--border)' }}>
-                  <th style={{ ...thStyle, textAlign: 'left' }}>Actual soda</th>
-                  <th style={{ ...thStyle, textAlign: 'left' }}>Guessed as</th>
-                  <th style={{ ...thStyle, textAlign: 'right' }}>Times</th>
-                </tr>
-              </thead>
-              <tbody>
-                {frequentMistakes.map((r) => (
-                  <tr key={`${r.actual!.id}:${r.guessed!.id}`} style={{ borderBottom: '1px solid var(--border)' }}>
-                    <td style={{ padding: '12px 14px' }}>
-                      <Link to={`/sodas/${r.actual!.id}`} style={{ color: 'var(--text)', fontWeight: 500 }}>{r.actual!.name}</Link>
-                    </td>
-                    <td style={{ padding: '12px 14px' }}>
-                      <Link to={`/sodas/${r.guessed!.id}`} style={{ color: 'var(--text-muted)' }}>{r.guessed!.name}</Link>
-                    </td>
-                    <td style={{ padding: '12px 14px', textAlign: 'right', fontWeight: 700, color: 'var(--primary)' }}>{r.count}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <SortableTable<MistakeRow>
+              rowKey={(r) => `${r.actual.id}:${r.guessed.id}`}
+              defaultSort="count"
+              defaultDir="desc"
+              onRowClick={(r) => navigate(`/sodas/${r.actual.id}`)}
+              data={frequentMistakes}
+              columns={[
+                {
+                  key: 'actual',
+                  label: 'Actual soda',
+                  render: (r) => <Link to={`/sodas/${r.actual.id}`} style={{ color: 'var(--text)', fontWeight: 500 }}>{r.actual.name}</Link>,
+                  sortValue: (r) => r.actual.name,
+                },
+                {
+                  key: 'guessed',
+                  label: 'Guessed as',
+                  render: (r) => <Link to={`/sodas/${r.guessed.id}`} style={{ color: 'var(--text-muted)' }}>{r.guessed.name}</Link>,
+                  sortValue: (r) => r.guessed.name,
+                },
+                {
+                  key: 'count',
+                  label: 'Times',
+                  align: 'right',
+                  render: (r) => <span style={{ fontWeight: 700, color: 'var(--primary)' }}>{r.count}</span>,
+                  sortValue: (r) => r.count,
+                },
+                {
+                  key: 'avgTaste',
+                  label: 'Avg Taste',
+                  align: 'right',
+                  render: (r) => <span style={{ color: 'var(--secondary)' }}>★ {rating(r.avgTaste)}</span>,
+                  sortValue: (r) => r.avgTaste,
+                },
+              ]}
+            />
           </div>
         </section>
       )}
@@ -143,36 +150,58 @@ export function PlayerPage() {
       <section>
         <h2 style={{ margin: '0 0 16px', fontSize: '1rem' }}>Competition history</h2>
         <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden' }}>
-          <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
-            <thead>
-              <tr style={{ borderBottom: '2px solid var(--border)' }}>
-                <th style={{ ...thStyle, textAlign: 'left' }}>Competition</th>
-                <th style={{ ...thStyle, textAlign: 'right' }}>Guesses</th>
-                <th style={{ ...thStyle, textAlign: 'right' }}>
-                  <InfoTooltip text={ACCURACY_TOOLTIP}>Accuracy<span className="tooltip-icon">i</span></InfoTooltip>
-                </th>
-                <th style={{ ...thStyle, textAlign: 'right' }}>Avg Taste</th>
-              </tr>
-            </thead>
-            <tbody>
-              {history.map((h) => (
-                <tr key={h.competition.id} style={{ borderBottom: '1px solid var(--border)' }}>
-                  <td style={{ padding: '12px 14px' }}>
-                    <Link to={`/events/${h.competition.id}`} style={{ color: 'var(--text)', fontWeight: 600 }}>
-                      {h.competition.name}
-                    </Link>
-                  </td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', color: 'var(--text-muted)' }}>{h.correct} / {h.guesses}</td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', fontWeight: 700, color: h.accuracy >= 0.2 ? 'var(--cta)' : 'var(--primary)' }}>
-                    {pct(h.accuracy)}
-                  </td>
-                  <td style={{ padding: '12px 14px', textAlign: 'right', color: 'var(--secondary)' }}>★ {rating(h.avgTaste)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          </div>
+          <SortableTable<PlayerCompetitionResult>
+            rowKey={(r) => r.competition.id}
+            defaultSort="date"
+            defaultDir="desc"
+            onRowClick={(r) => navigate(`/events/${r.competition.id}`)}
+            data={history}
+            columns={[
+              {
+                key: 'competition',
+                label: 'Competition',
+                render: (r) => (
+                  <Link to={`/events/${r.competition.id}`} style={{ color: 'var(--text)', fontWeight: 600 }}>
+                    {r.competition.name}
+                  </Link>
+                ),
+                sortValue: (r) => new Date(r.competition.date).getTime(),
+              },
+              {
+                key: 'date',
+                label: 'Date',
+                align: 'right',
+                render: (r) => <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>{/(\d{4})/.exec(r.competition.name)?.[1] ?? ''}</span>,
+                sortValue: (r) => new Date(r.competition.date).getTime(),
+              },
+              {
+                key: 'guesses',
+                label: 'Correct',
+                align: 'right',
+                render: (r) => <span style={{ color: 'var(--text-muted)' }}>{r.correct} / {r.guesses}</span>,
+                sortValue: (r) => r.correct,
+              },
+              {
+                key: 'accuracy',
+                label: 'Accuracy',
+                tooltip: ACCURACY_TOOLTIP,
+                align: 'right',
+                render: (r) => (
+                  <span style={{ fontWeight: 700, color: r.accuracy >= 0.2 ? 'var(--cta)' : 'var(--primary)' }}>
+                    {pct(r.accuracy)}
+                  </span>
+                ),
+                sortValue: (r) => r.accuracy,
+              },
+              {
+                key: 'avgTaste',
+                label: 'Avg Taste',
+                align: 'right',
+                render: (r) => <span style={{ color: 'var(--secondary)' }}>★ {rating(r.avgTaste)}</span>,
+                sortValue: (r) => r.avgTaste,
+              },
+            ]}
+          />
         </div>
       </section>
 
@@ -233,50 +262,65 @@ export function PlayerPage() {
       <section>
         <h2 style={{ margin: '0 0 16px', fontSize: '1rem' }}>All guesses</h2>
         <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden' }}>
-          <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
-            <thead>
-              <tr style={{ borderBottom: '2px solid var(--border)' }}>
-                <th style={{ ...thStyle, textAlign: 'left' }}>Competition</th>
-                <th style={{ ...thStyle, textAlign: 'left' }}>Actual soda</th>
-                <th style={{ ...thStyle, textAlign: 'left' }}>Guessed</th>
-                <th style={{ ...thStyle, textAlign: 'center' }}>Result</th>
-                <th style={{ ...thStyle, textAlign: 'right' }}>Taste</th>
-              </tr>
-            </thead>
-            <tbody>
-              {guesses.map((g) => {
-                const actual = sodaMap.get(g.actualSodaId);
-                const guessed = sodaMap.get(g.guessedSodaId);
-                const comp = compMap.get(g.competitionId);
-                const correct = g.guessedSodaId === g.actualSodaId;
-                return (
-                  <tr key={g.id} style={{ borderBottom: '1px solid var(--border)' }}>
-                    <td style={{ padding: '10px 14px', fontSize: '0.85rem' }}>
-                      <Link to={`/events/${g.competitionId}`} style={{ color: 'var(--text-muted)' }}>
-                        {comp?.name}
-                      </Link>
-                    </td>
-                    <td style={{ padding: '10px 14px' }}>
-                      <Link to={`/sodas/${g.actualSodaId}`} style={{ color: 'var(--text)', fontWeight: 500 }}>
-                        {actual?.name}
-                      </Link>
-                    </td>
-                    <td style={{ padding: '10px 14px' }}>
-                      <Link to={`/sodas/${g.guessedSodaId}`} style={{ color: correct ? 'var(--text)' : 'var(--text-muted)' }}>
-                        {guessed?.name}
-                      </Link>
-                    </td>
-                    <td style={{ padding: '10px 14px', textAlign: 'center' }}>
-                      {correct ? '✅' : '❌'}
-                    </td>
-                    <td style={{ padding: '10px 14px', textAlign: 'right', color: 'var(--secondary)' }}>★ {g.score}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          </div>
+          <SortableTable<Guess>
+            rowKey={(r) => r.id}
+            defaultSort="competition"
+            defaultDir="desc"
+            pageSize={10}
+            data={guesses}
+            columns={[
+              {
+                key: 'competition',
+                label: 'Competition',
+                render: (r) => (
+                  <Link to={`/events/${r.competitionId}`} style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                    {compMap.get(r.competitionId)?.name}
+                  </Link>
+                ),
+                sortValue: (r) => {
+                  const name = compMap.get(r.competitionId)?.name ?? '';
+                  return parseInt(/(\d{4})/.exec(name)?.[1] ?? '0');
+                },
+              },
+              {
+                key: 'actual',
+                label: 'Actual soda',
+                render: (r) => (
+                  <Link to={`/sodas/${r.actualSodaId}`} style={{ color: 'var(--text)', fontWeight: 500 }}>
+                    {sodaMap.get(r.actualSodaId)?.name}
+                  </Link>
+                ),
+                sortValue: (r) => sodaMap.get(r.actualSodaId)?.name ?? '',
+              },
+              {
+                key: 'guessed',
+                label: 'Guessed',
+                render: (r) => {
+                  const correct = r.guessedSodaId === r.actualSodaId;
+                  return (
+                    <Link to={`/sodas/${r.guessedSodaId}`} style={{ color: correct ? 'var(--text)' : 'var(--text-muted)' }}>
+                      {sodaMap.get(r.guessedSodaId)?.name}
+                    </Link>
+                  );
+                },
+                sortValue: (r) => sodaMap.get(r.guessedSodaId)?.name ?? '',
+              },
+              {
+                key: 'result',
+                label: 'Result',
+                align: 'center',
+                render: (r) => r.guessedSodaId === r.actualSodaId ? '✅' : '❌',
+                sortValue: (r) => r.guessedSodaId === r.actualSodaId ? 1 : 0,
+              },
+              {
+                key: 'score',
+                label: 'Taste',
+                align: 'right',
+                render: (r) => <span style={{ color: 'var(--secondary)' }}>★ {r.score}</span>,
+                sortValue: (r) => r.score,
+              },
+            ]}
+          />
         </div>
       </section>
     </div>
