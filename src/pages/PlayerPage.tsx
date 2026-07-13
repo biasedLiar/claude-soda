@@ -1,7 +1,6 @@
 import { useParams, Link, Navigate, useNavigate } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import { StatCard } from '../components/StatCard';
-import { Tooltip as InfoTooltip } from '../components/Tooltip';
 import { SortableTable } from '../components/SortableTable';
 import { playerStats, playerCompetitionHistory } from '../lib/stats';
 import { db, pct, rating } from '../lib/data';

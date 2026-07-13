@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { SortableTable } from '../components/SortableTable';
 import { allPlayersSummary, competitionLeaderboard } from '../lib/stats';
 import { db, pct, rating } from '../lib/data';
-import { Tooltip } from '../components/Tooltip';
 import { ACCURACY_TOOLTIP } from '../lib/tooltips';
 import type { Player } from '../lib/types';
 
