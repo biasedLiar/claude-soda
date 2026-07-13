@@ -149,7 +149,7 @@ export function LeaderboardPage() {
               },
               {
                 key: 'correct',
-                label: 'Correct / Total',
+                label: 'Correct',
                 align: 'right',
                 render: (r) => <span style={{ color: 'var(--text-muted)' }}>{r.correctGuesses} / {r.totalGuesses}</span>,
                 sortValue: (r) => r.correctGuesses,
